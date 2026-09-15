@@ -1,0 +1,17 @@
+.secrets/
+.env
+.env.*
+!.env.example
+!infra/app/.env.app.example
+node_modules/
+web/dist/
+.venv-middleware/
+__pycache__/
+*.pyc
+
+# 本地临时缓存与 Claude 工作树（不提交）
+.cache/
+.claude/
+
+# v3 画布原型截图（本地预览）
+prototype/canvas-v3-*.png
