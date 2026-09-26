@@ -1,0 +1,5 @@
+*
+!minio.Dockerfile
+!sources/
+!sources/minio.tar.gz
+!sources/mc.tar.gz

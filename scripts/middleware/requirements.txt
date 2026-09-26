@@ -1,0 +1,5 @@
+paramiko>=3,<5
+cryptography>=43
+psycopg[binary]>=3.2,<4
+redis>=5,<8
+boto3>=1.35,<2

@@ -1,0 +1,89 @@
+name: shangjing-middleware
+
+x-common: &common
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+services:
+  postgres:
+    <<: *common
+    image: ${POSTGRES_IMAGE:?image digest required}
+    environment:
+      POSTGRES_DB: shangjing
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?required}
+      POSTGRES_APP_PASSWORD: ${POSTGRES_APP_PASSWORD:?required}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    command:
+      - postgres
+      - -c
+      - ssl=on
+      - -c
+      - ssl_cert_file=/tls/server.crt
+      - -c
+      - ssl_key_file=/tls/server.key
+      - -c
+      - hba_file=/etc/postgresql/pg_hba.conf
+      - -c
+      - shared_buffers=256MB
+      - -c
+      - max_connections=100
+    ports:
+      - "0.0.0.0:5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./tls/postgres:/tls:ro
+      - ./postgres/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - ./postgres/init-app.sh:/docker-entrypoint-initdb.d/10-app.sh:ro
+    mem_limit: 2g
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U postgres -d shangjing"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    <<: *common
+    image: ${REDIS_IMAGE:?image digest required}
+    environment:
+      REDISCLI_AUTH: ${REDIS_ADMIN_PASSWORD:?required}
+    command: [redis-server, /etc/redis/redis.conf]
+    ports:
+      - "0.0.0.0:6379:6379"
+    volumes:
+      - ./data/redis:/data
+      - ./tls/redis:/tls:ro
+      - ./redis/redis.conf:/etc/redis/redis.conf:ro
+      - ./redis/users.acl:/etc/redis/users.acl:ro
+    mem_limit: 1g
+    healthcheck:
+      test: [CMD-SHELL, "redis-cli --tls --cacert /tls/ca.crt --user admin -h localhost -p 6379 ping | grep -q PONG"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    <<: *common
+    image: ${MINIO_IMAGE:?image required}
+    user: "10001:10001"
+    environment:
+      MINIO_ROOT_USER: sj_minio_admin
+      MINIO_ROOT_PASSWORD: ${MINIO_ADMIN_PASSWORD:?required}
+      MINIO_REGION_NAME: us-east-1
+    command: [server, /data, --console-address, ":9001", --certs-dir, /tls]
+    ports:
+      - "0.0.0.0:9000:9000"
+      - "0.0.0.0:9001:9001"
+    volumes:
+      - ./data/minio:/data
+      - ./tls/minio:/tls:ro
+    mem_limit: 3g
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, --cacert, /tls/CAs/ca.crt, https://localhost:9000/minio/health/live]
+      interval: 15s
+      timeout: 5s
+      retries: 5
