@@ -1,0 +1,46 @@
+import {existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {createPool,createMinioClient,JobStore} from './store.mjs';
+import {runMigrations} from './migrate.mjs';
+import {createServer} from './http.mjs';
+import {ChannelStore,loadEncryptionKey} from './channels.mjs';
+import {AuthStore,AuthService} from './auth.mjs';
+import {AuditService,PgAuditRepository} from './audit.mjs';
+import {CreationStore} from './creation-store.mjs';
+import {CreationMedia} from './creation-media.mjs';
+import {CreationProducts} from './creation-products.mjs';
+import {CreationProjects} from './creation-projects.mjs';
+import {CreationLifecycle} from './creation-lifecycle.mjs';
+import {ModelHub} from './model-hub.mjs';
+import {safeError} from './errors.mjs';
+const root=new URL('../',import.meta.url);process.chdir(fileURLToPath(root));
+for(const file of ['.env.middleware.local','.env.models.local'])if(existsSync(file))process.loadEnvFile(file);
+const port=Number(process.env.PORT||4173);
+try{
+ const pool=createPool();pool.on('error',()=>{console.error('数据库连接中断；服务停止，未重新提交请求。');process.exit(1);});
+ const worker=new JobStore(pool);await worker.init();await runMigrations(pool);
+ // 本地只读/联调可跳过执行器锁，避免占用线上执行器；默认行为不变。
+ const execute=process.env.SJ_DEV_NO_EXECUTOR!=='1';
+ if(execute)await worker.lockWorker();
+ const heartbeat=execute?setInterval(()=>worker.workerLock.query('SELECT 1').catch(()=>process.exit(1)),10000):null;
+ const auth=process.env.SJ_AUTH==='on'?new AuthService(new AuthStore(pool)):undefined;
+ const audit=new AuditService(new PgAuditRepository(pool));
+ const channelStore=new ChannelStore(pool,loadEncryptionKey(process.cwd()));await channelStore.init();
+ const creationStore=new CreationStore(pool);const modelHub=new ModelHub(creationStore,channelStore);
+ const bootstrap=[];
+ if(process.env.OMYAI_API_KEY)bootstrap.push({id:'ch_0000000000000001',name:'OMYAI',adapter:'openai-compatible',baseUrl:'https://omyai.vip/v1',apiKey:process.env.OMYAI_API_KEY,executorConfig:{editTransport:'json-data-url'},models:[{modelId:'gpt-image-2.5-flare',capabilities:['image'],enabled:true}],defaults:{image:'gpt-image-2.5-flare'}});
+ if(process.env.DEEPSEEK_API_KEY)bootstrap.push({id:'ch_0000000000000002',name:'DeepSeek',adapter:'openai-compatible',baseUrl:'https://api.deepseek.com/v1',apiKey:process.env.DEEPSEEK_API_KEY,models:[{modelId:'deepseek-flash',capabilities:['text'],enabled:true}],defaults:{product:'deepseek-flash',planning:'deepseek-flash'}});
+ if(process.env.MINIMAX_H3_API_KEY)bootstrap.push({id:'ch_0000000000000003',name:'优云智算 MiniMax H3',adapter:'minimax-h3',baseUrl:'https://cp.compshare.cn',apiKey:process.env.MINIMAX_H3_API_KEY,executorConfig:{video:'minimax-h3'},models:[{modelId:'MiniMax-H3',capabilities:['video'],enabled:true}],defaults:{video:'MiniMax-H3'}});
+ await modelHub.init({channels:bootstrap});
+ const creationMedia=new CreationMedia(creationStore,createMinioClient().client,{publicOrigin:process.env.SJ_MEDIA_PUBLIC_ORIGIN,signingKey:process.env.SJ_MEDIA_SIGNING_KEY});
+ const creationProducts=new CreationProducts(creationStore,{hub:modelHub,media:creationMedia});
+ const creationProjects=new CreationProjects(creationStore,{hub:modelHub,media:creationMedia});
+ const creationLifecycle=new CreationLifecycle(creationStore,{media:creationMedia});
+ await creationLifecycle.initSeed('local');
+ const server=createServer({pool,auth,audit,creationStore,creationMedia,creationProducts,creationProjects,creationLifecycle,modelHub,port,root});
+ server.on('error',()=>{console.error('监听端口不可用。');process.exit(1);});
+ server.listen(port,process.env.SJ_LISTEN_HOST||'127.0.0.1',()=>console.log(`创作工作台已启动，端口 ${port}。`));
+ const timer=execute?setInterval(()=>creationProjects.tick().catch(()=>console.error('执行器暂时不可用；未重新提交未知请求。')),1500):null;
+ if(!execute)console.warn('SJ_DEV_NO_EXECUTOR=1：未获取执行器锁，也不会轮询任务；仅用于本机联调。');
+ for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{if(timer)clearInterval(timer);if(heartbeat)clearInterval(heartbeat);server.close();process.exit(0);});
+}catch(error){console.error('启动失败：'+safeError(error).message);process.exit(1);}
