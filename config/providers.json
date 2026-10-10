@@ -1,0 +1,57 @@
+{
+  "providers": [
+    {
+      "id": "omyai-openai",
+      "name": "OMYAI（OpenAI 标准）",
+      "adapter": "openai-compatible",
+      "baseUrl": "https://omyai.vip/v1",
+      "apiKeyEnv": "OMYAI_API_KEY",
+      "enabled": true,
+      "assetHosts": ["omyai.vip"],
+      "defaultModel": "gpt-image-2.5-flare",
+      "editTransport": "json-data-url"
+    },
+    {
+      "id": "omyai",
+      "name": "OMYAI MCP（历史渠道）",
+      "adapter": "omyai-mcp",
+      "endpoint": "https://omyai.vip/mcp",
+      "apiKeyEnv": "OMYAI_API_KEY",
+      "enabled": false,
+      "assetHosts": ["omyai.vip"],
+      "defaultModel": "gpt-image-2.5-flare"
+    }
+  ],
+  "textProviders": [
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "adapter": "deepseek",
+      "baseUrl": "https://api.deepseek.com",
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "enabled": true,
+      "models": [
+        {
+          "id": "deepseek-flash",
+          "name": "DeepSeek V4.1 Flash (1017)",
+          "capabilities": ["text.chat"],
+          "parameters": {
+            "contextWindow": 1000000,
+            "maxOutputTokens": 393216,
+            "vision": true
+          }
+        },
+        {
+          "id": "deepseek-v4-pro",
+          "name": "DeepSeek V4 Pro (0813)",
+          "capabilities": ["text.chat"],
+          "parameters": {
+            "contextWindow": 1000000,
+            "maxOutputTokens": 393216,
+            "vision": false
+          }
+        }
+      ]
+    }
+  ]
+}
