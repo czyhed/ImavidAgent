@@ -1,0 +1,5 @@
+Asset: web/public/assets/auth-creative.png
+Generated: 2026-10-26 using the built-in image_gen tool (not CLI).
+Purpose: illustrative login / setup artwork, not customer business data.
+Final prompt:
+Use case: product-mockup. Asset type: raster illustration for the left half of a clean Chinese ecommerce AI application's login page. Create a square 1200x1200 refined photo collage on solid very pale cool gray #F5F7FA. NO TEXT, NO UI, NO LOGOS. Three separate softly rounded rectangular photo panels: top left a complete cream-white thermos tumbler with pushbutton lid on a neutral warm studio backdrop, top right closeup of the same thermos lid and button, bottom wide panel the same cream thermos on stone among golden autumn wildflowers with blurred blue sky and mountains. Consistent realistic product identity, soft natural light, beautiful realistic product photography, subtle neutral borders, generous quiet gaps between panels. Two very thin restrained blue curved connector lines with tiny blue dots link the panels through the gaps. Panels occupy most of the image, edge inset 20px. Editorial calm, premium everyday product, no typography or interface.
