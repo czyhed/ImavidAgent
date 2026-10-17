@@ -1,0 +1,46 @@
+/* 项目列表（蓝色主题）。画布本体样式见 creation-canvas-v3.css。 */
+.cp-projects{--cp-ink:#25313E;--cp-muted:#667488;--cp-green:#385AE8;--cp-border:#E1E6EE;--cp-soft:#F7F9FC;color:var(--cp-ink);font-family:inherit;letter-spacing:0;min-width:0;padding:6px 4px}
+.cp-projects *{box-sizing:border-box;letter-spacing:0}
+.cp-projects button{font:inherit;font-size:13px;background:#fff;border:1px solid var(--cp-border);border-radius:6px;color:var(--cp-ink);padding:8px 12px;cursor:pointer;white-space:normal;line-height:1.4;flex-shrink:0}
+.cp-projects button:disabled{opacity:.45;cursor:not-allowed}
+.cp-projects button:hover:not(:disabled){border-color:#AEBEFA;background:#F0F4FE;color:#2C48C4}
+.cp-projects .cp-primary{background:var(--cp-green);border-color:var(--cp-green);color:#fff;box-shadow:0 2px 8px rgba(56,90,232,.24)}
+.cp-projects .cp-primary:hover:not(:disabled){background:#4E6FEE;border-color:#4E6FEE;color:#fff}
+.cp-heading,.cp-list-tools,.cp-dialog header,.cp-dialog footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cp-heading{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--cp-border)}
+.cp-heading h1{font-size:24px;margin:0 0 6px;font-weight:700}
+.cp-heading p{margin:0;font-size:13px;color:var(--cp-muted)}
+.cp-projects input,.cp-projects select{font:inherit;font-size:13px;color:var(--cp-ink);border:1px solid var(--cp-border);background:#fff;border-radius:6px;padding:9px 11px;width:100%;min-width:0;line-height:1.55}
+.cp-projects input:focus{border-color:#385AE8;box-shadow:0 0 0 3px rgba(56,90,232,.10);outline:none}
+.cp-list-tools{justify-content:flex-start;margin-bottom:18px}
+.cp-list-tools input{max-width:380px}
+.cp-list-tools button{flex-shrink:0}
+.cp-project-list{border:1px solid var(--cp-border);border-radius:10px;background:#fff;overflow:hidden}
+.cp-project-row{display:grid;grid-template-columns:minmax(200px,1fr) 80px 150px minmax(150px,auto);gap:18px;align-items:center;padding:15px 18px;border-bottom:1px solid #F0F3F8;font-size:13px}
+.cp-project-row:last-child{border-bottom:0}
+.cp-project-row:not(.cp-table-head):hover{background:#F8FAFE}
+.cp-table-head{font-size:12px;color:var(--cp-muted);background:var(--cp-soft);padding:11px 18px}
+.cp-project-row .cp-project-name{text-align:left;padding:0;border:0;background:transparent!important;display:flex;flex-direction:column;gap:5px}
+.cp-project-name strong{font-size:14.5px;overflow-wrap:anywhere;font-weight:600}
+.cp-project-name span,.cp-table-head{font-size:12px;color:var(--cp-muted)}
+.cp-project-row time{color:var(--cp-muted);font-size:12px}
+.cp-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.cp-actions button{padding:6px 10px;font-size:12px}
+.cp-empty{text-align:center;padding:70px 20px;color:var(--cp-muted)}
+.cp-empty h2{font-size:18px;font-weight:600;margin:0 0 14px}
+.cp-error{display:flex;align-items:center;gap:10px;justify-content:space-between;background:#FCEBE7;color:#DE4E36;font-size:12.5px;line-height:1.6;padding:10px 16px;border-radius:8px;margin:12px 0;overflow-wrap:anywhere;border:1px solid #F5B0A4}
+.cp-overlay{position:fixed;inset:0;z-index:1000;background:rgba(37,49,62,.45);display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
+.cp-dialog{width:480px;max-width:100%;max-height:90dvh;overflow:auto;background:#fff;border:1px solid var(--cp-border);border-radius:12px;padding:22px;box-shadow:0 12px 40px rgba(37,49,62,.16);color:var(--cp-ink)}
+.cp-dialog header{margin-bottom:20px}
+.cp-dialog h2{font-size:17px;line-height:1.4;margin:0;font-weight:600}
+.cp-dialog header button{font-size:22px;padding:0 6px;line-height:1.2;border:0;background:transparent;color:var(--cp-muted)}
+.cp-dialog footer{justify-content:flex-end;border-top:1px solid var(--cp-border);margin-top:20px;padding-top:15px}
+.cp-dialog label{display:flex;flex-direction:column;gap:6px;margin-bottom:15px;font-size:13px}
+.cp-dialog input,.cp-dialog select{padding:9px 11px;border:1px solid var(--cp-border);border-radius:6px;font:inherit;min-width:0;max-width:100%}
+@media(max-width:760px){
+ .cp-projects{padding:0}
+ .cp-project-row{grid-template-columns:minmax(120px,1fr) 40px 90px;gap:10px;padding:13px 14px}
+ .cp-project-row time{display:none}
+ .cp-project-row .cp-actions{grid-column:1/-1;justify-content:flex-start}
+ .cp-table-head{display:none}
+}
