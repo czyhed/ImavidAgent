@@ -1,0 +1,71 @@
+/* 角色与音色面板、台词配音、原声 / 配音切换。沿用浅色蓝色体系。 */
+.vr-dialog{width:880px;max-width:100%}
+.vr-layout{display:grid;grid-template-columns:200px minmax(0,1fr);gap:14px;min-width:0}
+.vr-roles{display:flex;flex-direction:column;gap:8px;min-width:0}
+.vr-roles ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.vr-roles li{padding:0;border:0}
+.vr-roles li button{width:100%;text-align:left;padding:7px 9px;border:1px solid var(--v3-line);border-radius:8px;background:var(--v3-surface);display:flex;flex-direction:column;gap:2px;min-width:0}
+.vr-roles li button.on{border-color:var(--v3-accent);background:var(--v3-accent-soft)}
+.vr-roles li button small{font-size:10.5px;color:var(--v3-mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vr-detail{min-width:0;display:flex;flex-direction:column;gap:10px}
+.vr-detail label,.vr-design label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--v3-dim);min-width:0}
+.vr-detail input:not([type=range]),.vr-detail select,.vr-detail textarea,.vr-design input,.vr-design select,.vr-design textarea{width:100%;min-width:0;font-size:12.5px;padding:6px 8px;border:1px solid var(--v3-line);border-radius:7px;background:#fff;color:var(--v3-fg)}
+.vr-name-row{display:flex;gap:10px;align-items:flex-end}
+.vr-name-row label{flex:1}
+.vr-current{margin:0;font-size:12px;color:var(--v3-dim);overflow-wrap:anywhere}
+.vr-tabs{display:flex;gap:2px;padding:2px;background:var(--v3-surface-2);border:1px solid var(--v3-line);border-radius:8px;align-self:flex-start;max-width:100%}
+.vr-tabs button{padding:5px 12px;border-radius:6px;font-size:12px;color:var(--v3-dim)}
+.vr-tabs button.on{background:var(--v3-panel);color:var(--v3-accent);font-weight:600;box-shadow:0 1px 3px rgba(37,49,62,.12)}
+.vr-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.vr-voices{list-style:none;margin:0;padding:0;max-height:300px;overflow:auto;border:1px solid var(--v3-line-soft);border-radius:8px}
+.vr-voices li{display:flex;align-items:center;gap:8px;padding:6px 8px;border-bottom:1px solid var(--v3-line-soft);flex-wrap:wrap}
+.vr-voices li.on{background:var(--v3-accent-soft)}
+.vr-voice-meta{flex:1;min-width:140px;display:flex;flex-direction:column}
+.vr-voice-meta small{font-size:10.5px;color:var(--v3-mute)}
+.vr-audition{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+.vr-audition audio{height:30px;max-width:220px}
+.vr-params{border:1px solid var(--v3-line-soft);border-radius:8px;padding:8px 10px;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.vr-params legend{font-size:12px;color:var(--v3-dim);padding:0 4px}
+.vr-try{display:flex;flex-direction:column;gap:6px}
+.vr-design{display:flex;flex-direction:column;gap:8px}
+.vr-design-result{border:1px solid var(--v3-line);border-radius:8px;padding:8px;background:var(--v3-surface-2);display:flex;flex-direction:column;gap:6px}
+.vr-design-result p{margin:0;font-size:12px}
+.vr-remaining{margin-left:10px;color:var(--v3-accent);font-weight:600}
+.vr-error{margin:0;font-size:12px;color:var(--v3-bad);background:var(--v3-bad-soft);border-radius:6px;padding:5px 8px}
+.vr-dubbed{display:flex;flex-direction:column;gap:6px;min-width:0}
+.vr-dubbed video{width:100%}
+.vr-switch{display:inline-flex;align-self:flex-start;gap:2px;padding:2px;background:var(--v3-surface-2);border:1px solid var(--v3-line);border-radius:8px}
+.vr-switch button{padding:3px 12px;border-radius:6px;font-size:12px;color:var(--v3-dim)}
+.vr-switch button.on{background:var(--v3-panel);color:var(--v3-accent);font-weight:600}
+.vn-dub{display:flex;flex-direction:column;gap:6px;padding:8px;border:1px solid var(--v3-line-soft);border-radius:8px;background:var(--v3-surface-2)}
+.vn-dub-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px}
+.vn-dub-badge{padding:1px 8px;border-radius:999px;font-size:11px;background:var(--v3-surface-3);color:var(--v3-dim)}
+.vn-dub-badge.fresh{background:var(--v3-ok-soft);color:var(--v3-ok)}
+.vn-dub-badge.stale{background:var(--v3-warn-soft);color:var(--v3-warn)}
+.vn-dub audio{width:100%;height:32px}
+.vn-dub-actions{display:flex;gap:6px;flex-wrap:wrap}
+.vn-dub .v3-btn.small{padding:4px 10px;font-size:11.5px}
+.vn-line.with-role{grid-template-columns:minmax(0,1fr) 62px 18px}
+.vn-line .vn-line-role{grid-column:1 / -1}
+.vr-toolbar-btn{white-space:nowrap}
+@media (max-width:760px){
+ .vr-layout{grid-template-columns:minmax(0,1fr)}
+ .vr-filters,.vr-params{grid-template-columns:minmax(0,1fr)}
+ .vr-dialog{padding:12px}
+ .vr-voices li{align-items:flex-start}
+ .vr-audition audio{max-width:100%}
+}
+@media (max-width:760px){
+ .task-canvas .v3-top-actions .v3-btn.vr-toolbar-btn{display:inline-flex}
+}
+
+/* 字幕（V-25）：分镜字幕条目预览与成片字幕选项 */
+.vn-subs{display:flex;flex-direction:column;gap:5px;padding-top:4px;border-top:1px dashed var(--v3-line-soft)}
+.vn-subs-toggle,.vs-subs-burn{display:inline-flex;align-items:center;gap:6px;font-size:12px;cursor:pointer}
+.vn-subs-list{list-style:none;margin:0;padding:0;max-height:140px;overflow:auto;display:flex;flex-direction:column;gap:3px;font-size:12px}
+.vn-subs-list li{display:flex;gap:8px;align-items:baseline;min-width:0}
+.vn-subs-list li.off{opacity:.45;text-decoration:line-through}
+.vn-subs-list time{flex:none;color:var(--v3-dim);font-variant-numeric:tabular-nums;font-size:11px}
+.vn-subs-list span{min-width:0;overflow-wrap:anywhere}
+.vs-subs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.vs-subs small{flex-basis:100%;overflow-wrap:anywhere}
