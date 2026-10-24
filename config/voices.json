@@ -1,0 +1,9362 @@
+{
+ "source": "火山引擎豆包语音 音色列表（豆包语音合成模型2.0）",
+ "model": "seed-tts-2.0",
+ "count": 466,
+ "voices": [
+  {
+   "name": "Vivi 2.0",
+   "voiceType": "zh_female_vv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文",
+    "日文",
+    "印尼",
+    "墨西哥西班牙语"
+   ],
+   "dialects": [
+    "粤语",
+    "上海",
+    "河南",
+    "北京",
+    "天津",
+    "四川",
+    "陕西",
+    "东北"
+   ],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "小何 2.0",
+   "voiceType": "zh_female_xiaohe_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [
+    "粤语",
+    "上海",
+    "河南",
+    "北京",
+    "天津",
+    "四川",
+    "陕西",
+    "东北"
+   ],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "云舟 2.0",
+   "voiceType": "zh_male_m191_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [
+    "粤语",
+    "上海",
+    "河南",
+    "北京",
+    "天津",
+    "四川",
+    "陕西",
+    "东北"
+   ],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "小天 2.0",
+   "voiceType": "zh_male_taocheng_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [
+    "粤语",
+    "上海",
+    "河南",
+    "北京",
+    "天津",
+    "四川",
+    "陕西",
+    "东北"
+   ],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "刘飞 2.0",
+   "voiceType": "zh_male_liufei_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "魅力苏菲 2.0",
+   "voiceType": "zh_female_sophie_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "清新女声 2.0",
+   "voiceType": "zh_female_qingxinnvsheng_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "知性灿灿 2.0",
+   "voiceType": "zh_female_cancan_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "撒娇学妹 2.0",
+   "voiceType": "zh_female_sajiaoxuemei_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "甜美小源 2.0",
+   "voiceType": "zh_female_tianmeixiaoyuan_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "甜美桃子 2.0",
+   "voiceType": "zh_female_tianmeitaozi_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "爽快思思 2.0",
+   "voiceType": "zh_female_shuangkuaisisi_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "佩奇猪 2.0",
+   "voiceType": "zh_female_peiqi_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "邻家女孩 2.0",
+   "voiceType": "zh_female_linjianvhai_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "少年梓辛 2.0",
+   "voiceType": "zh_male_shaonianzixin_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "猴哥 2.0",
+   "voiceType": "zh_male_sunwukong_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "Tina老师 2.0",
+   "voiceType": "zh_female_yingyujiaoxue_uranus_bigtts",
+   "scene": "教育场景",
+   "scenes": [
+    "教育场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "暖阳女声 2.0",
+   "voiceType": "zh_female_kefunvsheng_uranus_bigtts",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "儿童绘本 2.0",
+   "voiceType": "zh_female_xiaoxue_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "大壹 2.0",
+   "voiceType": "zh_male_dayi_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "黑猫侦探社咪仔 2.0",
+   "voiceType": "zh_female_mizai_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "鸡汤女 2.0",
+   "voiceType": "zh_female_jitangnv_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "魅力女友 2.0",
+   "voiceType": "zh_female_meilinvyou_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "流畅女声 2.0",
+   "voiceType": "zh_female_liuchangnv_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "儒雅逸辰 2.0",
+   "voiceType": "zh_male_ruyayichen_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "Tim",
+   "voiceType": "en_male_tim_uranus_bigtts",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false
+  },
+  {
+   "name": "Dacey",
+   "voiceType": "en_female_dacey_uranus_bigtts",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false
+  },
+  {
+   "name": "Stokie",
+   "voiceType": "en_female_stokie_uranus_bigtts",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false
+  },
+  {
+   "name": "温柔妈妈 2.0",
+   "voiceType": "zh_female_wenroumama_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "解说小明 2.0",
+   "voiceType": "zh_male_jieshuoxiaoming_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "TVB女声 2.0",
+   "voiceType": "zh_female_tvbnv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "译制片男 2.0",
+   "voiceType": "zh_male_yizhipiannan_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "俏皮女声 2.0",
+   "voiceType": "zh_female_qiaopinv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "直率英子 2.0",
+   "voiceType": "zh_female_zhishuaiyingzi_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "邻家男孩 2.0",
+   "voiceType": "zh_male_linjiananhai_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "四郎 2.0",
+   "voiceType": "zh_male_silang_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "儒雅青年 2.0",
+   "voiceType": "zh_male_ruyaqingnian_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "番茄小说同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "擎苍 2.0",
+   "voiceType": "zh_male_qingcang_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "番茄小说同款",
+    "豆包同款",
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "熊二 2.0",
+   "voiceType": "zh_male_xionger_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "樱桃丸子 2.0",
+   "voiceType": "zh_female_yingtaowanzi_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "温暖阿虎 2.0",
+   "voiceType": "zh_male_wennuanahu_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "奶气萌娃 2.0",
+   "voiceType": "zh_male_naiqimengwa_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "剪映同款",
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "婆婆 2.0",
+   "voiceType": "zh_female_popo_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "高冷御姐 2.0",
+   "voiceType": "zh_female_gaolengyujie_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "傲娇霸总 2.0",
+   "voiceType": "zh_male_aojiaobazong_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "懒音绵宝 2.0",
+   "voiceType": "zh_male_lanyinmianbao_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "反卷青年 2.0",
+   "voiceType": "zh_male_fanjuanqingnian_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "温柔淑女 2.0",
+   "voiceType": "zh_female_wenroushunv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "番茄小说同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "古风少御 2.0",
+   "voiceType": "zh_female_gufengshaoyu_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "活力小哥 2.0",
+   "voiceType": "zh_male_huolixiaoge_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "霸气青叔 2.0",
+   "voiceType": "zh_male_baqiqingshu_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "番茄小说同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "悬疑解说 2.0",
+   "voiceType": "zh_male_xuanyijieshuo_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "萌丫头 2.0",
+   "voiceType": "zh_female_mengyatou_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "贴心女声 2.0",
+   "voiceType": "zh_female_tiexinnvsheng_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "鸡汤妹妹 2.0",
+   "voiceType": "zh_female_jitangmei_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "磁性解说男声 2.0",
+   "voiceType": "zh_male_cixingjieshuonan_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "亮嗓萌仔 2.0",
+   "voiceType": "zh_male_liangsangmengzai_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "开朗姐姐 2.0",
+   "voiceType": "zh_female_kailangjiejie_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "高冷沉稳 2.0",
+   "voiceType": "zh_male_gaolengchenwen_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "深夜播客 2.0",
+   "voiceType": "zh_male_shenyeboke_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "鲁班七号 2.0",
+   "voiceType": "zh_male_lubanqihao_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "娇喘女声 2.0",
+   "voiceType": "zh_female_jiaochuannv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "林潇 2.0",
+   "voiceType": "zh_female_linxiao_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "玲玲姐姐 2.0",
+   "voiceType": "zh_female_lingling_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "春日部姐姐 2.0",
+   "voiceType": "zh_female_chunribu_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "唐僧 2.0",
+   "voiceType": "zh_male_tangseng_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "庄周 2.0",
+   "voiceType": "zh_male_zhuangzhou_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "开朗弟弟 2.0",
+   "voiceType": "zh_male_kailangdidi_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "猪八戒 2.0",
+   "voiceType": "zh_male_zhubajie_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "豆包同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "感冒电音姐姐 2.0",
+   "voiceType": "zh_female_ganmaodianyin_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "谄媚女声 2.0",
+   "voiceType": "zh_female_chanmeinv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "女雷神 2.0",
+   "voiceType": "zh_female_nvleishen_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "剪映同款",
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "亲切女声 2.0",
+   "voiceType": "zh_female_qinqienv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "快乐小东 2.0",
+   "voiceType": "zh_male_kuailexiaodong_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "开朗学长 2.0",
+   "voiceType": "zh_male_kailangxuezhang_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "悠悠君子 2.0",
+   "voiceType": "zh_male_youyoujunzi_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "文静毛毛 2.0",
+   "voiceType": "zh_female_wenjingmaomao_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "知性女声 2.0",
+   "voiceType": "zh_female_zhixingnv_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "清爽男大 2.0",
+   "voiceType": "zh_male_qingshuangnanda_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "渊博小叔 2.0",
+   "voiceType": "zh_male_yuanboxiaoshu_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "阳光青年 2.0",
+   "voiceType": "zh_male_yangguangqingnian_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "清澈梓梓 2.0",
+   "voiceType": "zh_female_qingchezizi_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "甜美悦悦 2.0",
+   "voiceType": "zh_female_tianmeiyueyue_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "心灵鸡汤 2.0",
+   "voiceType": "zh_female_xinlingjitang_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "温柔小哥 2.0",
+   "voiceType": "zh_male_wenrouxiaoge_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "柔美女友 2.0",
+   "voiceType": "zh_female_roumeinvyou_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "东方浩然 2.0",
+   "voiceType": "zh_male_dongfanghaoran_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "温柔小雅 2.0",
+   "voiceType": "zh_female_wenrouxiaoya_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "天才童声 2.0",
+   "voiceType": "zh_male_tiancaitongsheng_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "武则天 2.0",
+   "voiceType": "zh_female_wuzetian_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "顾姐 2.0",
+   "voiceType": "zh_female_gujie_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "抖音同款",
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "广告解说 2.0",
+   "voiceType": "zh_male_guanggaojieshuo_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true,
+   "tags": [
+    "剪映同款"
+   ]
+  },
+  {
+   "name": "少儿故事 2.0",
+   "voiceType": "zh_female_shaoergushi_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "指令遵循"
+   ],
+   "emotion": false,
+   "autoLanguage": true
+  },
+  {
+   "name": "Charlie 2.0",
+   "voiceType": "ICL_uranus_en_female_charlie_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Ethan 2.0",
+   "voiceType": "ICL_uranus_en_male_ethan_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "澳洲英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Alastor 2.0",
+   "voiceType": "ICL_uranus_en_male_alastor_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "英式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Chucky 2.0",
+   "voiceType": "ICL_uranus_en_male_chucky_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Noah 2.0",
+   "voiceType": "ICL_uranus_en_male_noah_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Jigsaw 2.0",
+   "voiceType": "ICL_uranus_en_male_jigsaw_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Clown Man 2.0",
+   "voiceType": "ICL_uranus_en_male_clown_man_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Cartoon Chef 2.0",
+   "voiceType": "ICL_uranus_en_male_cartoon_chef_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Frosty Man 2.0",
+   "voiceType": "ICL_uranus_en_male_frosty_man_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "The Grinch 2.0",
+   "voiceType": "ICL_uranus_en_male_the_grinch_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "Kevin McCallister 2.0",
+   "voiceType": "ICL_uranus_en_male_kevin_mccallister_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "Michael 2.0",
+   "voiceType": "ICL_uranus_en_male_michael_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "Big Boogie 2.0",
+   "voiceType": "ICL_uranus_en_male_big_boogie_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "Xavier 2.0",
+   "voiceType": "ICL_uranus_en_male_xavier_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Zayne 2.0",
+   "voiceType": "ICL_uranus_en_male_zayne_tob",
+   "scene": "外语音色",
+   "scenes": [
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "客服婉君 2.0",
+   "voiceType": "ICL_uranus_zh_female_kefuwanjun_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "营销小楠 2.0",
+   "voiceType": "ICL_uranus_zh_female_yingxiaokefu_v2_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "傲娇女友 2.0",
+   "voiceType": "ICL_uranus_zh_female_aojiaonvyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "傲慢娇声 2.0",
+   "voiceType": "ICL_uranus_zh_female_aomanjiaosheng_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "邪魅女王 2.0",
+   "voiceType": "ICL_uranus_zh_female_xiemeinvwang_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "病娇姐姐 2.0",
+   "voiceType": "ICL_uranus_zh_female_bingjiaojiejie_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "病娇萌妹 2.0",
+   "voiceType": "ICL_uranus_zh_female_bingjiaomengmei_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "病弱少女 2.0",
+   "voiceType": "ICL_uranus_zh_female_bingruoshaonv_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "成熟温柔 2.0",
+   "voiceType": "ICL_uranus_zh_female_chengshuwenrou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "成熟姐姐 2.0",
+   "voiceType": "ICL_uranus_zh_female_chengshujiejie_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "纯真少女 2.0",
+   "voiceType": "ICL_uranus_zh_female_chunzhenshaonv_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "纯澈女生 2.0",
+   "voiceType": "ICL_uranus_zh_female_chunchenvsheng_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "妩媚可人 2.0",
+   "voiceType": "ICL_uranus_zh_female_wumeikeren_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "乖巧可儿 2.0",
+   "voiceType": "ICL_uranus_zh_female_guaiqiaokeer_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "和蔼奶奶 2.0",
+   "voiceType": "ICL_uranus_zh_female_heainainai_tob",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "活泼刁蛮 2.0",
+   "voiceType": "ICL_uranus_zh_female_huopodiaoman_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "活泼女孩 2.0",
+   "voiceType": "ICL_uranus_zh_female_huoponvhai_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "娇憨女王 2.0",
+   "voiceType": "ICL_uranus_zh_female_jiaohannvwang_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "娇弱萝莉 2.0",
+   "voiceType": "ICL_uranus_zh_female_jiaoruoluoli_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "假小子 2.0",
+   "voiceType": "ICL_uranus_zh_female_jiaxiaozi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "精灵向导 2.0",
+   "voiceType": "ICL_uranus_zh_female_jinglingxiangdao_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "开朗婷婷 2.0",
+   "voiceType": "ICL_uranus_zh_female_kailangtingting_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "外呼凌凌 2.0",
+   "voiceType": "ICL_uranus_zh_female_kefunvshengwenhecuishou_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "开心小鸿 2.0",
+   "voiceType": "ICL_uranus_zh_female_kaixinxiaohong_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "可爱女生 2.0",
+   "voiceType": "ICL_uranus_zh_female_keainvsheng_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "灵动欣欣 2.0",
+   "voiceType": "ICL_uranus_zh_female_lingdongxinxin_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "邻居阿姨 2.0",
+   "voiceType": "ICL_uranus_zh_female_linjuayi_tob",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "甜美娇俏 2.0",
+   "voiceType": "ICL_uranus_zh_female_tianmeijiaoqiao_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "清冷高雅 2.0",
+   "voiceType": "ICL_uranus_zh_female_qinglenggaoya_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "理性圆子 2.0",
+   "voiceType": "ICL_uranus_zh_female_lixingyuanzi_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "性感魅惑 2.0",
+   "voiceType": "ICL_uranus_zh_female_xingganmeihuo_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "暖心茜茜 2.0",
+   "voiceType": "ICL_uranus_zh_female_nuanxinqianqian_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "暖心学姐 2.0",
+   "voiceType": "ICL_uranus_zh_female_nuanxinxuejie_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "清甜莓莓 2.0",
+   "voiceType": "ICL_uranus_zh_female_qingtianmeimei_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清甜桃桃 2.0",
+   "voiceType": "ICL_uranus_zh_female_qingtiantaotao_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清晰小雪 2.0",
+   "voiceType": "ICL_uranus_zh_female_qingxixiaoxue_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "倾心少女 2.0",
+   "voiceType": "ICL_uranus_zh_female_qingxinshaonv_tob",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "柔骨魂师 2.0",
+   "voiceType": "ICL_uranus_zh_female_rouguhunshi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "软萌糖糖 2.0",
+   "voiceType": "ICL_uranus_zh_female_ruanmengtangtang_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "软萌团子 2.0",
+   "voiceType": "ICL_uranus_zh_female_ruanmengtuanzi_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "甜美活泼 2.0",
+   "voiceType": "ICL_uranus_zh_female_tianmeihuopo_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "甜美小橘 2.0",
+   "voiceType": "ICL_uranus_zh_female_tianmeixiaoju_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "甜美小雨 2.0",
+   "voiceType": "ICL_uranus_zh_female_tianmeixiaoyu_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "调皮公主 2.0",
+   "voiceType": "ICL_uranus_zh_female_tiaopigongzhu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "贴心女友 2.0",
+   "voiceType": "ICL_uranus_zh_female_tiexinnvyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "温柔女神 2.0",
+   "voiceType": "ICL_uranus_zh_female_wenrounvshen_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "温柔文雅 2.0",
+   "voiceType": "ICL_uranus_zh_female_wenrouwenya_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "知心姐姐 2.0",
+   "voiceType": "ICL_uranus_zh_female_zhixinjiejie_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "妩媚御姐 2.0",
+   "voiceType": "ICL_uranus_zh_female_wumeiyujie_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "元气甜妹 2.0",
+   "voiceType": "ICL_uranus_zh_female_yuanqitianmei_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "邪魅御姐 2.0",
+   "voiceType": "ICL_uranus_zh_female_xiemeiyujie_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "性感御姐 2.0",
+   "voiceType": "ICL_uranus_zh_female_xingganyujie_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "秀丽倩倩 2.0",
+   "voiceType": "ICL_uranus_zh_female_xiuliqianqian_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "贴心闺蜜 2.0",
+   "voiceType": "ICL_uranus_zh_female_tiexinguimi_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "贴心妹妹 2.0",
+   "voiceType": "ICL_uranus_zh_female_tiexinmeimei_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "温柔白月光 2.0",
+   "voiceType": "ICL_uranus_zh_female_wenroubaiyueguang_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "初恋女友 2.0",
+   "voiceType": "ICL_uranus_zh_female_chuliannvyou_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "知性温婉 2.0",
+   "voiceType": "ICL_uranus_zh_female_zhixingwenwan_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "傲气凌人 2.0",
+   "voiceType": "ICL_uranus_zh_male_aoqilingren_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "黯刃秦主 2.0",
+   "voiceType": "ICL_uranus_zh_male_anrenqinzhu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "傲娇公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_aojiaogongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "傲娇精英 2.0",
+   "voiceType": "ICL_uranus_zh_male_aojiaojingying_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "傲慢青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_aomanqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "傲慢少爷 2.0",
+   "voiceType": "ICL_uranus_zh_male_aomanshaoye_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "枕边低语 2.0",
+   "voiceType": "ICL_uranus_zh_male_zhenbiandiyu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "抖音同款"
+   ]
+  },
+  {
+   "name": "霸道少爷 2.0",
+   "voiceType": "ICL_uranus_zh_male_badaoshaoye_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "霸道总裁 2.0",
+   "voiceType": "ICL_uranus_zh_male_badaozongcai_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "病娇白莲 2.0",
+   "voiceType": "ICL_uranus_zh_male_bingjiaobailian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "病娇弟弟 2.0",
+   "voiceType": "ICL_uranus_zh_male_bingjiaodidi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "病娇哥哥 2.0",
+   "voiceType": "ICL_uranus_zh_male_bingjiaogege_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "病娇男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_bingjiaonanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "病娇少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_bingjiaoshaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "病弱公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_bingruogongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "病弱少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_bingruoshaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "不羁青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_bujiqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "醇厚低音 2.0",
+   "voiceType": "ICL_uranus_zh_male_chunhoudiyin_tob",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "咆哮小哥 2.0",
+   "voiceType": "ICL_uranus_zh_male_paoxiaoxiaoge_tob",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "炀炀 2.0",
+   "voiceType": "ICL_uranus_zh_male_yangyang_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "孱弱少爷 2.0",
+   "voiceType": "ICL_uranus_zh_male_chanruoshaoye_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "成熟总裁 2.0",
+   "voiceType": "ICL_uranus_zh_male_chengshuzongcai_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "沉稳明仔 2.0",
+   "voiceType": "ICL_uranus_zh_male_chenwenmingzai_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清逸苏感 2.0",
+   "voiceType": "ICL_uranus_zh_male_qingyisugan_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "纯真学弟 2.0",
+   "voiceType": "ICL_uranus_zh_male_chunzhenxuedi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "磁性男嗓 2.0",
+   "voiceType": "ICL_uranus_zh_male_cixingnansang_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "醋精男生 2.0",
+   "voiceType": "ICL_uranus_zh_male_cujingnansheng_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "醋精男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_cujingnanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "低音沉郁 2.0",
+   "voiceType": "ICL_uranus_zh_male_diyinchenyu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "风发少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_fengfashaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "儒雅公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_ruyagongzi_tob",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "腹黑公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_fuheigongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "S2S-SC"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "干净少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_ganjingshaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "高冷总裁 2.0",
+   "voiceType": "ICL_uranus_zh_male_gaolengzongcai_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "孤傲公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_guaogongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "孤高公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_gugaogongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "诡异神秘 2.0",
+   "voiceType": "ICL_uranus_zh_male_guiyishenmi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "固执病娇 2.0",
+   "voiceType": "ICL_uranus_zh_male_guzhibingjiao_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "憨厚敦实 2.0",
+   "voiceType": "ICL_uranus_zh_male_hanhoudunshi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "活力青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_huoliqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "活泼男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_huoponanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "活泼爽朗 2.0",
+   "voiceType": "ICL_uranus_zh_male_huoposhuanglang_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "胡子叔叔 2.0",
+   "voiceType": "ICL_uranus_zh_male_huzishushu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "机甲智能 2.0",
+   "voiceType": "ICL_uranus_zh_male_jijiazhineng_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "精英青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_jingyingqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "俊逸公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_junyigongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "开朗轻快 2.0",
+   "voiceType": "ICL_uranus_zh_male_kailangqingkuai_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "开朗青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_kailangqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "蓝银草魂师 2.0",
+   "voiceType": "ICL_uranus_zh_male_lanyincaohunshi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "冷傲总裁 2.0",
+   "voiceType": "ICL_uranus_zh_male_lengaozongcai_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "冷淡疏离 2.0",
+   "voiceType": "ICL_uranus_zh_male_lengdanshuli_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "冷峻高智 2.0",
+   "voiceType": "ICL_uranus_zh_male_lengjungaozhi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "冷峻上司 2.0",
+   "voiceType": "ICL_uranus_zh_male_lengjunshangsi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "冷酷哥哥 2.0",
+   "voiceType": "ICL_uranus_zh_male_lengkugege_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "冷脸兄长 2.0",
+   "voiceType": "ICL_uranus_zh_male_lenglianxiongzhang_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "冷脸学霸 2.0",
+   "voiceType": "ICL_uranus_zh_male_lenglianxueba_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "冷漠男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_lengmonanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "冷漠兄长 2.0",
+   "voiceType": "ICL_uranus_zh_male_lengmoxiongzhang_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "凌云青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_lingyunqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清冷矜贵 2.0",
+   "voiceType": "ICL_uranus_zh_male_qinglengjingui_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "绿茶小哥 2.0",
+   "voiceType": "ICL_uranus_zh_male_lvchaxiaoge_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "懵懂青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_mengdongqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "闷油瓶小哥 2.0",
+   "voiceType": "ICL_uranus_zh_male_menyoupingxiaoge_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "嚣张小哥 2.0",
+   "voiceType": "ICL_uranus_zh_male_xiaozhangxiaoge_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "粘人男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_nianrennanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "内敛才俊 2.0",
+   "voiceType": "ICL_uranus_zh_male_neiliancaijun_tob",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "暖心体贴 2.0",
+   "voiceType": "ICL_uranus_zh_male_nuanxintitie_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "翩翩公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_pianpiangongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "沉稳优雅 2.0",
+   "voiceType": "ICL_uranus_zh_male_chenwenyouya_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "青涩小生 2.0",
+   "voiceType": "ICL_uranus_zh_male_qingsexiaosheng_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "青涩青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_qingseqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清爽少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_qingshuangshaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清新波波 2.0",
+   "voiceType": "ICL_uranus_zh_male_qingxinbobo_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "亲切青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_qinqieqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "亲切小卓 2.0",
+   "voiceType": "ICL_uranus_zh_male_qinqiexiaozhuo_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清朗温润 2.0",
+   "voiceType": "ICL_uranus_zh_male_qinglangwenrun_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "热血少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_rexueshaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "儒雅才俊 2.0",
+   "voiceType": "ICL_uranus_zh_male_ruyacaijun_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "儒雅君子 2.0",
+   "voiceType": "ICL_uranus_zh_male_ruyajunzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "儒雅总裁 2.0",
+   "voiceType": "ICL_uranus_zh_male_ruyazongcai_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "撒娇男生 2.0",
+   "voiceType": "ICL_uranus_zh_male_sajiaonansheng_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "撒娇男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_sajiaonanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "撒娇粘人 2.0",
+   "voiceType": "ICL_uranus_zh_male_sajiaonianren_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "洒脱青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_satuoqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "少年将军 2.0",
+   "voiceType": "ICL_uranus_zh_male_shaonianjiangjun_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "深沉总裁 2.0",
+   "voiceType": "ICL_uranus_zh_male_shenchenzongcai_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "机灵小伙 2.0",
+   "voiceType": "ICL_uranus_zh_male_jilingxiaohuo_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "神秘法师 2.0",
+   "voiceType": "ICL_uranus_zh_male_shenmifashi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "率真小伙 2.0",
+   "voiceType": "ICL_uranus_zh_male_shuaizhenxiaohuo_tob",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "爽朗小阳 2.0",
+   "voiceType": "ICL_uranus_zh_male_shuanglangxiaoyang_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "低沉缱绻 2.0",
+   "voiceType": "ICL_uranus_zh_male_dichenqianquan_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "斯文青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_siwenqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "甜系男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_tianxinanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "贴心男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_tiexinnanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "温柔男同桌 2.0",
+   "voiceType": "ICL_uranus_zh_male_wenrounantongzhuo_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "温柔男友 2.0",
+   "voiceType": "ICL_uranus_zh_male_wenrounanyou_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "温柔学长 2.0",
+   "voiceType": "ICL_uranus_zh_male_wenrouxuezhang_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "温润学者 2.0",
+   "voiceType": "ICL_uranus_zh_male_wenrunxuezhe_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "温顺少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_wenshunshaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "寡言小哥 2.0",
+   "voiceType": "ICL_uranus_zh_male_guayanxiaoge_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "小侯爷 2.0",
+   "voiceType": "ICL_uranus_zh_male_xiaohouye_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "奶气小生 2.0",
+   "voiceType": "ICL_uranus_zh_male_naiqixiaosheng_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款"
+   ]
+  },
+  {
+   "name": "潇洒随性 2.0",
+   "voiceType": "ICL_uranus_zh_male_xiaosasuixing_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "温柔内敛 2.0",
+   "voiceType": "ICL_uranus_zh_male_wenrouneilian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "学霸男同桌 2.0",
+   "voiceType": "ICL_uranus_zh_male_xuebanantongzhuo_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "学霸同桌 2.0",
+   "voiceType": "ICL_uranus_zh_male_xuebatongzhuo_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "阳光洋洋 2.0",
+   "voiceType": "ICL_uranus_zh_male_yangguangyangyang_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "温暖少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_wennuanshaonian_tob",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "意气少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_yiqishaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "油腻大叔 2.0",
+   "voiceType": "ICL_uranus_zh_male_younidashu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "幽默大爷 2.0",
+   "voiceType": "ICL_uranus_zh_male_youmodaye_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "幽默叔叔 2.0",
+   "voiceType": "ICL_uranus_zh_male_youmoshushu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "优柔帮主 2.0",
+   "voiceType": "ICL_uranus_zh_male_youroubangzhu_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "优柔公子 2.0",
+   "voiceType": "ICL_uranus_zh_male_yourougongzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "豆包同款",
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "元气少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_yuanqishaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "仗剑君子 2.0",
+   "voiceType": "ICL_uranus_zh_male_zhangjianjunzi_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "仗剑侠客 2.0",
+   "voiceType": "ICL_uranus_zh_male_zhangjianxiake_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "正直青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_zhengzhiqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false,
+   "tags": [
+    "猫箱同款"
+   ]
+  },
+  {
+   "name": "直率青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_zhishuaiqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "中二青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_zhongerqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "自负青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_zifuqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "自信青年 2.0",
+   "voiceType": "ICL_uranus_zh_male_zixinqingnian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "天才同桌 2.0",
+   "voiceType": "ICL_uranus_zh_male_tiancaitongzhuo_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "清新沐沐 2.0",
+   "voiceType": "ICL_uranus_zh_male_qingxinmumu_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "温婉珊珊 2.0",
+   "voiceType": "ICL_uranus_zh_female_wenwanshanshan_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "热情艾娜 2.0",
+   "voiceType": "ICL_uranus_zh_female_reqingaina_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "爽朗少年 2.0",
+   "voiceType": "ICL_uranus_zh_male_shuanglangshaonian_tob",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演"
+   ],
+   "gender": "male",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "轻盈朵朵 2.0",
+   "voiceType": "ICL_uranus_zh_female_qingyingduoduo_tob",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景"
+   ],
+   "gender": "female",
+   "group": "chinese",
+   "languages": [
+    "中文"
+   ],
+   "dialects": [],
+   "capabilities": [],
+   "emotion": false
+  },
+  {
+   "name": "Cesna",
+   "voiceType": "id_female_cesna_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ikbal",
+   "voiceType": "id_male_ikbal_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hannah",
+   "voiceType": "vi_female_f01507b_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Mariano",
+   "voiceType": "es_male_mariano_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Romina",
+   "voiceType": "es_female_romina_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hazeem",
+   "voiceType": "ms_male_hazeem_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "马来语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "马来语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Qis",
+   "voiceType": "ms_female_qis_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "马来语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "马来语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Angpao",
+   "voiceType": "th_male_angpao_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Elle",
+   "voiceType": "th_female_elle_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Cake",
+   "voiceType": "th_female_cake_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Paran",
+   "voiceType": "th_male_paran_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Prisma",
+   "voiceType": "id_female_prisma_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Ryan",
+   "voiceType": "en_male_ryan_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "美式英语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Yusuke",
+   "voiceType": "ja_male_yusuke_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Jonathan-Palad",
+   "voiceType": "tl_male_jonathan-palad_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "菲律宾语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "菲律宾语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Migu",
+   "voiceType": "mx_male_migu_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Luca",
+   "voiceType": "it_male_luca_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "意大利语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "意大利语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Enzo2",
+   "voiceType": "it_male_enzo2_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "意大利语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "意大利语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Eduardo-S",
+   "voiceType": "pt_male_eduardo-s_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Angel",
+   "voiceType": "es_male_angel_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Francisc",
+   "voiceType": "es_male_francisc_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Dina",
+   "voiceType": "ar_female_dina_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "阿拉伯语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "阿拉伯语（埃及口音）"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Fatma",
+   "voiceType": "ar_female_fatma_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "外语音色",
+    "阿拉伯语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "阿拉伯语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Youssef",
+   "voiceType": "ar_male_youssef_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "外语音色",
+    "阿拉伯语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "阿拉伯语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Stella",
+   "voiceType": "de_female_bv081_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "客服场景",
+    "外语音色",
+    "德语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "德语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Sven",
+   "voiceType": "de_male_sven_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "德语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "德语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Rowan",
+   "voiceType": "en_male_adam-imitation_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Alberto",
+   "voiceType": "en_male_alberto_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Alex",
+   "voiceType": "en_male_alex_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Allison",
+   "voiceType": "en_female_allison_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Charlotte",
+   "voiceType": "en_female_authoritative-british_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "英式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "英式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Margaret",
+   "voiceType": "en_female_authoritative-informative_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jones",
+   "voiceType": "en_male_bill-jones_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Bill",
+   "voiceType": "en_male_bill_jones_corey_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Brad_Pitt",
+   "voiceType": "en_male_brad_pitt_p1_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Brittney",
+   "voiceType": "en_female_brittney_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Zoe",
+   "voiceType": "en_female_brittney_pimintel_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Adrian",
+   "voiceType": "en_male_bruce_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Leo",
+   "voiceType": "en_male_chandler_p1_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Bob",
+   "voiceType": "en_male_cowboy-bob_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "John",
+   "voiceType": "en_male_cowboy_john_b_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "David",
+   "voiceType": "en_male_david_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Orion",
+   "voiceType": "en_male_deep-voice_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Julian",
+   "voiceType": "en_male_diyuwenrounan_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Harrison",
+   "voiceType": "en_male_evil-guy-oxley_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jasper",
+   "voiceType": "en_male_excited-male-voice_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Alfred",
+   "voiceType": "en_male_father-christmas_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "视频配音",
+    "英式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "英式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Holly",
+   "voiceType": "en_female_female_tutor_ms-jenny_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Felix",
+   "voiceType": "en_male_fernando-martinez_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Godfather",
+   "voiceType": "en_male_godfather_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Gollum",
+   "voiceType": "en_male_gollum_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Beau",
+   "voiceType": "en_male_hades_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hayley",
+   "voiceType": "en_female_hayley_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jamie",
+   "voiceType": "en_male_jamie_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jane",
+   "voiceType": "en_female_jane_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jenny",
+   "voiceType": "en_female_jenny_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Blaze",
+   "voiceType": "en_male_jidongchuanjiaoshi_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jimmy",
+   "voiceType": "en_male_jimmy_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Joanne",
+   "voiceType": "en_female_joanne_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Joker",
+   "voiceType": "en_male_joker_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Josh",
+   "voiceType": "en_male_josh_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Josiah",
+   "voiceType": "en_male_josh_coery_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Kevin",
+   "voiceType": "en_male_kevin_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Knightley",
+   "voiceType": "en_male_knightley_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "英式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "英式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Lynn",
+   "voiceType": "en_female_lana_del_rey_kelley_d_p1_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ivy",
+   "voiceType": "en_female_lana_del_rey_parky_s_p1_uranus_bigtts",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Marcus",
+   "voiceType": "en_male_marcus_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Mel",
+   "voiceType": "en_female_mel_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hank",
+   "voiceType": "en_male_michael_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Chip",
+   "voiceType": "en_male_michael-mouse_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Michael_Kevin",
+   "voiceType": "en_male_michael_kevin_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Rory",
+   "voiceType": "en_male_motivational-coach_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Myra",
+   "voiceType": "en_female_myra_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Sunny",
+   "voiceType": "en_female_myra_cmb_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Blair",
+   "voiceType": "en_female_nadia_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Natasha",
+   "voiceType": "en_female_natasha_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Elaine",
+   "voiceType": "en_female_pleasant-female_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Rachel",
+   "voiceType": "en_female_rachel_p1_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ronald",
+   "voiceType": "en_male_ronald_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Russell",
+   "voiceType": "en_male_russell_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "英式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "英式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Scarlet",
+   "voiceType": "en_female_scarlet_p1_uranus_bigtts",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Sharron",
+   "voiceType": "en_female_sharron_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Simba",
+   "voiceType": "en_male_simba_p1_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Skye",
+   "voiceType": "en_female_skye_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Tom",
+   "voiceType": "en_male_tom_hiddleston_p1_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Valentino",
+   "voiceType": "en_male_valentino_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Clark",
+   "voiceType": "en_male_valentino_corey_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Megan",
+   "voiceType": "en_female_wenrouzhishijieshuonv_uranus_bigtts",
+   "scene": "客服场景",
+   "scenes": [
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Kayla",
+   "voiceType": "en_female_xinwenjieshuonv_uranus_bigtts",
+   "scene": "角色扮演",
+   "scenes": [
+    "角色扮演",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Dylan",
+   "voiceType": "en_male_yangguangjieshuonan_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Zendaya",
+   "voiceType": "en_female_zendaya_p1_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "客服场景",
+    "美式英语",
+    "外语音色"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "美式英语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Gracie",
+   "voiceType": "es_female_bv084_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Dani",
+   "voiceType": "es_male_dani_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Guillem",
+   "voiceType": "es_male_guillem_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Marisol",
+   "voiceType": "es_female_ht_mx_f6_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "西班牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "西班牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Simone",
+   "voiceType": "fr_female_fr_bv078_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "法语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "法语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Camille",
+   "voiceType": "fr_female_fr_f47_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "客服场景",
+    "外语音色",
+    "法语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "法语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Maurice",
+   "voiceType": "fr_male_fr_m29_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "法语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "法语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Usseau",
+   "voiceType": "fr_male_usseau_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "法语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "法语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Rocco",
+   "voiceType": "id_male_bv160_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jude",
+   "voiceType": "id_male_bv160dialogue_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hugo",
+   "voiceType": "id_male_bv160narration_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Clara",
+   "voiceType": "id_female_bv161_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Sylvia",
+   "voiceType": "id_female_bv161dialogue_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Celeste",
+   "voiceType": "id_female_bv161narration_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Crew",
+   "voiceType": "id_female_bv164_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Elian",
+   "voiceType": "id_male_bv164dialogue_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ronan",
+   "voiceType": "id_male_bv164narration_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Chloe",
+   "voiceType": "id_female_f20_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Han",
+   "voiceType": "id_male_han_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Kyle",
+   "voiceType": "id_male_m08_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Phulia",
+   "voiceType": "id_female_phulia_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "印尼语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "印尼语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Bonnie",
+   "voiceType": "ja_female_bv024_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Poppy",
+   "voiceType": "ja_female_bv520_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "角色扮演",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Aoi",
+   "voiceType": "ja_female_bv521_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "角色扮演",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hana",
+   "voiceType": "ja_female_bv522_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "客服场景",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Lily",
+   "voiceType": "ja_female_bv523_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "角色扮演",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ken",
+   "voiceType": "ja_male_bv524_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Minimi",
+   "voiceType": "ja_female_minimi_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Shirou",
+   "voiceType": "ja_female_shirou_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "角色扮演",
+    "外语音色",
+    "日语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "日语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Jay",
+   "voiceType": "ko_male_bv545_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "韩语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "韩语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Momo",
+   "voiceType": "ko_female_bv546_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "角色扮演",
+    "外语音色",
+    "韩语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "韩语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Minho",
+   "voiceType": "ko_male_m03_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "韩语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "韩语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Shane",
+   "voiceType": "ko_male_shane_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "教学场景",
+    "视频配音",
+    "外语音色",
+    "韩语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "韩语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Ham",
+   "voiceType": "ms_male_ham_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "马来语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "马来语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Naim",
+   "voiceType": "ms_male_naim_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "马来语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "马来语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Irene",
+   "voiceType": "mx_female_bv065_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Diego",
+   "voiceType": "mx_male_bv165dialogue_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Marcos",
+   "voiceType": "mx_male_bv165narrator_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Lucy",
+   "voiceType": "mx_female_bv166dialogue_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Rosa",
+   "voiceType": "mx_female_bv166emotion_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Freya",
+   "voiceType": "mx_female_bv166narrator_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "客服场景",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Felipe",
+   "voiceType": "mx_male_felipe_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Derek",
+   "voiceType": "mx_male_ht_mx_m012_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Leslie",
+   "voiceType": "mx_female_leslie_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Marcelo",
+   "voiceType": "mx_male_marcelo_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "墨西哥西语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "墨西哥西语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Sam",
+   "voiceType": "pt_male_bv172_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Walter",
+   "voiceType": "pt_male_bv172dialogue_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Vincent",
+   "voiceType": "pt_male_bv172emotion_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Miles",
+   "voiceType": "pt_male_bv172narrator_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "角色扮演",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Diana",
+   "voiceType": "pt_female_bv173_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Elena",
+   "voiceType": "pt_female_bv173dialogue_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "客服场景",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Lola",
+   "voiceType": "pt_female_bv173emotion_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Emma",
+   "voiceType": "pt_female_bv173narrator_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "客服场景",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Sofia",
+   "voiceType": "pt_female_bv530_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Arthur",
+   "voiceType": "pt_male_bv531_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Mari",
+   "voiceType": "pt_female_mari_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Toby",
+   "voiceType": "pt_male_martins_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  },
+  {
+   "name": "Rael",
+   "voiceType": "pt_male_rael_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "外语音色",
+    "巴西葡萄牙语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "巴西葡萄牙语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Amelia",
+   "voiceType": "ru_female_af07_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "俄语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "俄语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Irinae",
+   "voiceType": "ru_female_irinae_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "俄语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "俄语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Pavel",
+   "voiceType": "ru_male_pavel_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "俄语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "俄语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ksenia",
+   "voiceType": "ru_female_sophie_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "外语音色",
+    "俄语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "俄语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Silas",
+   "voiceType": "ru_male_vlad_uranus_bigtts",
+   "scene": "趣味口音",
+   "scenes": [
+    "趣味口音",
+    "外语音色",
+    "俄语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "俄语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Valeria",
+   "voiceType": "th_female_bv568_angry_uranus_bigtts",
+   "scene": "教学场景",
+   "scenes": [
+    "教学场景",
+    "视频配音",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Iris",
+   "voiceType": "th_female_bv568_fear_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Zara",
+   "voiceType": "th_female_bv568_happy_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Valentina",
+   "voiceType": "th_female_bv568_hate_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Mildred",
+   "voiceType": "th_female_bv568_neutral_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Lydia",
+   "voiceType": "th_female_bv568_sad_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "客服场景",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Phoebe",
+   "voiceType": "th_female_bv568_suprise_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "外语音色",
+    "泰语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "泰语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Annika",
+   "voiceType": "tl_female_annika_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "菲律宾语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "菲律宾语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ed",
+   "voiceType": "tl_male_ed_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "菲律宾语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "菲律宾语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hervie",
+   "voiceType": "tl_female_hervie_uranus_bigtts",
+   "scene": "有声阅读",
+   "scenes": [
+    "有声阅读",
+    "视频配音",
+    "客服场景",
+    "外语音色",
+    "菲律宾语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "菲律宾语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Hong",
+   "voiceType": "vi_female_hong_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ling",
+   "voiceType": "vi_female_ling_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Linh",
+   "voiceType": "vi_female_linh_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Partner",
+   "voiceType": "vi_female_partner_uranus_bigtts",
+   "scene": "视频配音",
+   "scenes": [
+    "视频配音",
+    "客服场景",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Ruan",
+   "voiceType": "vi_female_ruan_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "有声阅读",
+    "角色扮演",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Wu",
+   "voiceType": "vi_female_wu_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "视频配音",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "female",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Wumg",
+   "voiceType": "vi_male_wumg_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "客服场景",
+    "外语音色",
+    "越南语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "越南语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "指令遵循"
+   ],
+   "emotion": true,
+   "mode": "QA"
+  },
+  {
+   "name": "Enzo",
+   "voiceType": "it_male_enzo_uranus_bigtts",
+   "scene": "通用场景",
+   "scenes": [
+    "通用场景",
+    "教学场景",
+    "外语音色",
+    "意大利语"
+   ],
+   "gender": "male",
+   "group": "foreign",
+   "languages": [
+    "意大利语"
+   ],
+   "dialects": [],
+   "capabilities": [
+    "情感变化",
+    "上下文遵循"
+   ],
+   "emotion": true,
+   "mode": "Context"
+  }
+ ]
+}
