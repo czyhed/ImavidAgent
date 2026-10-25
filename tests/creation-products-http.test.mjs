@@ -1,0 +1,35 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import http from 'node:http';
+import { once } from 'node:events';
+import { startCreationFixture } from './creation-products-support.mjs';
+let fixture,server,base;
+test.before(async()=>{fixture=await startCreationFixture();server=http.createServer((req,res)=>fixture.handler(req,res));server.listen(0,'127.0.0.1');await once(server,'listening');base=`http://127.0.0.1:${server.address().port}`;});
+test.after(async()=>{server?.closeAllConnections();if(server)await new Promise(resolve=>server.close(resolve));await fixture?.stop();});
+const request=async(path,body,method=body===undefined?'GET':'POST',role='admin')=>{const response=await fetch(base+path,{method,headers:{'Content-Type':'application/json','X-CSRF-Token':fixture.csrf,Cookie:`role=${role}`},body:body===undefined?undefined:JSON.stringify(body)});return {status:response.status,result:await response.json()};};
+test('HTTP routes enforce write/admin roles, revision and persisted workspace resources',async()=>{
+ const p=(await request('/api/creation/products',{name:'HTTP茶杯'})).result.product;
+ assert.equal((await request('/api/creation/products',{name:'越权'},'POST','viewer')).status,403);
+ assert.equal((await request(`/api/creation/products/${p.id}`,{name:'无修订'},'PATCH')).status,428);
+ assert.equal((await request(`/api/creation/products/${p.id}`,{name:'新名称',revision:p.revision},'PATCH')).result.product.name,'新名称');
+ assert.equal((await request(`/api/creation/products/${p.id}`,{name:'旧写入',revision:p.revision},'PATCH')).status,409);
+ const loaded=(await request(`/api/creation/products/${p.id}`)).result.product;
+ const trashed=(await request(`/api/creation/trash/${p.id}`,{revision:loaded.revision})).result.item;
+ assert.equal((await request(`/api/creation/trash/${p.id}/preview`,undefined,'GET','operator')).status,403);
+ assert.equal((await request(`/api/creation/products/${p.id}`,undefined,'GET','viewer')).result.product.trashedAt!==null,true);
+ const preview=(await request(`/api/creation/trash/${p.id}/preview`)).result;
+ assert.equal((await request(`/api/creation/trash/${p.id}?revision=${trashed.revision}&token=${preview.token}`,undefined,'DELETE','operator')).status,403);
+ assert.equal((await request(`/api/creation/trash/${p.id}?revision=${trashed.revision}&token=${preview.token}`,undefined,'DELETE')).result.deleted,true);
+});
+test('video range and signed file HTTP do not expose object keys',async()=>{
+ const video=Buffer.concat([Buffer.from([0,0,0,24]),Buffer.from('ftypisom'),Buffer.alloc(200)]);
+ const asset=await fixture.media.put('test-shop',{bytes:video,mime:'video/mp4',name:'短片.mp4',role:'result'});
+ const json=(await request('/api/creation/assets')).result;
+ assert.equal(JSON.stringify(json).includes('objectKey'),false);
+ let response=await fetch(`${base}/api/creation/assets/${asset.id}/file`,{headers:{Range:'bytes=4-11'}});
+ assert.equal(response.status,206);assert.equal(response.headers.get('content-range'),`bytes 4-11/${video.length}`);assert.equal(await response.text(),'ftypisom');
+ response=await fetch(`${base}/api/creation/assets/${asset.id}/file`,{headers:{Range:'bytes=999-1000'}});assert.equal(response.status,416);
+ const signed=new URL(fixture.media.publicUrl('test-shop',asset.id));
+ response=await fetch(base+signed.pathname+signed.search);assert.equal(response.status,200);assert.equal((await response.arrayBuffer()).byteLength,video.length);
+ signed.searchParams.set('workspace','other-shop');response=await fetch(base+signed.pathname+signed.search);assert.equal(response.status,403);
+});
