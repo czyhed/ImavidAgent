@@ -1,0 +1,56 @@
+name: shangjing-app
+
+# 只运行商境应用本身。PostgreSQL / Redis / MinIO 仍在 shangjing-middleware
+# 项目里，由既有部署维护；本文件不定义、不重启、不清理那些容器或数据卷。
+#
+# 调用方式（deploy.sh 会自动设置这些变量）：
+#   APP_ENV_FILE=/opt/shangjing-app/.env.app \
+#   APP_SOURCE_DIR=<仓库根目录> \
+#   MIDDLEWARE_CA_HOST_PATH=/opt/shangjing-app/tls/authority/ca.crt \
+#   docker compose -f infra/app/compose.yaml --env-file /opt/shangjing-app/.env.app config
+services:
+  app:
+    build:
+      context: ${APP_SOURCE_DIR:-../..}
+      dockerfile: infra/app/Dockerfile
+    image: shangjing/app:${APP_IMAGE_TAG:-latest}
+    container_name: shangjing-app
+    restart: unless-stopped
+    env_file:
+      - path: ${APP_ENV_FILE:-.env.app}
+        required: true
+    environment:
+      # 容器内固定端口并绑定所有容器网卡；对外只映射到宿主回环，由 nginx 8443 vhost 转发。
+      PORT: "4173"
+      SJ_LISTEN_HOST: "0.0.0.0"
+      MIDDLEWARE_CA_CERT: /run/shangjing/ca.crt
+    ports:
+      - "127.0.0.1:4173:4173"
+    volumes:
+      # 项目私有 CA 公共证书，只读挂载；宿主路径由 MIDDLEWARE_CA_HOST_PATH 指定。
+      - type: bind
+        source: ${MIDDLEWARE_CA_HOST_PATH:-/opt/shangjing-app/tls/authority/ca.crt}
+        target: /run/shangjing/ca.crt
+        read_only: true
+        bind:
+          create_host_path: false
+      # 只保存自动生成的渠道加密主密钥；密钥丢失将无法解密动态渠道。
+      - app-secrets:/app/.secrets
+    mem_limit: 1g
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:4173/').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  app-secrets:
+    name: shangjing-app-secrets

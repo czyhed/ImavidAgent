@@ -1,0 +1,11 @@
+# 临时网络模式覆盖文件：server/index.mjs 目前硬编码监听 127.0.0.1，
+# Docker bridge 的端口映射无法到达容器回环地址。主分支补上 SJ_LISTEN_HOST
+# 之前，deploy.sh 会自动追加本文件，让进程直接在宿主回环上监听 4173，
+# nginx 仍只转发 127.0.0.1:4173，公网不能直接访问该端口。
+#
+# 手动使用：
+#   docker compose -f infra/app/compose.yaml -f infra/app/compose.host-network.yaml up -d
+services:
+  app:
+    network_mode: host
+    ports: !reset []

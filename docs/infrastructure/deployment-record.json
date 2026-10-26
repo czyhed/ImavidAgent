@@ -1,0 +1,114 @@
+{
+  "checked_at_utc": "2026-10-19T13:34:32.363681+00:00",
+  "containers": [
+    {
+      "service": "postgres",
+      "container": "shangjing-middleware-postgres-1",
+      "image": "postgres@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "image_id": "sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "state": "running",
+      "health": "healthy",
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "5432/tcp": [
+          {
+            "HostIp": "0.0.0.0",
+            "HostPort": "5432"
+          }
+        ]
+      }
+    },
+    {
+      "service": "redis",
+      "container": "shangjing-middleware-redis-1",
+      "image": "redis@sha256:4fa24486b8bcca8eec45ee0eb166edc674795e53a2b53d1a9ef263eecebaac85",
+      "image_id": "sha256:4fa24486b8bcca8eec45ee0eb166edc674795e53a2b53d1a9ef263eecebaac85",
+      "state": "running",
+      "health": "healthy",
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "6379/tcp": [
+          {
+            "HostIp": "0.0.0.0",
+            "HostPort": "6379"
+          }
+        ]
+      }
+    },
+    {
+      "service": "minio",
+      "container": "shangjing-middleware-minio-1",
+      "image": "shangjing/minio:RELEASE.2025-10-15T17-29-55Z",
+      "image_id": "sha256:e7df5b4b11d286068e3909086a638068baf5b07cb812725277f8374785f75166",
+      "state": "running",
+      "health": "healthy",
+      "restart_policy": "unless-stopped",
+      "ports": {
+        "9000/tcp": [
+          {
+            "HostIp": "0.0.0.0",
+            "HostPort": "9000"
+          }
+        ],
+        "9001/tcp": [
+          {
+            "HostIp": "0.0.0.0",
+            "HostPort": "9001"
+          }
+        ]
+      }
+    }
+  ],
+  "source_versions": {
+    "MINIO_TAG": "RELEASE.2025-10-15T17-29-55Z",
+    "MINIO_COMMIT": "9e49d5e7a648f00e26f2246f4dc28e6b07f8c84a",
+    "MC_TAG": "RELEASE.2025-08-13T08-35-41Z",
+    "MC_COMMIT": "7394ce0dd2a80935aded936b09fa12cbb3cb8096"
+  },
+  "source_sha256": [
+    "95cd293c7119f16921a6dc515a1fb74a2227f19fd994b9c8b770a154e802ac44  sources/mc.tar.gz",
+    "45521908307306e925c98d629e1c17d78c8b72b6ee242b1bfb1409f7d8ee5841  sources/minio.tar.gz"
+  ],
+  "build_base_images": [
+    "docker.io/library/debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+    "docker.io/library/golang:1.26-bookworm@sha256:d9c68c2c51161e12fd77e4c6320687c9cd86e1af1e3ad6e6cd63ff970641453c"
+  ],
+  "initial_backup": {
+    "path": "/opt/shangjing-middleware/backups/full-20261019T133336Z.tar.gz",
+    "bytes": 31452828,
+    "sha256": "c139e65cbecd8c0e1b9164040cef471bf32cc2a39c5e565d6af968ac85e6bb4c",
+    "archive_readability_checked": true,
+    "checksum_verified": true,
+    "offsite_copy": false,
+    "restore_drill": false
+  },
+  "primary_host": "203.0.113.10",
+  "same_server_alternate_ip": "203.0.113.11",
+  "deployment_path": "/opt/shangjing-middleware",
+  "compose_project": "shangjing-middleware",
+  "versions": {
+    "postgresql": "17.11",
+    "redis": "7.4.11",
+    "minio": "RELEASE.2025-10-15T17-29-55Z",
+    "minio_build_go": "1.26.9"
+  },
+  "ca_sha256_fingerprint": "254974efc524a5cb5e8bb9fffc8e426b76dc5b302925c4f375293cd58bebda35",
+  "ca_expires_at_utc": "2036-10-16T13:22:14+00:00",
+  "server_certificates_expire_at_utc": "2027-10-19T13:22:14+00:00",
+  "ssh_ed25519_fingerprint": "SHA256:lD7yVP1YKY5rQkRfv6gaR3RLjYoffZi/O8r8B0LeXqA",
+  "validated_on": "2026-10-19",
+  "checks": {
+    "postgres_public_tls_read_write": "passed on both IPs",
+    "postgres_wrong_password_and_plaintext_rejected": "passed on both IPs",
+    "redis_public_tls_read_write": "passed on both IPs",
+    "redis_acl_key_scope_and_admin_command_restrictions": "passed on both IPs",
+    "minio_upload_download_presigned_url": "passed on .254; object persistence read/write on .235",
+    "minio_anonymous_access_and_invalid_credentials_rejected": "passed",
+    "minio_private_versioned_buckets_and_application_scope": "passed",
+    "minio_console_https_and_admin_login": "passed",
+    "all_three_services_persist_after_container_restart": "passed via .235; isolated probes cleaned",
+    "all_three_services_healthy_after_initial_cold_backup": "passed",
+    "whole_host_reboot": "not performed",
+    "offsite_disaster_restore": "not performed"
+  }
+}

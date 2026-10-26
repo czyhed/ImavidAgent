@@ -1,0 +1,23 @@
+# 构建上下文排除项：镜像需要 server/、shared/、web/、prototype/、config/ 与依赖清单。
+.git
+.gitignore
+.gitattributes
+.secrets
+.env
+.env.*
+!.env.example
+node_modules
+**/node_modules
+web/dist
+.venv-middleware
+__pycache__
+*.pyc
+tests
+docs
+scripts
+.claude
+.vscode
+.idea
+*.md
+*.log
+output
