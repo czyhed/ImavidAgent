@@ -1,0 +1,36 @@
+import {chromium,expect} from '@playwright/test';
+import {mkdtemp,writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {startCreationApp} from './creation-app-fixture.mjs';
+const evidence=await mkdtemp(join(tmpdir(),'sj-creation-app-'));
+const events=[],observed=[];let app,browser;
+try{
+ app=await startCreationApp();browser=await chromium.launch({headless:true,channel:'msedge'});
+ const page=await browser.newPage({viewport:{width:1440,height:1000}});
+ page.on('pageerror',e=>events.push(e.message));page.on('console',m=>{if(m.type()==='error'&&!m.location()?.url?.includes('favicon'))events.push(m.text()+' '+JSON.stringify(m.location()));});
+ await page.goto(app.origin);await expect(page.locator('[data-nav]')).toHaveCount(5);
+ await page.locator('[data-nav=products]').click();await page.getByLabel('商品聊天').fill('陶瓷茶杯，容量300ml');
+ await page.getByRole('button',{name:'发送资料',exact:true}).click();await expect(page.getByRole('heading',{name:'茶杯',exact:true})).toBeVisible();
+ await expect(page).toHaveURL(/productId=/);await page.reload();await expect(page.getByRole('heading',{name:'茶杯',exact:true})).toBeVisible();observed.push('PASS first chat persists product and selected URL through reload');
+ await page.getByRole('button',{name:/创作素材/}).click();await page.locator('input[type=file]').setInputFiles({name:'original.png',mimeType:'image/png',buffer:app.png});
+ await expect(page.getByRole('img',{name:'original.png'})).toBeVisible();
+ await page.getByRole('button',{name:'创建项目',exact:true}).click();await expect(page.locator('.v3-node')).toHaveCount(4);
+ await expect(page).toHaveURL(/screen=project/);observed.push('PASS product creates project directly into infinite canvas');
+ await page.locator('.v3-node.kind-generate').click();await page.locator('.v3-node.kind-generate').getByLabel('提示词',{exact:true}).fill('白色背景陶瓷茶杯');
+ await page.waitForTimeout(1200);
+ await page.getByRole('button',{name:'预览运行',exact:true}).click();await expect(page.getByRole('dialog')).toBeVisible();
+ if(app.calls.some(c=>c.path.includes('/images/')))throw new Error('Preview submitted generation');
+ await page.getByRole('button',{name:'开始',exact:true}).click();await expect(page.locator('.v3-queue td.status span.succeeded').first()).toHaveText('成功',{timeout:15000});
+ observed.push('PASS explicit preview then start reaches real protocol, persisted result and immediate preview');
+ await page.screenshot({path:join(evidence,'canvas.png'),fullPage:true});
+ await page.locator('[data-nav=assets]').click();await expect(page.getByRole('button',{name:/预览/}).first()).toBeVisible();
+ await page.locator('[data-nav=system]').click();await expect(page.getByText('模型中心',{exact:true}).first()).toBeVisible();
+ await page.locator('[data-nav=dashboard]').click();await expect(page.getByRole('heading',{name:'最近项目',exact:true})).toBeVisible();
+ if(await page.getByText(/报价方案|充值|预付/).count())throw new Error('Retired quotation flow remains visible');
+ observed.push('PASS five menus connect real data and omit quotation gates');
+ await page.setViewportSize({width:375,height:812});await page.screenshot({path:join(evidence,'mobile.png'),fullPage:true});
+ if(await page.locator('body').evaluate(e=>e.scrollWidth>375))throw new Error('Mobile horizontal overflow');
+ if(events.length)throw new Error(events.join(String.fromCharCode(10)));
+ await writeFile(join(evidence,'observations.json'),JSON.stringify({observed,events},null,2));console.log(evidence);console.log(observed.join(String.fromCharCode(10)));
+}catch(e){await writeFile(join(evidence,'failure.txt'),String(e.stack));throw e;}finally{await browser?.close();await app?.stop();}
