@@ -1,6 +1,6 @@
 # 开发票与依赖（backlog）
 
-更新：2026-10-21。票在 GitHub Issues（`leifengyang/agent-project`），全部带 `ready-for-agent` 标签。本文件是依赖图与并行编排记录；票的正文以 Issue 为准。
+更新：2026-10-21。票在 GitHub Issues（`czyhed/ImavidAgent`），全部带 `ready-for-agent` 标签。本文件是依赖图与并行编排记录；票的正文以 Issue 为准。
 
 ## 依赖图
 

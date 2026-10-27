@@ -1,6 +1,6 @@
 # Issue tracker: GitHub
 
-Issues and specs for this repo live as GitHub issues in `leifengyang/agent-project`. Use the `gh` CLI for all operations.
+Issues and specs for this repo live as GitHub issues in `czyhed/ImavidAgent`. Use the `gh` CLI for all operations.
 
 ## Conventions
 

@@ -1,6 +1,6 @@
 # Model center / provider implementation handoff
 
-Date: 2026-10-22. Branch: leifengyang/creation-models, based on main@18d2a00. No deployment, push, real provider key, or paid request was used.
+Date: 2026-10-22. Branch: creation-models, based on main@18d2a00. No deployment, push, real provider key, or paid request was used.
 
 ## Public API and integration
 

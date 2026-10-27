@@ -32,7 +32,7 @@
 
 ### Issue tracker
 
-Issues 记录在 GitHub `leifengyang/agent-project`，通过 `gh` CLI 操作。See `docs/agents/issue-tracker.md`.
+Issues 记录在 GitHub `czyhed/ImavidAgent`，通过 `gh` CLI 操作。See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
