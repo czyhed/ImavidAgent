@@ -15,7 +15,13 @@ nginx 1.30.5（宝塔，vhost 目录 `/www/server/panel/vhost/nginx/`），**未
 （CN `Shangjing Test Middleware CA`，pathlen 0），既有证书 SAN 覆盖
 `203.0.113.11`、`203.0.113.10`、`127.0.0.1`、`localhost`。
 
-## 当前发布：项目列表卡片网格（2026-10-27）
+## 当前发布：列表分页（2026-10-27）
+
+项目、商品、素材、模板、回收站列表与工作台「实际用量与成本」服务端分页（`limit` / `offset` / `q`，返回 `total` / `nextOffset`）；新增 `GET /api/creation/usage`；素材选择器改为搜索 + 加载更多，画布按引用编号批量查素材（`?ids=`）。迁移 `0020-creation-pagination.sql` 仅新增回收站部分索引 `sj_creation_records_trash`（幂等，不改数据），启动日志确认已应用。
+
+运行提交 `94d0fdcd32ae37df32b0362b2a6b4cac24411ae2`；备份 `/opt/shangjing-app/backups/pre-paging-20261027T130252Z`（`database.dump` 288,229 字节）；回退标签 `shangjing/app:rollback-paging-20261027` → `93fa7ff`（旧版忽略分页参数与新索引，可直接回退）。本地 `npm test` 396/396、`test:creation` 153/153、浏览器全部套件（含分页套件）通过；线上容器 healthy、首页 200、新接口未登录 401。
+
+## 上一发布：项目列表卡片网格（2026-10-27）
 
 仅前端样式：项目列表由表格改为卡片网格（封面、名称、商品、任务数与更新时间）。运行提交 `93fa7ffb4ac61d586255fa1ce1ebd1b403f773dc`；备份 `/opt/shangjing-app/backups/pre-projects-ui-20261027T114314Z`；回退标签 `shangjing/app:rollback-projects-ui-20261027` → `154e07e`。本地 check / build、`npm test` 387/387、浏览器全部套件通过；线上容器 healthy、首页 200。
 
