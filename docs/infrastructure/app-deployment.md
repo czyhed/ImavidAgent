@@ -15,7 +15,11 @@ nginx 1.30.5（宝塔，vhost 目录 `/www/server/panel/vhost/nginx/`），**未
 （CN `Shangjing Test Middleware CA`，pathlen 0），既有证书 SAN 覆盖
 `203.0.113.11`、`203.0.113.10`、`127.0.0.1`、`localhost`。
 
-## 当前发布：视频工作台界面重做（2026-10-27）
+## 当前发布：项目列表卡片网格（2026-10-27）
+
+仅前端样式：项目列表由表格改为卡片网格（封面、名称、商品、任务数与更新时间）。运行提交 `93fa7ffb4ac61d586255fa1ce1ebd1b403f773dc`；备份 `/opt/shangjing-app/backups/pre-projects-ui-20261027T114314Z`；回退标签 `shangjing/app:rollback-projects-ui-20261027` → `154e07e`。本地 check / build、`npm test` 387/387、浏览器全部套件通过；线上容器 healthy、首页 200。
+
+## 上一发布：视频工作台界面重做（2026-10-27）
 
 时间线 + 单镜编辑、工作台内加素材（自动建节点连线）、项目级分辨率 / 比例 / 时长（`storyboard.settings`）、连播预览、问题标记、手机端可编辑（W1—W8，见 [video-studio-layout-grilling.md](../requirements/video-studio-layout-grilling.md)）。无数据库迁移。
 
