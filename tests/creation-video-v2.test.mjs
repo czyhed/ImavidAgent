@@ -158,13 +158,21 @@ test('上传识别 mp3 / wav / m4a 且不会把 m4a 误判为 mp4；音频上限
  await assert.rejects(m.put(mp3, { role: 'mask', baseAssetId: 'x' }), { code: 'INVALID_MASK' });
 });
 
-test('素材列表 type=audio 按音频 MIME 前缀筛选', async () => {
- const assets = [{ id: 'a', kind: 'asset', role: 'creative', mime: 'audio/mpeg', name: 'a.mp3' }, { id: 'b', kind: 'asset', role: 'creative', mime: 'image/png', name: 'b.png' }, { id: 'c', kind: 'asset', role: 'creative', mime: 'video/mp4', name: 'c.mp4' }];
+test('素材列表 type=audio 在 SQL 中按音频 MIME 前缀筛选（通配符被剔除）', async () => {
  const { routes } = await import('../server/routes/creation-assets.mjs');
  const list = routes().find(r => r.method === 'GET' && r.pattern.test('/api/creation/assets'));
- let reply;
- await list.handler({ ctx: { creationLifecycle: { store: { list: async () => assets } } }, url: new URL('http://x/api/creation/assets?type=audio'), res: {}, reply: (res, status, body) => { reply = body; } });
- assert.deepEqual(reply.items.map(a => a.id), ['a']);
+ const run = async query => {
+  let captured, reply;
+  const store = { page: async (workspace, options) => { const params = []; captured = { conditions: options.where(value => { params.push(value); return '$' + params.length; }), params, options }; return { records: [], total: 0 }; } };
+  await list.handler({ ctx: { creationLifecycle: { store } }, url: new URL('http://x/api/creation/assets?' + query), res: {}, reply: (res, status, body) => { reply = body; } });
+  return { captured, reply };
+ };
+ const audio = await run('type=audio&limit=10');
+ assert.ok(audio.captured.conditions.some(c => c.includes('LIKE')));
+ assert.ok(audio.captured.params.includes('audio/%'));
+ assert.equal(audio.captured.options.limit, 10);
+ assert.deepEqual(audio.reply, { items: [], total: 0, nextOffset: null });
+ assert.ok((await run('type=a%25_udio')).captured.params.includes('audio/%'));
 });
 
 test('GET /api/model-hub/video/balance 与 skills：默认渠道、指定渠道、角色校验与未配置提示', async () => {

@@ -8,6 +8,10 @@ import { CreationStore } from '../server/creation-store.mjs';
 import { CreationProjects } from '../server/creation-projects.mjs';
 import { routes as projectRoutes } from '../server/routes/creation-projects.mjs';
 import { routes as voiceRoutes } from '../server/routes/creation-voice.mjs';
+import { routes as assetRoutes } from '../server/routes/creation-assets.mjs';
+import { routes as productRoutes } from '../server/routes/creation-products.mjs';
+import { CreationLifecycle } from '../server/creation-lifecycle.mjs';
+import { CreationProducts } from '../server/creation-products.mjs';
 import { generationBoundary } from './creation-projects-fixture.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -48,11 +52,10 @@ export async function startCanvasHarness({ projectBody, runs = [], image = PNG }
     if (req.headers['x-csrf-token'] !== csrf) { reply(res, 403, { error: { message: 'CSRF rejected' } }); return; }
     const chunks = []; for await (const c of req) chunks.push(c); body = JSON.parse(Buffer.concat(chunks) || '{}');
    }
-   const ctx = { creationProjects: projects, auth: {}, user: { id: 'qa-user', workspaceId: 'qa', role: 'operator' } };
-   for (const route of [...projectRoutes(), ...voiceRoutes()]) { if (route.method !== req.method) continue; const match = route.pattern.exec(url.pathname); if (match) { await route.handler({ ctx, req, res, url, body, match, reply }); return; } }
-   if (url.pathname === '/api/creation/products') { reply(res, 200, { items: [product] }); return; }
-   if (url.pathname === '/api/creation/assets') { reply(res, 200, { items: (await store.list('qa', 'asset')).filter(a => a.role !== 'mask') }); return; }
-   if (url.pathname === '/api/creation/templates') { reply(res, 200, { items: await store.list('qa', 'template') }); return; }
+   const ctx = { creationProjects: projects, creationProducts: new CreationProducts(store, boundary), creationLifecycle: new CreationLifecycle(store, boundary), auth: {}, user: { id: 'qa-user', workspaceId: 'qa', role: 'operator' } };
+   // 列表接口走真实路由（limit / offset / q / ids / role 过滤在 SQL 里完成），其余沿用夹具。
+   const listPaths = new Set(['/api/creation/assets', '/api/creation/templates', '/api/creation/products']);
+   for (const route of [...projectRoutes(), ...voiceRoutes(), ...(req.method === 'GET' && listPaths.has(url.pathname) ? [...assetRoutes(), ...productRoutes()] : [])]) { if (route.method !== req.method) continue; const match = route.pattern.exec(url.pathname); if (match) { await route.handler({ ctx, req, res, url, body, match, reply }); return; } }
    if (url.pathname === '/api/model-hub') { reply(res, 200, { models: [{ channelId: 'fixture', modelId: 'image-v1', name: 'Fixture image', enabled: true, available: true, capabilities: ['image', 'video'] }] }); return; }
    if (/^\/api\/creation\/assets\/[\da-f-]+\/file$/.test(url.pathname)) { res.writeHead(200, { 'Content-Type': 'image/png' }); res.end(image); return; }
    reply(res, 404, { error: { message: 'Not found' } });

@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import { LoadMore } from './ui.jsx';
+import DraftText from './DraftText.jsx';
+import { useDebounced, useFeed } from '../lib/use-paged.js';
 import { canWrite } from '../lib/auth.js';
 import '../styles/creation-products.css';
 
@@ -29,22 +32,21 @@ const examples=[
  {label:'手动描述',hint:'名称、价格、尺寸、材质…',text:'商品名称：\n价格：\n尺寸：\n材质：\n卖点：\n适用场景：'}
 ];
 
-// 商品列表缓存（stale-while-revalidate）：返回时先显示上次列表并后台刷新；按登录用户隔离。
-let listCache={owner:null,items:null};
+// 商品列表每次加载 30 条（侧栏「加载更多」），服务端搜索；缓存（stale-while-revalidate）由 use-paged.js 按登录用户 + 查询隔离。
+export const PRODUCT_PAGE_SIZE=30;
 const cacheOwner=backend=>backend?.session?.user?.id||backend?.session?.user?.email||'local';
 
 export default function CreationProducts({backend,notify,onCreateProject,onOpenProduct,onSelectionChange,onWorkflowEditingChange,productId}) {
- const [items,setItems]=useState(()=>listCache.owner===cacheOwner(backend)&&listCache.items||[]),[product,setProduct]=useState(null),[selected,setSelected]=useState(productId||null),[query,setQuery]=useState(''),[text,setText]=useState(''),[attachments,setAttachments]=useState([]),[busy,setBusy]=useState(false),[error,setError]=useState(''),[loading,setLoading]=useState(()=>!(listCache.owner===cacheOwner(backend)&&listCache.items)),[name,setName]=useState(''),[fields,setFields]=useState([]),[assets,setAssets]=useState({}),[tab,setTab]=useState('chat'),[dirty,setDirty]=useState(false),[listOpen,setListOpen]=useState(false);
+ const [product,setProduct]=useState(null),[selected,setSelected]=useState(productId||null),[input,setInput]=useState(''),[text,setText]=useState(''),[attachments,setAttachments]=useState([]),[busy,setBusy]=useState(false),[error,setError]=useState(''),[loading,setLoading]=useState(Boolean(productId)),[name,setName]=useState(''),[fields,setFields]=useState([]),[assets,setAssets]=useState({}),[tab,setTab]=useState('chat'),[dirty,setDirty]=useState(false),[listOpen,setListOpen]=useState(false);
  const key=useRef(null),epoch=useRef(0),threadRef=useRef(null),composerRef=useRef(null),write=canWrite(backend.session);
  const callbacks=useRef({onSelectionChange,onWorkflowEditingChange});callbacks.current={onSelectionChange,onWorkflowEditingChange};
  useEffect(()=>{callbacks.current.onSelectionChange?.(selected);},[selected]);
  useEffect(()=>{callbacks.current.onWorkflowEditingChange?.(Boolean(dirty||text||attachments.length||busy));},[dirty,text,attachments.length,busy]);
  useEffect(()=>()=>{callbacks.current.onWorkflowEditingChange?.(false);},[]);
- const api=backend.apiCall;
- const refresh=async()=>{const result=await api(`${base}/products`);setItems(result.items||[]);};
+ const api=backend.apiCall,query=useDebounced(input,300);
+ const feed=useFeed({request:api,owner:cacheOwner(backend),path:`${base}/products`,params:{q:query},size:PRODUCT_PAGE_SIZE}),items=feed.items;
  const showError=e=>{setError(e.message);notify?.(e.message);};
- const acceptProduct=p=>{setProduct(p);setSelected(p.id);setName(p.name);setFields(Object.entries(p.facts||{}).map(([field,value])=>({field,value})));setDirty(false);setItems(old=>[p,...old.filter(x=>x.id!==p.id)]);};
- useEffect(()=>{let live=true;api(`${base}/products`).then(r=>{if(live){listCache={owner:cacheOwner(backend),items:r.items||[]};setItems(r.items||[]);}}).catch(e=>{if(live)setError(e.message);}).finally(()=>{if(live)setLoading(false);});return()=>{live=false;};},[api]);
+ const acceptProduct=p=>{setProduct(p);setSelected(p.id);setName(p.name);setFields(Object.entries(p.facts||{}).map(([field,value])=>({field,value})));setDirty(false);feed.mutate(old=>[p,...old.filter(x=>x.id!==p.id)]);};
  useEffect(()=>{if(productId)setSelected(productId);},[productId]);
  useEffect(()=>{
   const ticket=++epoch.current;if(!selected){setProduct(null);setName('');setFields([]);setAssets({});return;}
@@ -76,7 +78,7 @@ export default function CreationProducts({backend,notify,onCreateProject,onOpenP
  const save=()=>run(async()=>{const facts={};for(const row of fields){if(!row.field.trim())throw new Error('请填写资料字段名称。');if(Object.hasOwn(facts,row.field.trim()))throw new Error('资料字段名称不能重复。');facts[row.field.trim()]=row.value;}const result=await api(`${base}/products/${product.id}`,{name,facts,revision:product.revision},'PATCH');acceptProduct(result.product);notify?.('商品资料已保存');});
  const suggestion=(entry,accept)=>run(async()=>acceptProduct((await api(`${base}/products/${product.id}/suggestions/${entry.id}`,{revision:product.revision,accept})).product));
  const promote=assetId=>run(async()=>{acceptProduct((await api(`${base}/products/${product.id}/promote`,{revision:product.revision,assetId})).product);setAssets(old=>({...old,[assetId]:{...old[assetId],role:'creative'}}));});
- const trash=()=>run(async()=>{await api(`${base}/trash/${product.id}`,{revision:product.revision});setSelected(null);setProduct(null);setListOpen(false);await refresh();notify?.('商品已移入回收站');});
+ const trash=()=>run(async()=>{await api(`${base}/trash/${product.id}`,{revision:product.revision});setSelected(null);setProduct(null);setListOpen(false);feed.mutate(old=>old.filter(x=>x.id!==product.id));notify?.('商品已移入回收站');});
  const interrupted=(product?.messages||[]).find(m=>m.status==='pending'&&Date.now()-new Date(m.createdAt).getTime()>=180000);
  const messages=product?.messages||[];
  const facts=product?.facts||{};
@@ -88,15 +90,15 @@ export default function CreationProducts({backend,notify,onCreateProject,onOpenP
  const sendKey=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();if(!busy&&canSend)send();}};
  const image=(id,creative=false)=><figure className="cp-media" key={id}>{assets[id]?.mime?.startsWith('video/')?<video src={`${base}/assets/${id}/file`} controls/>:<img src={`${base}/assets/${id}/file`} alt={assets[id]?.name||'商品资料'} loading="lazy"/>}<figcaption>{assets[id]?.name||'商品图片'}</figcaption>{!creative&&write&&!(product?.creativeAssetIds||[]).includes(id)&&<button disabled={busy} onClick={()=>promote(id)}>加入商品素材</button>}</figure>;
  return <section className="creation-products cp-surface">
-  <header className="cp-heading"><div><h1>商品</h1><span>{items.length} 件商品 · 边聊边整理资料</span></div>{write&&<button className="cp-primary cp-new" onClick={()=>navigate(null)} disabled={busy}>新商品</button>}</header>
+  <header className="cp-heading"><div><h1>商品</h1><span>{feed.total} 件{query?'匹配':''}商品 · 边聊边整理资料</span></div>{write&&<button className="cp-primary cp-new" onClick={()=>navigate(null)} disabled={busy}>新商品</button>}</header>
   {error&&<div role="alert" className="cp-error">{error}</div>}
   {interrupted&&write&&<div className="cp-error">资料识别长时间未完成。<button disabled={busy} onClick={()=>run(async()=>acceptProduct((await api(`${base}/products/${product.id}/messages/${interrupted.id}/end-recognition`,{revision:product.revision})).product))}>结束本次识别并保留资料</button></div>}
   <div className="cp-workspace">
    <aside className={`cp-list${listOpen?' is-open':''}`}>
     <button type="button" className="cp-list-toggle" aria-label="切换商品列表" aria-expanded={listOpen} onClick={()=>setListOpen(open=>!open)}><span className="cp-list-toggle-label">商品</span><strong>{product?.name||'选择或新建商品'}</strong><span className="cp-list-caret" aria-hidden>▾</span></button>
     <div className="cp-list-body">
-     <input aria-label="搜索商品" type="search" placeholder="搜索商品" value={query} onChange={e=>setQuery(e.target.value)}/>
-     {write&&<button className="cp-primary b-new-product" onClick={()=>navigate(null)} disabled={busy}>＋ 新建商品</button>}<div className="cp-product-list">{items.filter(p=>p.name.includes(query)).map(p=><button key={p.id} aria-pressed={selected===p.id} onClick={()=>navigate(p.id)}><span className="b-product-thumb">{p.creativeAssetIds?.[0]?<img src={`${base}/assets/${p.creativeAssetIds[0]}/file`} alt=""/>:<span aria-hidden>◇</span>}</span><strong>{p.name}</strong><small>{p.factCount??Object.keys(p.facts||{}).length} 项资料 · {new Date(p.updatedAt).toLocaleDateString()}</small></button>)}{!loading&&!items.length&&<p className="cp-empty">暂无商品</p>}</div>
+     <DraftText aria-label="搜索商品" type="search" placeholder="搜索商品" value={input} onCommit={setInput}/>
+     {write&&<button className="cp-primary b-new-product" onClick={()=>navigate(null)} disabled={busy}>＋ 新建商品</button>}<div className="cp-product-list">{items.map(p=><button key={p.id} aria-pressed={selected===p.id} onClick={()=>navigate(p.id)}><span className="b-product-thumb">{p.creativeAssetIds?.[0]?<img src={`${base}/assets/${p.creativeAssetIds[0]}/file`} alt=""/>:<span aria-hidden>◇</span>}</span><strong>{p.name}</strong><small>{p.factCount??Object.keys(p.facts||{}).length} 项资料 · {new Date(p.updatedAt).toLocaleDateString()}</small></button>)}{feed.error&&<p className="cp-empty" role="alert">{feed.error}</p>}{!feed.loading&&!feed.error&&!items.length&&<p className="cp-empty">{query?'没有匹配的商品':'暂无商品'}</p>}<LoadMore shown={items.length} total={feed.total} hasMore={feed.hasMore} loading={feed.loadingMore} onClick={feed.loadMore}/></div>
     </div>
    </aside>
    <div className="cp-detail">

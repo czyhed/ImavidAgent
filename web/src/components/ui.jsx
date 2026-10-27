@@ -75,3 +75,27 @@ export function ConfirmDialog({ open, title = '确认操作', message, confirmTe
     document.body,
   );
 }
+
+// 翻页器：上一页 / 第 N 页 · 共 M 页 / 下一页。只有一页时不显示；窄屏换行居中。
+export function Pager({ total, offset, size, onChange, disabled = false, label = '分页', className = '' }) {
+  const pages = Math.max(1, Math.ceil((total || 0) / size)), page = Math.min(pages, Math.floor(Math.max(0, offset) / size) + 1);
+  if (pages <= 1) return null;
+  return (
+    <nav className={`pager ${className}`} aria-label={label} data-pager>
+      <button type="button" className="btn small" data-pager-prev aria-label="上一页" disabled={disabled || page <= 1} onClick={() => onChange((page - 2) * size)}>上一页</button>
+      <span className="pager-status" aria-live="polite" data-pager-status>第 {page} 页 · 共 {pages} 页</span>
+      <button type="button" className="btn small" data-pager-next aria-label="下一页" disabled={disabled || page >= pages} onClick={() => onChange(page * size)}>下一页</button>
+    </nav>
+  );
+}
+
+// 侧栏 / 选择器用的「加载更多」：已显示条数与总数，加载中禁用。全部加载完不显示。
+export function LoadMore({ shown, total, hasMore, loading, onClick, label = '加载更多' }) {
+  if (!hasMore) return null;
+  return (
+    <div className="load-more">
+      <button type="button" className="btn small" data-load-more aria-label={label} disabled={loading} onClick={onClick}>{loading ? '正在加载…' : label}</button>
+      <span className="load-more-count" aria-live="polite">已显示 {shown} / {total}</span>
+    </div>
+  );
+}

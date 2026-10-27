@@ -1,4 +1,5 @@
 import { AppError } from '../errors.mjs';
+import { pageParams, pageBody } from '../creation-paging.mjs';
 import { creationWorkspaceId, requireOperator, requireViewer } from '../access.mjs';
 
 function service(ctx) {
@@ -25,7 +26,7 @@ export function routes() {
  const subtitlesFile=/^\/api\/creation\/projects\/([\da-f-]{36})\/storyboard\/subtitles\.srt$/i;
  const batchAction=/^\/api\/creation\/projects\/([\da-f-]{36})\/storyboard\/batch\/(preview|start|retry|cancel|resume)$/i;
  return [
-  {method:'GET',pattern:collection,async handler({ctx,res,reply}){requireViewer(ctx);return result(res,reply,await service(ctx).list(creationWorkspaceId(ctx)));}},
+  {method:'GET',pattern:collection,async handler({ctx,url,res,reply}){requireViewer(ctx);const page=pageParams(url),r=await service(ctx).list(creationWorkspaceId(ctx),page);return result(res,reply,pageBody('projects',r.projects,r.total,page));}},
   {method:'POST',pattern:collection,async handler({ctx,body,res,reply}){requireOperator(ctx);return result(res,reply,await service(ctx).create(creationWorkspaceId(ctx),body),201);}},
   {method:'GET',pattern:item,async handler({ctx,match,res,reply}){requireViewer(ctx);return result(res,reply,await service(ctx).detail(creationWorkspaceId(ctx),projectId(match)));}},
   // 增量保存：一批操作在一次事务里应用，不比较整项目修订号（见 docs/requirements/creation-sync-grilling.md）。

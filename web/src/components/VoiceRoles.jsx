@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import DraftText from './DraftText.jsx';
+import { AssetFeed } from './AssetPicker.jsx';
 import { DEFAULT_PREVIEW_TEXT, MAX_PREVIEW_TEXT, MAX_VOICE_ROLES, VOICE_SOURCE_LABEL, defaultResourceFor, validateVoiceRoles } from '../../../shared/creation-voice.mjs';
 import '../styles/creation-voice.css';
 
@@ -61,10 +62,10 @@ function SystemPicker({ request, role, onPick, configured, writable }) {
 }
 
 // 音色设计：文字描述或人物图；显示剩余次数，次数用尽时给出中文提示。
-function DesignPanel({ request, role, onUse, assets, configured, writable }) {
+function DesignPanel({ request, owner, onAssets, role, onUse, configured, writable }) {
  const [form, setForm] = useState({ speakerId: '', text: '大家好，欢迎光临我们的直播间。', textPrompt: '', imageAssetId: '', language: 0 });
  const [state, setState] = useState({ busy: false, result: null, error: '' });
- const images = (assets || []).filter(a => a.mime?.startsWith('image/') && ['creative', 'result'].includes(a.role));
+ const [picked, setPicked] = useState(null);
  const set = patch => setForm(old => ({ ...old, ...patch }));
  const submit = async () => {
   setState({ busy: true, result: null, error: '' });
@@ -78,7 +79,7 @@ function DesignPanel({ request, role, onUse, assets, configured, writable }) {
   <p className="vn-note">用文字描述或人物图设计一个新音色。每个音色编号有设计次数上限，请谨慎使用。</p>
   <label>新音色编号<DraftText aria-label="新音色编号" value={form.speakerId} maxLength={100} placeholder="例如 S_shop_host_01" onCommit={speakerId => set({ speakerId })} /></label>
   <label>音色描述（不超过 200 字）<DraftText multiline rows={2} aria-label="音色描述" value={form.textPrompt} maxLength={200} disabled={Boolean(form.imageAssetId)} placeholder="例如：温柔亲切的年轻女声，语速适中" onCommit={textPrompt => set({ textPrompt })} /></label>
-  <label>或选择人物图<select aria-label="人物图" value={form.imageAssetId} onChange={e => set({ imageAssetId: e.target.value })}><option value="">不使用人物图</option>{images.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}</select></label>
+  <div className="vr-field"><span>或选择人物图</span><AssetFeed request={request} owner={owner} params={{ role: 'creative,result', type: 'image' }} onLoaded={onAssets} searchLabel="搜索人物图" placeholder="搜索人物图名称" always>{items => <select aria-label="人物图" value={form.imageAssetId} onChange={e => { setPicked(items.find(a => a.id === e.target.value) || null); set({ imageAssetId: e.target.value }); }}><option value="">不使用人物图</option>{form.imageAssetId && !items.some(a => a.id === form.imageAssetId) && <option value={form.imageAssetId}>{picked?.name || '已选人物图'}</option>}{items.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}</select>}</AssetFeed></div>
   <label>试听文本（不超过 300 字）<DraftText aria-label="设计试听文本" value={form.text} maxLength={300} onCommit={text => set({ text })} /></label>
   <label>语言<select aria-label="设计语言" value={form.language} onChange={e => set({ language: e.target.value })}><option value={0}>中文</option><option value={1}>英文</option></select></label>
   <button type="button" className="v3-btn primary small" disabled={!writable || !configured || state.busy || !form.speakerId.trim()} onClick={submit}>{state.busy ? '设计中…' : '设计音色'}</button>
@@ -93,7 +94,7 @@ function DesignPanel({ request, role, onUse, assets, configured, writable }) {
 }
 
 // 角色与音色面板：角色增删改，三种音色来源。保存时才写入项目。
-export default function VoiceRolesPanel({ roles, configured, writable, request, assets, onSave, onClose }) {
+export default function VoiceRolesPanel({ roles, configured, writable, request, owner, onAssets, onSave, onClose }) {
  const [draft, setDraft] = useState(() => roles.map(r => ({ ...r })));
  const [selected, setSelected] = useState(roles[0]?.id || null);
  const [tab, setTab] = useState(null), [busy, setBusy] = useState(false), [error, setError] = useState(''), [auditionText, setAuditionText] = useState('');
@@ -131,7 +132,7 @@ export default function VoiceRolesPanel({ roles, configured, writable, request, 
       <label>自有音色编号（speaker_id）<DraftText aria-label="自有音色编号" value={role.source === 'custom' ? role.speaker : ''} maxLength={100} disabled={!writable} placeholder="声音复刻得到的 speaker_id" onCommit={speaker => update({ speaker: speaker.trim(), source: 'custom' })} /></label>
       <label>资源 ID<select aria-label="资源 ID" value={role.resourceId} disabled={!writable} onChange={e => update({ resourceId: e.target.value })}><option value="seed-tts-2.0">seed-tts-2.0（系统 2.0 音色）</option><option value="seed-icl-2.0">seed-icl-2.0（复刻与设计音色）</option></select></label>
      </div>}
-     {source === 'designed' && <DesignPanel request={request} role={role} assets={assets} configured={configured} writable={writable} onUse={result => { update({ speaker: result.speakerId, source: 'designed', resourceId: 'seed-icl-2.0' }); setTab(null); }} />}
+     {source === 'designed' && <DesignPanel request={request} owner={owner} onAssets={onAssets} role={role} configured={configured} writable={writable} onUse={result => { update({ speaker: result.speakerId, source: 'designed', resourceId: 'seed-icl-2.0' }); setTab(null); }} />}
      <fieldset className="vr-params"><legend>默认语速、音量与情感</legend>
       <label>语速 {role.speechRate}<input type="range" aria-label="语速" min="-50" max="100" step="5" value={role.speechRate} disabled={!writable} onChange={e => update({ speechRate: Number(e.target.value) })} /></label>
       <label>音量 {role.loudnessRate}<input type="range" aria-label="音量" min="-50" max="100" step="5" value={role.loudnessRate} disabled={!writable} onChange={e => update({ loudnessRate: Number(e.target.value) })} /></label>

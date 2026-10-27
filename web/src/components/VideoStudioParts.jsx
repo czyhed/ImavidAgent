@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import DraftText from './DraftText.jsx';
+import { AssetFeed } from './AssetPicker.jsx';
 import { MaterialCard } from './VideoNodeEditor.jsx';
 import { VIDEO_PORT_LIMIT, VIDEO_PORT_TYPE, MEDIA_RULES, validateMediaFile } from '../lib/video-node.js';
 import { MEDIA_BYTE_LIMITS } from '../../../shared/creation-video-parameters.mjs';
@@ -69,11 +69,9 @@ export function MaterialSlots({ analysis, removeOwn, slots, locked, editor, onIn
 // 素材选择弹层：商品素材 / 画布结果（具体成功版本）/ 素材库 / 直接上传。选择后由 editor.attachMaterial 创建输入节点并连线。
 export function MaterialPicker({ port, task, editor, productId, projectId, onClose }) {
  const type = VIDEO_PORT_TYPE[port], kind = KIND[type];
- const [tab, setTab] = useState('product'), [query, setQuery] = useState(''), [problem, setProblem] = useState(''), [busy, setBusy] = useState(false);
- const usable = editor.assets.filter(a => !a.trashedAt && !a.deletionPending && a.mime?.startsWith(kind.prefix));
- // 商品素材：属于本项目关联商品，或在本项目里上传的创作素材。
- const product = usable.filter(a => a.role === 'creative' && ((productId && a.productId === productId) || a.projectId === projectId));
- const library = usable.filter(a => !query.trim() || a.name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
+ const [tab, setTab] = useState('product'), [problem, setProblem] = useState(''), [busy, setBusy] = useState(false);
+ // 商品素材：属于本项目关联商品，或在本项目里上传的创作素材（服务端取并集）；素材库：全部可用素材，服务端搜索 + 加载更多。
+ const productParams = { role: 'creative', type, match: 'any', ...(productId ? { productId } : {}), projectId };
  // 画布上其它节点的具体成功版本：图片槽位取图片类节点，视频槽位取视频节点。
  const results = editor.tasks.filter(t => t.id !== task.id && ['generate', 'edit', 'composite', 'video'].includes(t.kind) && (t.kind === 'video') === (type === 'video') && type !== 'audio')
   .flatMap(t => succeededRuns(editor.runs, t.id).map((run, index) => ({ run, task: t, version: index + 1 })));
@@ -104,10 +102,10 @@ export function MaterialPicker({ port, task, editor, productId, projectId, onClo
   <div className="v3-tabs" role="tablist">{tabs.map(([id, label]) => <button key={id} type="button" role="tab" aria-selected={tab === id} className={tab === id ? 'on' : ''} onClick={() => { setTab(id); setProblem(''); }}>{label}</button>)}</div>
   {problem && <p className="vn-problem" role="alert">{problem}</p>}
   <div className="vs-pick-body">
-   {tab === 'product' && (product.length ? <ul className="vs-pick-grid">{product.map(assetButton)}</ul> : <p className="v3-note">还没有{kind.label}类的商品创作素材，可以在「上传」里添加。</p>)}
+   {tab === 'product' && <AssetFeed request={editor.request} owner={editor.owner} params={productParams} onLoaded={editor.rememberAssets} empty={<p className="v3-note">还没有{kind.label}类的商品创作素材，可以在「上传」里添加。</p>}>{items => <ul className="vs-pick-grid">{items.map(assetButton)}</ul>}</AssetFeed>}
    {tab === 'results' && (results.length ? <ul className="vs-pick-grid">{results.map(({ run, task: source, version }) => <li key={run.id}><button type="button" className="vs-pick" aria-label={`选择画布结果 ${source.title} 版本 ${version}`} onClick={() => finish(editor.attachMaterial({ taskId: task.id, port, run }))}>
     <span className="vs-pick-thumb">{type === 'image' ? <img src={fileUrl(run.output.assetId)} alt="" loading="lazy" /> : <span aria-hidden="true">▶</span>}</span><span className="vs-pick-name">{source.title} · 版本 {version}</span></button></li>)}</ul> : <p className="v3-note">画布上还没有可用的{kind.label}成功结果。选择后会固定这个具体版本。</p>)}
-   {tab === 'library' && <><DraftText type="search" aria-label="搜索素材库" placeholder="搜索素材名称" value={query} onCommit={setQuery} />{library.length ? <ul className="vs-pick-grid">{library.map(assetButton)}</ul> : <p className="v3-note">素材库里没有符合的{kind.label}。</p>}</>}
+   {tab === 'library' && <AssetFeed request={editor.request} owner={editor.owner} params={{ type }} onLoaded={editor.rememberAssets} searchLabel="搜索素材库" empty={<p className="v3-note">素材库里没有符合的{kind.label}。</p>}>{items => <ul className="vs-pick-grid">{items.map(assetButton)}</ul>}</AssetFeed>}
    {tab === 'upload' && <div className="vs-upload"><label className="v3-file">选择{kind.label}文件<input type="file" aria-label={`上传${kind.label}`} accept={kind.accept} disabled={busy} onChange={upload} /></label>
     <small className="vn-note">{type === 'image' ? 'png / jpg / webp，单个不超过 30 MiB' : (type === 'video' ? MEDIA_RULES.footage : MEDIA_RULES.audio).hint}；上传后保存为项目创作素材并自动连入该槽位。</small>{busy && <p role="status" className="v3-note">正在上传…</p>}</div>}
   </div>

@@ -48,7 +48,7 @@
 .cp-dialog h2{font-size:17px;line-height:1.4;margin:0;font-weight:600}
 .cp-dialog header button{font-size:22px;padding:0 6px;line-height:1.2;border:0;background:transparent;color:var(--cp-muted)}
 .cp-dialog footer{justify-content:flex-end;border-top:1px solid var(--cp-border);margin-top:20px;padding-top:15px}
-.cp-dialog label{display:flex;flex-direction:column;gap:6px;margin-bottom:15px;font-size:13px}
+.cp-dialog label,.cp-dialog .cp-field{display:flex;flex-direction:column;gap:6px;margin-bottom:15px;font-size:13px}
 .cp-dialog input,.cp-dialog select{padding:9px 11px;border:1px solid var(--cp-border);border-radius:6px;font:inherit;min-width:0;max-width:100%}
 @media(max-width:760px){
  .cp-projects{padding:0}

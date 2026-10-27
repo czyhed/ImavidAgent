@@ -8,7 +8,7 @@
 .vr-roles li button.on{border-color:var(--v3-accent);background:var(--v3-accent-soft)}
 .vr-roles li button small{font-size:10.5px;color:var(--v3-mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vr-detail{min-width:0;display:flex;flex-direction:column;gap:10px}
-.vr-detail label,.vr-design label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--v3-dim);min-width:0}
+.vr-detail label,.vr-design label,.vr-design .vr-field{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--v3-dim);min-width:0}
 .vr-detail input:not([type=range]),.vr-detail select,.vr-detail textarea,.vr-design input,.vr-design select,.vr-design textarea{width:100%;min-width:0;font-size:12.5px;padding:6px 8px;border:1px solid var(--v3-line);border-radius:7px;background:#fff;color:var(--v3-fg)}
 .vr-name-row{display:flex;gap:10px;align-items:flex-end}
 .vr-name-row label{flex:1}
@@ -69,3 +69,5 @@
 .vn-subs-list span{min-width:0;overflow-wrap:anywhere}
 .vs-subs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
 .vs-subs small{flex-basis:100%;overflow-wrap:anywhere}
+
+.vr-design .vr-field>span{font-size:12px;color:var(--v3-dim)}

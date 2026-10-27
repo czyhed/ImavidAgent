@@ -10,6 +10,8 @@ function references(value,key='',result=new Set()) {
  if(value&&typeof value==='object')for(const [field,child] of Object.entries(value))references(child,field,result);
  return result;
 }
+// 名称模糊匹配（大小写不敏感，不使用 LIKE，避免通配符转义问题）。
+export const nameHas=(expr,add,q)=>`position(lower(${add(q)}) in lower(coalesce(${expr},'')))>0`;
 export class CreationStore {
  constructor(pool) { this.pool=pool; }
  async get(workspace,id,client=this.pool) { return row((await client.query('SELECT * FROM sj_creation_records WHERE workspace_id=$1 AND id=$2',[workspace,id])).rows[0]); }
@@ -17,6 +19,17 @@ export class CreationStore {
  // 列表页只需要少量字段：在 SQL 里投影 JSONB，避免把整份正文（任务、边、聊天记录）读出并传给浏览器。
  async listProjected(workspace,kind,projection,client=this.pool) {
   return (await client.query(`SELECT id,revision,trashed_at,created_at,updated_at,${projection} FROM sj_creation_records WHERE workspace_id=$1 AND kind=$2 AND trashed_at IS NULL ORDER BY updated_at DESC,id`,[workspace,kind])).rows;
+ }
+ // 分页列表：SQL 里过滤、排序、计数；kinds 可多种（回收站），where(add) 追加条件并登记参数，limit 为 null 时返回全部。
+ async page(workspace,{kinds,trash=false,projection='',where=null,order='updated_at DESC,id',limit=null,offset=0},client=this.pool) {
+  const params=[workspace,kinds,trash],add=value=>{params.push(value);return '$'+params.length;};
+  const conditions=['workspace_id=$1','kind=ANY($2::text[])','(trashed_at IS NOT NULL)=$3'];
+  if(where)for(const c of where(add))conditions.push(c);
+  const clause=conditions.join(' AND ');
+  const total=(await client.query(`SELECT count(*)::int AS n FROM sj_creation_records WHERE ${clause}`,params)).rows[0].n;
+  const tail=limit?` LIMIT ${Number(limit)} OFFSET ${Number(offset)}`:'';
+  const rows=(await client.query(`SELECT id,workspace_id,kind,revision,body,trashed_at,created_at,updated_at${projection?','+projection:''} FROM sj_creation_records WHERE ${clause} ORDER BY ${order}${tail}`,params)).rows;
+  return {rows,total,records:rows.map(row)};
  }
  async create(workspace,kind,body,client=this.pool,id=randomUUID()) {
   if(client!==this.pool){await this.checkReferences(workspace,body,client);return row((await client.query('INSERT INTO sj_creation_records(id,workspace_id,kind,body) VALUES($1,$2,$3,$4) RETURNING *',[id,workspace,kind,dataOnly(body)])).rows[0]);}

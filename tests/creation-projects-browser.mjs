@@ -9,6 +9,10 @@ import { startTestPostgres } from './support/postgres.mjs';
 import { CreationStore } from '../server/creation-store.mjs';
 import { CreationProjects } from '../server/creation-projects.mjs';
 import { routes } from '../server/routes/creation-projects.mjs';
+import { routes as assetRoutes } from '../server/routes/creation-assets.mjs';
+import { routes as productRoutes } from '../server/routes/creation-products.mjs';
+import { CreationLifecycle } from '../server/creation-lifecycle.mjs';
+import { CreationProducts } from '../server/creation-products.mjs';
 import { generationBoundary } from './creation-projects-fixture.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -29,11 +33,10 @@ try {
     const chunks=[];for await(const c of req)chunks.push(c);body=JSON.parse(Buffer.concat(chunks));
    }
    const role=url.searchParams.get('role')||req.headers['x-test-role']||'operator';
-   const ctx={creationProjects:projects,auth:{},user:{id:'qa-user',workspaceId:'qa',role}};
-   for(const route of routes()){if(route.method!==req.method)continue;const match=route.pattern.exec(url.pathname);if(match){await route.handler({ctx,req,res,url,body,match,reply});return;}}
-   if(url.pathname==='/api/creation/products'){reply(res,200,{items:[product]});return;}
-   if(url.pathname==='/api/creation/assets'){reply(res,200,{items:await store.list('qa','asset')});return;}
-   if(url.pathname==='/api/creation/templates'){reply(res,200,{items:await store.list('qa','template')});return;}
+   const ctx={creationProjects:projects,creationProducts:new CreationProducts(store,boundary),creationLifecycle:new CreationLifecycle(store,boundary),auth:{},user:{id:'qa-user',workspaceId:'qa',role}};
+   // 列表接口走真实路由（limit / offset / q / ids 在 SQL 里完成）。
+   const listPaths=new Set(['/api/creation/assets','/api/creation/templates','/api/creation/products']);
+   for(const route of [...routes(),...(req.method==='GET'&&listPaths.has(url.pathname)?[...assetRoutes(),...productRoutes()]:[])]){if(route.method!==req.method)continue;const match=route.pattern.exec(url.pathname);if(match){await route.handler({ctx,req,res,url,body,match,reply});return;}}
    if(url.pathname==='/api/model-hub'){reply(res,200,{models:[{channelId:'fixture',modelId:'image-v1',name:'Fixture image',enabled:true,available:true,capabilities:['image','video']}]});return;}
    const media=url.pathname.match(/^\/api\/creation\/assets\/([\da-f-]+)\/file$/);
    if(media){const file=await boundary.media.read('qa',media[1]);res.writeHead(200,{'Content-Type':'image/png'});res.end(Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a4V8AAAAASUVORK5CYII=','base64'));return;}

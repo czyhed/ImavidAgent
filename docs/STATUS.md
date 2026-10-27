@@ -2,6 +2,14 @@
 
 更新：2026-10-27。业务边界以 [FUNCTIONAL_SPEC.md v2.0](FUNCTIONAL_SPEC.md) 与 [Q01—Q43](requirements/creation-workbench-grilling.md) 为准；本次用户要求全站按 B 版效果图修改，项目页采用最新任务画布。代码实现、隔离验收与服务器实况分别记录。
 
+## 2026-10-27 列表分页（未部署）
+
+- 服务端：商品、项目、素材、模板、回收站列表支持 `limit`（1–100）/ `offset` / `q`（名称；项目同时匹配商品名），在 SQL 中过滤、排序与计数，响应保留原键名（`items` / `projects`）并增加 `total`、`nextOffset`（末页为 `null`）。缺 `limit` 时返回全部（兼容内部调用），`limit` 或 `offset` 非法返回 400 `INVALID_PAGINATION`。素材另支持 `ids=` 批量取（≤100，不套用角色过滤，回收站素材不返回）、`role` 逗号多值、`projectId` + `match=any`；模板支持 `type`；回收站支持 `kind`。迁移 `0020-creation-pagination.sql` 只新增回收站部分索引（幂等）。
+- 用量明细：新增 `GET /api/creation/usage`（`limit` 默认 20，生成记录与 `model.complete` / `creation.retained-cost` 审计行在 SQL 中 `UNION ALL` 后按 `created_at DESC, id DESC` 分页）；查看者不返回 `usage` / `costMicros` / `currency`，与概览共用 `redactUsageRows`。概览仍返回最近的 `runs` / `modelUsage`（运行中面板使用），合计行仍取自概览。
+- 界面：共享 `Pager`（上一页 / 第 N 页 · 共 M 页 / 下一页，`nav` + aria-label，窄屏换行）与 `LoadMore`（`ui.jsx`）；项目页每页 20 + 防抖服务端搜索；商品侧栏每次 30 + 加载更多 + 搜索；素材 / 模板每页 24；回收站每页 20（新增名称搜索，类型筛选改在服务端）；工作台「实际用量与成本」每页 20，刷新同时重载概览与明细。选择器（画布参考图、媒体输入、视频工作台素材、配音人物图、模板、新建项目的商品 / 模板）改为服务端搜索 + 加载更多（30）。列表缓存按「用户 + 查询 + 页码」。
+- 引用素材不再依赖全量列表：画布只按 `?ids=` 批量取草稿引用的来源图与尾帧（`assetsLoaded` 在全部已检查后才为真，查不到即视为已删除，请求失败不误报）；选择器读到或刚上传的素材并入同一缓存。
+- 验证：`npm test` 396/396、`test:creation` 153/153（新增分页 7 项、用量 4 项）、check / build 通过，`test:browser` 新增 `creation-pagination-browser`（项目 / 商品 / 素材 / 模板 / 回收站 / 用量翻页、选择器、375px）。画布与项目浏览器夹具改用真实列表路由。
+
 ## 2026-10-27 视频工作台界面重做（未部署）
 
 - 按 [video-studio-layout-grilling.md](requirements/video-studio-layout-grilling.md) W1–W8 重做：顶部条（项目级分辨率 / 比例 / 默认时长、合计、脚本 / 角色与音色 / 连播预览 / 生成全部 / 成片）+ 时间线缩略图（点击选中、拖动排序、末尾「＋」、自定义与问题标记）+ 单镜编辑（方式与素材槽、提示词、折叠的台词与参数、本镜预览）+ 脚本 / 成片侧边抽屉 + 整片连播。仍走画布草稿 → `diffOps` → 保存队列，没有新依赖。

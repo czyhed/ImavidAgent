@@ -675,12 +675,13 @@ export class CreationProjects {
   return this.detail(workspace,id);
  }
  // 列表摘要：卡片只渲染名称、商品名、封面图、任务/工作流数量与更新时间；画布详情走 GET /projects/:id。
- async list(workspace) {
-  const rows=await this.store.listProjected(workspace,'project',`body->>'name' AS name,body->>'productId' AS product_id,body->'productSnapshot'->>'name' AS product_name,
+ // page：{limit,offset,q}，q 匹配项目名或商品名；limit 缺省返回全部。
+ async list(workspace,page={}) {
+  const {rows,total}=await this.store.page(workspace,{kinds:['project'],limit:page.limit,offset:page.offset,where:page.q?add=>{const q=add(page.q);return [`(position(lower(${q}) in lower(coalesce(body->>'name','')))>0 OR position(lower(${q}) in lower(coalesce(body->'productSnapshot'->>'name','')))>0)`];}:null,projection:`body->>'name' AS name,body->>'productId' AS product_id,body->'productSnapshot'->>'name' AS product_name,
    CASE WHEN jsonb_typeof(body->'tasks')='array' THEN jsonb_array_length(body->'tasks') ELSE 0 END AS task_count,
    CASE WHEN jsonb_typeof(body->'workflows')='array' THEN jsonb_array_length(body->'workflows') ELSE 0 END AS workflow_count,
-   (SELECT t->>'sourceAssetId' FROM jsonb_array_elements(CASE WHEN jsonb_typeof(body->'tasks')='array' THEN body->'tasks' ELSE '[]'::jsonb END) t WHERE t->>'sourceAssetId' IS NOT NULL AND t->>'sourceAssetId'<>'' LIMIT 1) AS cover_asset_id`);
-  return {projects:rows.map(r=>({id:r.id,name:r.name,revision:r.revision,productId:r.product_id||null,productSnapshot:r.product_name?{name:r.product_name}:null,taskCount:r.task_count,workflowCount:r.workflow_count||1,coverAssetId:r.cover_asset_id||null,trashedAt:r.trashed_at,createdAt:r.created_at,updatedAt:r.updated_at}))};
+   (SELECT t->>'sourceAssetId' FROM jsonb_array_elements(CASE WHEN jsonb_typeof(body->'tasks')='array' THEN body->'tasks' ELSE '[]'::jsonb END) t WHERE t->>'sourceAssetId' IS NOT NULL AND t->>'sourceAssetId'<>'' LIMIT 1) AS cover_asset_id`});
+  return {total,projects:rows.map(r=>({id:r.id,name:r.name,revision:r.revision,productId:r.product_id||null,productSnapshot:r.product_name?{name:r.product_name}:null,taskCount:r.task_count,workflowCount:r.workflow_count||1,coverAssetId:r.cover_asset_id||null,trashedAt:r.trashed_at,createdAt:r.created_at,updatedAt:r.updated_at}))};
  }
 
  // ---------- 视频工作室（脚本 → 分镜 → 逐镜生成 → 拼接成片） ----------

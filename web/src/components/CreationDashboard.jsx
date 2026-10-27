@@ -1,5 +1,6 @@
 import {useCallback,useEffect,useRef,useState} from 'react';
-import {Btn} from './ui.jsx';
+import {Btn,Pager} from './ui.jsx';
+import {usePage} from '../lib/use-paged.js';
 import '../styles/creation-dashboard-v3.css';
 const STATUS={queued:'排队中',submitting:'提交中',running:'生成中',storing:'保存中',succeeded:'已成功',failed:'已失败',unknown:'待核实',cancelled:'已取消',waiting:'待选择输入'};
 // 运行中面板只收排队 / 提交 / 生成三态；storing 仍是未完成，但不再显示秒级计时。
@@ -28,11 +29,21 @@ export function useOverview(backend,{pollMs=0}={}){
  },[load,pollMs]);
  return {...state,refresh:()=>load(false)};
 }
+// 用量明细每页 20 条，服务端把生成记录与模型调用 / 已删除任务保留的费用合并后按时间倒序分页；合计与未统计条数仍来自概览。
+export const USAGE_PAGE_SIZE=20;
+const STAGE_LABEL={product:'商品聊天',planning:'AI 规划',voice:'语音合成','voice-design':'音色设计','deleted-generation':'已删除任务的费用记录'};
 export function CreationCosts({backend}){
  const {data,error,loading,refresh}=useOverview(backend);
- return <section className="rv-panel"><div className="rv-panel-title"><h2>实际用量与成本</h2><Btn onClick={refresh} disabled={loading}>刷新</Btn></div><p>按供应商返回的实际金额记录；未提供金额时显示「未统计」。</p>{error&&<p role="alert">{error}</p>}
- {data?.costs===null?<p>当前角色不显示费用明细。</p>:<><p>{data?.costs?.totals?.length?data.costs.totals.map(t=><strong key={t.currency} style={{marginRight:20}}>{t.currency} {(t.costMicros/1e6).toFixed(4)}</strong>):'金额未统计'}　{data?.costs?.unknown??'—'} 条费用未统计</p>
- <div className="rv-table-wrap"><table className="rv-table"><thead><tr><th>项目 / 任务</th><th>状态</th><th>用量</th><th>实际金额</th><th>时间</th></tr></thead><tbody>{[...(data?.runs||[]),...(data?.modelUsage||[]).map(r=>({...r,projectName:({product:'商品聊天',planning:'AI 规划',voice:'语音合成','voice-design':'音色设计','deleted-generation':'已删除任务的费用记录'})[r.stage]||'模型调用',taskId:r.modelId||'',status:'recorded'}))].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).map(r=><tr key={r.id}><td>{r.projectName}<small>{r.taskId}</small></td><td>{STATUS[r.status]||(r.status==='recorded'?'已记录':r.status)}</td><td>{usageLabel(r.usage)}</td><td>{r.costMicros==null?'未统计':`${r.currency||'未提供币种'} ${(r.costMicros/1e6).toFixed(4)}`}</td><td>{date(r.createdAt)}</td></tr>)}</tbody></table></div>{data&&!data.runs.length&&!data.modelUsage?.length&&<p className="rv-empty">暂无生成记录。</p>}</>}
+ const [offset,setOffset]=useState(0);
+ const hidden=data?.costs===null;
+ const usage=usePage({request:backend.apiCall,owner:backend.session?.user?.id||backend.session?.user?.email||'local',path:'/api/creation/usage',size:USAGE_PAGE_SIZE,offset,setOffset});
+ const reload=()=>{refresh();usage.reload();};
+ const rows=usage.items.map(r=>r.source==='model'?{...r,projectName:STAGE_LABEL[r.stage]||'模型调用'}:r);
+ return <section className="rv-panel"><div className="rv-panel-title"><h2>实际用量与成本</h2><Btn onClick={reload} disabled={loading||usage.loading}>刷新</Btn></div><p>按供应商返回的实际金额记录；未提供金额时显示「未统计」。</p>{(error||usage.error)&&<p role="alert">{error||usage.error}</p>}
+ {hidden?<p>当前角色不显示费用明细。</p>:<p>{data?.costs?.totals?.length?data.costs.totals.map(t=><strong key={t.currency} style={{marginRight:20}}>{t.currency} {(t.costMicros/1e6).toFixed(4)}</strong>):'金额未统计'}　{data?.costs?.unknown??'—'} 条费用未统计</p>}
+ <div className="rv-table-wrap"><table className="rv-table"><thead><tr><th>项目 / 任务</th><th>状态</th>{!hidden&&<th>用量</th>}{!hidden&&<th>实际金额</th>}<th>时间</th></tr></thead><tbody>{rows.map(r=><tr key={r.id}><td>{r.projectName||'未命名项目'}<small>{r.taskId}</small></td><td>{STATUS[r.status]||(r.status==='recorded'?'已记录':r.status)}</td>{!hidden&&<td>{usageLabel(r.usage)}</td>}{!hidden&&<td>{r.costMicros==null?'未统计':`${r.currency||'未提供币种'} ${(r.costMicros/1e6).toFixed(4)}`}</td>}<td>{date(r.createdAt)}</td></tr>)}</tbody></table></div>
+ {!usage.loading&&!usage.error&&!rows.length&&<p className="rv-empty">暂无生成记录。</p>}
+ <Pager total={usage.total} offset={offset} size={USAGE_PAGE_SIZE} disabled={usage.loading} onChange={setOffset} label="用量分页"/>
  </section>;
 }
 function usageLabel(u){if(!u)return'未统计';const values=[(u.total_tokens??u.totalTokens)!=null?`${u.total_tokens??u.totalTokens} tokens`:null,u.total_seconds!=null?`${u.total_seconds} 秒`:null,u.images!=null?`${u.images} 张`:null,u.text_words!=null?`${u.text_words} 字符`:null,u.design_calls!=null?`${u.design_calls} 次设计`:null].filter(Boolean);return values.join(' / ')||'已保存供应商用量';}

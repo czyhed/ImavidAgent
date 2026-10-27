@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { AppError } from './errors.mjs';
+import { nameHas } from './creation-store.mjs';
 import { TEMPLATES } from '../web/src/lib/templates.js';
 
 const active = new Set(['queued','running','submitting','pending','unknown','processing','cancel_requested','cancelling']);
@@ -11,6 +12,12 @@ function contains(value,ids) {
 export class CreationLifecycle {
  constructor(store,{media}) {this.store=store;this.media=media;}
  async list(workspace) {return (await Promise.all(['product','project','asset'].map(kind=>this.store.list(workspace,kind,true)))).flat().sort((a,b)=>new Date(b.trashedAt)-new Date(a.trashedAt));}
+ // 回收站分页：按移入时间倒序，q 匹配名称；返回 {records,total}。
+ async listPage(workspace,{limit=null,offset=0,q='',kind=null}={}) {
+  const kinds=['product','project','asset'].filter(k=>!kind||k===kind);
+  const {records,total}=await this.store.page(workspace,{kinds,trash:true,order:"trashed_at DESC,id",limit,offset,where:q?add=>[nameHas("body->>'name'",add,q)]:null});
+  return {records,total};
+ }
  async load(workspace,id,c=this.store.pool) {const item=await this.store.get(workspace,id,c);if(!item)throw new AppError('NOT_FOUND','记录不存在。',404);return item;}
  async running(workspace,id,c) {return (await c.query('SELECT status FROM sj_creation_runs WHERE workspace_id=$1 AND project_id=$2',[workspace,id])).rows.some(r=>active.has(r.status));}
  async trash(workspace,id,revision) {
@@ -93,6 +100,10 @@ export class CreationLifecycle {
   }catch(error){await c.query('ROLLBACK');throw error;}finally{c.release();}
  }
  async templates(workspace) {return this.store.list(workspace,'template');}
+ async templatesPage(workspace,{limit=null,offset=0,q='',mediaKind=null}={}) {
+  const {records,total}=await this.store.page(workspace,{kinds:['template'],limit,offset,where:add=>[...(q?[nameHas("body->>'name'",add,q)]:[]),...(['image','video'].includes(mediaKind)?["body->>'mediaKind'="+add(mediaKind)]:[])]});
+  return {records,total};
+ }
  normalizeTemplate(body) {
   if(!body||typeof body.name!=='string'||!body.name.trim()||body.name.length>180||!['image','video'].includes(body.kind)||typeof body.prompt!=='string'||body.prompt.length>12000||!body.params||typeof body.params!=='object'||Array.isArray(body.params)||JSON.stringify(body.params).length>16000)throw new AppError('INVALID_TEMPLATE','请填写名称、图片或视频类型、提示词与有效参数。',422);
   return {name:body.name.trim(),mediaKind:body.kind,prompt:body.prompt,params:body.params};

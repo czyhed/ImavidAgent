@@ -1,4 +1,5 @@
 ﻿import { AppError } from '../errors.mjs';
+import { pageParams, pageBody } from '../creation-paging.mjs';
 import { requireViewer, requireOperator, creationWorkspaceId } from '../access.mjs';
 const uuid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const id=value=>{if(!uuid.test(String(value)))throw new AppError('NOT_FOUND','商品不存在。',404);return value;};
@@ -7,7 +8,7 @@ function revision(req,body){const raw=req.headers['if-match']?.replace('W/','').
 function respond(res,reply,product,status=200){res.setHeader('ETag','"v'+product.revision+'"');reply(res,status,{product});return true;}
 const route=(method,path,handler)=>({method,pattern:new RegExp('^/api/creation/products'+path+'$'),handler});
 export function routes(){return [
- route('GET','',async({ctx,res,reply})=>{requireViewer(ctx);reply(res,200,{items:await service(ctx).list(creationWorkspaceId(ctx))});return true;}),
+ route('GET','',async({ctx,url,res,reply})=>{requireViewer(ctx);const page=pageParams(url),r=await service(ctx).list(creationWorkspaceId(ctx),page);reply(res,200,pageBody('items',r.items,r.total,page));return true;}),
  route('POST','',async({ctx,body,res,reply})=>{requireOperator(ctx);return respond(res,reply,await service(ctx).create(creationWorkspaceId(ctx),body),201);}),
  route('POST','/chat',async({ctx,body,res,reply})=>{requireOperator(ctx);reply(res,201,await service(ctx).chat(creationWorkspaceId(ctx),null,body));return true;}),
  route('GET','/([^/]+)',async({ctx,match,res,reply})=>{requireViewer(ctx);return respond(res,reply,await service(ctx).get(creationWorkspaceId(ctx),id(match[1])));}),

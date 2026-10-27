@@ -14,6 +14,7 @@ import '../styles/creation-canvas-v3.css';
 import '../styles/creation-task-canvas.css';
 import '../styles/creation-video-node.css';
 import VoiceRolesPanel from './VoiceRoles.jsx';
+import { referencedAssetIds, chunk } from '../lib/paging.js';
 import { SaveQueue, diffOps, applyOps, reuseUnchanged, mergeStatus, needsPolling, loadView, saveView } from '../lib/creation-sync.js';
 
 export async function creationRequest(backend, path, body, method, options = {}) {
@@ -98,7 +99,7 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
  const [detail, setDetail] = useState(null), [draft, setDraft] = useState(null), [saveState, setSaveState] = useState({ state: 'saved', error: '' });
  const [nodes, setNodes] = useState([]), [edges, setEdges] = useState([]), [selected, setSelected] = useState([]);
  const [error, setError] = useState(''), [busy, setBusy] = useState(false), [loaded, setLoaded] = useState(false);
- const [assets, setAssets] = useState([]), [assetsLoaded, setAssetsLoaded] = useState(false), [models, setModels] = useState([]), [templates, setTemplates] = useState([]), [hub, setHub] = useState({ channels: [], defaults: {} });
+ const [assetMap, setAssetMap] = useState({}), [checkedIds, setCheckedIds] = useState({}), [models, setModels] = useState([]), [hub, setHub] = useState({ channels: [], defaults: {} });
  const [preview, setPreview] = useState(null), [planning, setPlanning] = useState(false), [instructions, setInstructions] = useState('');
  const [allowVideo, setAllowVideo] = useState(false), [showPalette, setShowPalette] = useState(false);
  const [queueFilter, setQueueFilter] = useState('all'), [queueOpen, setQueueOpen] = useState(false);
@@ -107,6 +108,13 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
  const [refine, setRefine] = useState(null), [tool, setTool] = useState('pan'), [zoomPct, setZoomPct] = useState(100), [displayRun, setDisplayRunMap] = useState({});
  const draftRef = useRef(null), detailRef = useRef(null), busyRef = useRef(false), flow = useRef(null), queueRef = useRef(null), epoch = useRef(0), live = useRef({}), undoRef = useRef([]), redoRef = useRef([]), canvasBox = useRef(null), gestureRef = useRef(false), pointerDownRef = useRef(false), renderedRef = useRef(''); const [layoutTick, bumpLayoutTick] = useState(0);
  const selectedId = selected[0] || null;
+ // 素材不再整表读取：只缓存画布引用到的素材（按编号批量查询）与选择器里读到 / 刚上传的素材；名称显示与「引用的素材已删除」检测都基于它。
+ const owner = backend?.session?.user?.id || backend?.session?.user?.email || 'local';
+ const assets = useMemo(() => Object.values(assetMap), [assetMap]);
+ const rememberAssets = useCallback(items => setAssetMap(old => { let next = old; for (const a of items || []) { if (!a?.id || (old[a.id]?.revision === a.revision && old[a.id]?.name === a.name)) continue; if (next === old) next = { ...old }; next[a.id] = a; } return next; }), []);
+ const referenced = useMemo(() => referencedAssetIds(draft), [draft]);
+ const referencedKey = referenced.join(',');
+ const assetsLoaded = referenced.every(id => checkedIds[id] || assetMap[id]);
  const currentWorkflow = draft?.workflows.find(w => w.id === workflowId) || draft?.workflows[0];
  const viewKeyRef = useRef('all'); viewKeyRef.current = currentWorkflow?.id || 'all';
  const scope = useMemo(() => draft && currentWorkflow ? workflowScope(draft, currentWorkflow.id) : { owned: new Set(), visible: new Set() }, [draft, currentWorkflow?.id]);
@@ -157,7 +165,7 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
  // 画布节点与视频工作台分镜卡片共用的编辑接口：读写同一份项目草稿与 change()，两处即时一致。
  function buildEditor() {
   const shots = computeShotMap(draft, runs);
-  return { tasks: draft.tasks, edges: draft.edges, assets, assetsLoaded, models, channels: hub.channels, defaults: hub.defaults, templates, runs, busy, displayRuns: displayRun, shots, shotOf: id => shots[id] || null, captureTail: captureTail, voiceRoles: draft.voiceRoles || [], voiceConfigured, dubStates: detail?.dubStates || {}, dubState: id => detail?.dubStates?.[id] || null, synthesizeDialogue, remixDub, speedUpRoles, openRoles: () => setRolesOpen(true), storyboard: () => draftRef.current?.storyboard || null, patchStoryboard, setProjectSetting, attachMaterial, detachMaterial, uploadAsset, setDisplayRun, flush, edit: editNode, run: runTasks, duplicate: duplicateTask, remove: deleteTask, removeEdge, removeEdges, latest: id => draftRef.current?.tasks.find(t => t.id === id), request: path => creationRequest(backend, path), uploadMedia: (e, id, file) => addFile(e, 'creative', id, file), openRefine: (taskId, runId) => setRefine({ mode: 'create', taskId, runId }), redrawMask: taskId => setRefine({ mode: 'redraw', taskId }), upload: (e, id) => addFile(e, 'creative', id), openProduct: draft.productId && onOpenProduct ? () => onOpenProduct(draft.productId) : null };
+  return { tasks: draft.tasks, edges: draft.edges, assets, assetsLoaded, owner, rememberAssets, models, channels: hub.channels, defaults: hub.defaults, runs, busy, displayRuns: displayRun, shots, shotOf: id => shots[id] || null, captureTail: captureTail, voiceRoles: draft.voiceRoles || [], voiceConfigured, dubStates: detail?.dubStates || {}, dubState: id => detail?.dubStates?.[id] || null, synthesizeDialogue, remixDub, speedUpRoles, openRoles: () => setRolesOpen(true), storyboard: () => draftRef.current?.storyboard || null, patchStoryboard, setProjectSetting, attachMaterial, detachMaterial, uploadAsset, setDisplayRun, flush, edit: editNode, run: runTasks, duplicate: duplicateTask, remove: deleteTask, removeEdge, removeEdges, latest: id => draftRef.current?.tasks.find(t => t.id === id), request: path => creationRequest(backend, path), uploadMedia: (e, id, file) => addFile(e, 'creative', id, file), openRefine: (taskId, runId) => setRefine({ mode: 'create', taskId, runId }), redrawMask: taskId => setRefine({ mode: 'redraw', taskId }), upload: (e, id) => addFile(e, 'creative', id), openProduct: draft.productId && onOpenProduct ? () => onOpenProduct(draft.productId) : null };
  }
  const voiceConfigured = hub.channels.some(c => c.adapter === 'volcengine-tts' && c.enabled);
  // 台词配音：先保存画布草稿，再按行合成（少量语音字符费用）；结果写在服务端节点上。
@@ -192,12 +200,24 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
   });
  }
  useEffect(() => {
-  Promise.allSettled([creationRequest(backend, '/api/creation/assets'), creationRequest(backend, '/api/model-hub'), creationRequest(backend, '/api/creation/templates')]).then(results => {
-   if (results[0].status === 'fulfilled') { setAssets(results[0].value.items || []); setAssetsLoaded(true); }
-   if (results[1].status === 'fulfilled') { setModels(results[1].value.models || []); setHub({ channels: results[1].value.channels || [], defaults: results[1].value.defaults || {} }); }
-   if (results[2].status === 'fulfilled') setTemplates(results[2].value.templates || results[2].value.items || []);
-  });
+  creationRequest(backend, '/api/model-hub').then(value => { setModels(value.models || []); setHub({ channels: value.channels || [], defaults: value.defaults || {} }); }).catch(() => {});
  }, [backend?.csrf]);
+ // 引用到的素材（来源图 / 尾帧）按编号批量查询；查不到的编号标记为已检查，即视为已删除或在回收站；请求失败时不标记，避免误报。
+ useEffect(() => {
+  const missing = referencedKey ? referencedKey.split(',').filter(id => !assetMap[id] && !checkedIds[id]) : [];
+  if (!missing.length) return undefined;
+  let cancelled = false;
+  (async () => {
+   try {
+    const found = [];
+    for (const part of chunk(missing)) found.push(...((await creationRequest(backend, '/api/creation/assets?ids=' + part.join(','))).items || []));
+    if (cancelled) return;
+    rememberAssets(found);
+    setCheckedIds(old => ({ ...old, ...Object.fromEntries(missing.map(id => [id, true])) }));
+   } catch { /* 暂时失败：保持未检查，不显示「已删除」 */ }
+  })();
+  return () => { cancelled = true; };
+ }, [referencedKey, backend?.csrf]);
  // 轻量状态轮询：只在有运行中的生成 / 批量 / 配音 / 成片时每 3 秒查询一次，结束即停；他处编辑（修订号变化）时再取一次详情并重新叠加本地改动。
  const polling = needsPolling(detail);
  useEffect(() => {
@@ -273,7 +293,7 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
    return nextNodes.map(node => ({ ...existing.get(node.id), ...node }));
   });
   setEdges(nextEdges);
- }, [draft, runs, writable, lastRun, successRuns, displayRun, setDisplayRun, layoutTick, scope, assets, models, hub, templates, busy]);
+ }, [draft, runs, writable, lastRun, successRuns, displayRun, setDisplayRun, layoutTick, scope, assets, models, hub, busy]);
 
  // 打开项目或切换任务时，按当前任务的节点适应视图，避免沿用其它任务的视角把节点裁掉。
  const fittedFor = useRef(null), programmaticMove = useRef(false);
@@ -385,7 +405,7 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
  // 上传一个素材到项目（创作素材），不绑定到任何节点；失败时抛出，由调用方显示。
  async function uploadAsset(file) {
   const asset = await uploadBlob(file, file.name, 'creative', projectId);
-  setAssets(old => [asset, ...old]);
+  rememberAssets([asset]);
   return asset;
  }
  function undo() { if (!writable || !undoRef.current.length) return; redoRef.current.push(snapshot()); applySnapshot(undoRef.current.pop()); }
@@ -567,7 +587,7 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
  }
  async function addFile(event, role, nodeId, picked) {
   const file = picked || event.target.files?.[0]; if (event?.target) event.target.value = ''; if (!file) return;
-  await work(async () => { const asset = await uploadBlob(file, file.name, role, projectId); setAssets(old => [asset, ...old]); editNode(nodeId, { sourceAssetId: asset.id, sourceRunId: null }); });
+  await work(async () => { const asset = await uploadBlob(file, file.name, role, projectId); rememberAssets([asset]); editNode(nodeId, { sourceAssetId: asset.id, sourceRunId: null }); });
  }
  function removeEdge(edgeId) { removeEdges([edgeId]); }
  function removeEdges(edgeIds) {
@@ -656,7 +676,7 @@ export default function CreationProjectCanvas({ backend, notify, projectId, view
    <span className="v3-grow" />
    <span className="v3-viewtabs-note">视频工作台：脚本 → 分镜 → 逐镜生成 → 拼接成片</span>
   </nav>
-  {rolesOpen && <VoiceRolesPanel roles={draft.voiceRoles || []} configured={voiceConfigured} writable={writable} assets={assets} request={(path, body) => creationRequest(backend, path, body)} onSave={saveRoles} onClose={() => setRolesOpen(false)} />}
+  {rolesOpen && <VoiceRolesPanel roles={draft.voiceRoles || []} configured={voiceConfigured} writable={writable} owner={owner} onAssets={rememberAssets} request={(path, body) => creationRequest(backend, path, body)} onSave={saveRoles} onClose={() => setRolesOpen(false)} />}
   {error && <div className="v3-alert" role="alert">{error}<button aria-label="关闭" onClick={() => setError('')}>×</button></div>}
   {view === 'video' ? <CreationVideoStudio backend={backend} notify={notify} projectId={projectId} detail={detail} draft={draft} editor={buildEditor()} flush={flush} accept={accept} busy={busy} writable={writable} creationRequest={creationRequest} fileUrl={fileUrl} openPreview={data => setPreview(data)} />
    : <>

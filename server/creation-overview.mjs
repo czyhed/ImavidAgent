@@ -24,4 +24,6 @@ export class CreationOverview {
       runs:recentRuns.rows.map(r=>({id:r.id,projectId:r.project_id,projectName:r.project_name,taskId:r.task_id,taskTitle:r.input?.task?.title||null,status:r.status,usage:r.usage,costMicros:knownCost(r.usage),currency:r.usage?.currency||null,createdAt:r.created_at}))};
   }
 }
-function knownCost(usage){return Number.isFinite(usage?.costMicros)&&usage.costMicros>=0?usage.costMicros:null;}
+// 查看者角色不返回用量与费用（概览与用量明细共用）。
+export const redactUsageRows=rows=>rows.map(({usage,costMicros,currency,...r})=>r);
+export function knownCost(usage){return Number.isFinite(usage?.costMicros)&&usage.costMicros>=0?usage.costMicros:null;}

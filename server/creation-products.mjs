@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { AppError } from './errors.mjs';
+import { nameHas } from './creation-store.mjs';
 
 const UUID=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const forbidden=new Set(['__proto__','constructor','prototype']);
@@ -17,11 +18,12 @@ const productBody=()=>({name:'未命名商品',facts:{},manualFields:[],messages
 export class CreationProducts {
  constructor(store,{hub,media}) {this.store=store;this.hub=hub;this.media=media;}
  // 列表摘要：名称、封面（第一张创作图）、资料条数；完整正文由 GET /products/:id 提供。
- async list(workspace) {
-  const rows=await this.store.listProjected(workspace,'product',`body->>'name' AS name,
+ // page：{limit,offset,q}；limit 缺省返回全部。返回 {items,total}。
+ async list(workspace,page={}) {
+  const {rows,total}=await this.store.page(workspace,{kinds:['product'],limit:page.limit,offset:page.offset,where:page.q?add=>[nameHas("body->>'name'",add,page.q)]:null,projection:`body->>'name' AS name,
    CASE WHEN jsonb_typeof(body->'creativeAssetIds')='array' AND jsonb_array_length(body->'creativeAssetIds')>0 THEN jsonb_build_array(body->'creativeAssetIds'->0) ELSE '[]'::jsonb END AS creative_asset_ids,
-   CASE WHEN jsonb_typeof(body->'facts')='object' THEN (SELECT count(*)::int FROM jsonb_object_keys(body->'facts')) ELSE 0 END AS fact_count`);
-  return rows.map(r=>({id:r.id,name:r.name,revision:r.revision,creativeAssetIds:r.creative_asset_ids,factCount:r.fact_count,trashedAt:r.trashed_at,createdAt:r.created_at,updatedAt:r.updated_at}));
+   CASE WHEN jsonb_typeof(body->'facts')='object' THEN (SELECT count(*)::int FROM jsonb_object_keys(body->'facts')) ELSE 0 END AS fact_count`});
+  return {total,items:rows.map(r=>({id:r.id,name:r.name,revision:r.revision,creativeAssetIds:r.creative_asset_ids,factCount:r.fact_count,trashedAt:r.trashed_at,createdAt:r.created_at,updatedAt:r.updated_at}))};
  }
  async get(workspace,id) {
   const p=await this.store.get(workspace,id);

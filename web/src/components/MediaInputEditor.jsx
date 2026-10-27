@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { MEDIA_RULES, validateMediaFile } from '../lib/video-node.js';
+import { AssetFeed } from './AssetPicker.jsx';
 
 const fileUrl = id => `/api/creation/assets/${id}/file`;
 
 // 音频输入 / 视频输入节点：从素材库选择或上传，音频可试听，视频可预览。
-export default function MediaInputEditor({ task, assets, locked, change, upload }) {
+export default function MediaInputEditor({ task, editor, locked, change, upload }) {
  const rule = MEDIA_RULES[task.kind], prefix = task.kind === 'audio' ? 'audio/' : 'video/';
  const [picker, setPicker] = useState(false), [problem, setProblem] = useState('');
- const library = assets.filter(a => ['creative', 'result'].includes(a.role) && a.mime?.startsWith(prefix) && !a.trashedAt && !a.deletionPending);
- const current = assets.find(a => a.id === task.sourceAssetId);
+
+ const current = editor.assets.find(a => a.id === task.sourceAssetId);
  const choose = event => {
   const file = event.target.files?.[0];
   if (!file) return;
@@ -33,7 +34,9 @@ export default function MediaInputEditor({ task, assets, locked, change, upload 
   <small className="vn-note">{rule.hint}</small>
   {problem && <p className="vn-problem" role="alert">{problem}</p>}
   {picker && <div className="canvas-asset-picker vn-library">
-   {library.length ? <ul>{library.map(a => <li key={a.id}><button type="button" disabled={locked} aria-label={`选择${rule.label} ${a.name}`} onClick={() => { change({ sourceAssetId: a.id, sourceRunId: null }); setPicker(false); }}><span aria-hidden="true">{task.kind === 'audio' ? '♪' : '▶'}</span><span>{a.name}</span></button></li>)}</ul> : <p className="v3-note">素材库里还没有{rule.label}素材，可以直接上传。</p>}
+   <AssetFeed request={editor.request} owner={editor.owner} params={{ role: 'creative,result', type: prefix.slice(0, -1) }} onLoaded={editor.rememberAssets} searchLabel={`搜索${rule.label}素材`} empty={<p className="v3-note">素材库里还没有{rule.label}素材，可以直接上传。</p>}>
+    {items => <ul>{items.map(a => <li key={a.id}><button type="button" disabled={locked} aria-label={`选择${rule.label} ${a.name}`} onClick={() => { editor.rememberAssets([a]); change({ sourceAssetId: a.id, sourceRunId: null }); setPicker(false); }}><span aria-hidden="true">{task.kind === 'audio' ? '♪' : '▶'}</span><span>{a.name}</span></button></li>)}</ul>}
+   </AssetFeed>
   </div>}
  </>;
 }
