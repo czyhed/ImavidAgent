@@ -15,7 +15,13 @@ nginx 1.30.5（宝塔，vhost 目录 `/www/server/panel/vhost/nginx/`），**未
 （CN `Shangjing Test Middleware CA`，pathlen 0），既有证书 SAN 覆盖
 `203.0.113.11`、`203.0.113.10`、`127.0.0.1`、`localhost`。
 
-## 当前发布：列表分页（2026-10-27）
+## 当前发布：取消待核实（2026-10-28）
+
+按用户要求取消「待核实 / unknown」（[ADR-0010](../adr/0010-unconfirmed-submit-fails-fast-and-retries.md)）：无上游编号的提交直接 `failed`（`SUBMIT_UNCONFIRMED`）可一键重试；有上游编号时查询出错继续轮询，30 分钟无成功查询才 `POLL_FAILED`；取消不再停留在「取消中」。视频提交超时 300 秒；提交 / 查询失败记 `video-submit-error` / `image-submit-error` / `poll-error`（不含请求体、提示词、密钥）。无数据库迁移。
+
+运行提交 `4c728a4a80463f1f855c07ac091005250405a36c`；备份 `/opt/shangjing-app/backups/pre-no-verify-20261028T120921Z`（`database.dump` 324,420 字节）；回退标签 `shangjing/app:rollback-no-verify-20261028` → `94d0fdc`。上线后首个周期即规范化旧数据：5 条 `unknown`（均无上游编号）→ `failed / SUBMIT_UNCONFIRMED`，3 条长期 `cancelling` → `cancelled`；当前无运行中、待核实或取消中的记录。本地 `npm test` 396/396、`test:creation` 159/159、浏览器全部套件通过；线上容器 healthy、首页 200。
+
+## 上一发布：列表分页（2026-10-27）
 
 项目、商品、素材、模板、回收站列表与工作台「实际用量与成本」服务端分页（`limit` / `offset` / `q`，返回 `total` / `nextOffset`）；新增 `GET /api/creation/usage`；素材选择器改为搜索 + 加载更多，画布按引用编号批量查素材（`?ids=`）。迁移 `0020-creation-pagination.sql` 仅新增回收站部分索引 `sj_creation_records_trash`（幂等，不改数据），启动日志确认已应用。
 
