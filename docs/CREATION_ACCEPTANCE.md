@@ -14,7 +14,7 @@
 
 最终窄范围复验还覆盖当前任务 ZIP 隔离、商品同步保留已开始节点快照、三图一列竖排且不调用模型。发现并修复下游节点预览触发 React #185：内容刷新不再回写选择状态，由画布统一维护选择及测量。带 / 不带适应视图的源生成 → 手选来源版本 → 下游运行均成功；连续选择、拖拽保存、任务切换与历史行选择复验通过。完整画布浏览器回归亦通过。
 
-本机独立证据目录：`C:/Users/53409/AppData/Local/Temp/ui-independent-qa-1c0467618add4abbb3b9c4c7d3373702/`，`report.md` 为首轮，`retest-report.md` 为修复复验，`final-narrow-report.md` 为最终追加复验；截图与运行原文保留在该目录，没有复制进仓库。以下旧版验收作为历史证据保留。
+本机独立证据目录：`系统临时目录 %TEMP%/ui-independent-qa-1c0467618add4abbb3b9c4c7d3373702/`，`report.md` 为首轮，`retest-report.md` 为修复复验，`final-narrow-report.md` 为最终追加复验；截图与运行原文保留在该目录，没有复制进仓库。以下旧版验收作为历史证据保留。
 
 独立 gpt-6.1-sol worktree 实际使用 Edge、生产构建、真实临时 PostgreSQL、真实 ModelHub / MinIO SDK、本地 S3 / 供应商 HTTP fixture，不连接共享业务或付费模型。结论：20 项通过、4 项部分受限，无尚未修复的已发现交互故障。
 
