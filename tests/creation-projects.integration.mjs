@@ -124,20 +124,59 @@ test('AI planning saves a preview and usage, applies only on confirmation and ne
   assert.equal(b.requests.filter(r=>r.url==='/generate').length,0);
  }finally{await b.stop();}
 });
-test('unknown requests recover the original request after restart and cancel without resubmitting',async()=>{
+test('an unrecognised upstream status with an upstream id keeps running, keeps polling the original request, fails after 30 minutes and cancels without resubmitting',async()=>{
  const {generationBoundary}=await import('./creation-projects-fixture.mjs');const b=await generationBoundary(store,{status:'unknown'});
  try {
   const svc=new CreationProjects(store,b);let {project}=await svc.create('canvas-unknown',{});
   ({project}=await svc.update('canvas-unknown',project.id,{revision:1,tasks:[{...project.tasks[0],prompt:'雨夜街道'}]}));
   const p=await svc.preview('canvas-unknown',project.id,{taskIds:[project.tasks[0].id]});
   await svc.start('canvas-unknown',project.id,{...p.selection,revision:p.revision,previewToken:p.previewToken,requestKey:crypto.randomUUID()});await svc.tick();
-  const unknown=await svc.detail('canvas-unknown',project.id);assert.equal(unknown.runs[0].status,'unknown');
-  const restarted=new CreationProjects(store,b);await restarted.recover('canvas-unknown',project.id,{runIds:[unknown.runs[0].id]});
+  const running=await svc.detail('canvas-unknown',project.id);assert.equal(running.runs[0].status,'running');assert.equal(running.runs[0].upstreamId,'upstream-fixed');assert.equal(running.runs[0].error,null);
+  assert.equal(running.runs[0].output?._pollFailSince,undefined,'internal poll bookkeeping is not exposed');
+  const restarted=new CreationProjects(store,b);await restarted.recover('canvas-unknown',project.id,{runIds:[running.runs[0].id]});
+  assert.equal((await svc.detail('canvas-unknown',project.id)).runs[0].status,'running');
   assert.equal(b.requests.filter(r=>r.url==='/generate').length,1);
   assert.equal(b.requests.filter(r=>r.url==='/generate/upstream-fixed').length,1);
   assert.equal(b.requests.find(r=>r.url==='/generate').body.requestKey,b.requests.find(r=>r.url==='/generate/upstream-fixed').body.requestKey);
-  const cancelled=await restarted.cancel('canvas-unknown',project.id,{runIds:[unknown.runs[0].id]});
-  assert.equal(cancelled?.runs?.[0]?.status,'cancelled');
+  // 持续无法确认超过 30 分钟：POLL_FAILED，且不再算进行中。
+  await db.pool.query(`UPDATE sj_creation_runs SET output=jsonb_set(COALESCE(output,'{}'::jsonb),'{_pollFailSince}',to_jsonb($2::text)) WHERE id=$1`,[running.runs[0].id,new Date(Date.now()-31*60*1000).toISOString()]);
+  await restarted.drive(running.runs[0].id);
+  const timedOut=(await svc.detail('canvas-unknown',project.id)).runs[0];assert.equal(timedOut.status,'failed');assert.equal(timedOut.error.code,'POLL_FAILED');assert.equal(timedOut.upstreamId,'upstream-fixed');
+  assert.equal(b.requests.filter(r=>r.url==='/generate').length,1,'no resubmission');
+ }finally{await b.stop();}
+});
+test('cancelling a run that has an upstream id calls the cancel API once and never stays cancelling',async()=>{
+ const {generationBoundary}=await import('./creation-projects-fixture.mjs');const b=await generationBoundary(store,{status:'running'});
+ try {
+  const svc=new CreationProjects(store,b);let {project}=await svc.create('canvas-cancel-upstream',{});
+  ({project}=await svc.update('canvas-cancel-upstream',project.id,{revision:1,tasks:[{...project.tasks[0],prompt:'取消测试'}]}));
+  const p=await svc.preview('canvas-cancel-upstream',project.id,{taskIds:[project.tasks[0].id]});
+  await svc.start('canvas-cancel-upstream',project.id,{...p.selection,revision:p.revision,previewToken:p.previewToken,requestKey:crypto.randomUUID()});await svc.tick();
+  const running=(await svc.detail('canvas-cancel-upstream',project.id)).runs[0];assert.equal(running.status,'running');
+  const cancelled=await svc.cancel('canvas-cancel-upstream',project.id,{runIds:[running.id]});
+  assert.equal(cancelled.runs[0].status,'cancelled');assert.equal(b.requests.filter(r=>r.url==='/generate/upstream-fixed/cancel').length,1);
+  // 取消接口报错：本地同样标记已取消。
+  const failing=new CreationProjects(store,{...b,hub:{...b.hub,cancelGeneration:async()=>{throw Object.assign(new Error('boom'),{upstreamStatus:500});}}});
+  ({project}=await svc.create('canvas-cancel-error',{}));
+  ({project}=await svc.update('canvas-cancel-error',project.id,{revision:1,tasks:[{...project.tasks[0],prompt:'取消报错'}]}));
+  const q=await svc.preview('canvas-cancel-error',project.id,{taskIds:[project.tasks[0].id]});
+  await svc.start('canvas-cancel-error',project.id,{...q.selection,revision:q.revision,previewToken:q.previewToken,requestKey:crypto.randomUUID()});await svc.tick();
+  const second=(await svc.detail('canvas-cancel-error',project.id)).runs[0];assert.equal(second.status,'running');
+  assert.equal((await failing.cancel('canvas-cancel-error',project.id,{runIds:[second.id]})).runs[0].status,'cancelled');
+ }finally{await b.stop();}
+});
+test('legacy unknown and cancelling rows are normalised by the tick without any provider call for rows lacking an upstream id',async()=>{
+ const {generationBoundary}=await import('./creation-projects-fixture.mjs');const b=await generationBoundary(store,{status:'running'});
+ try {
+  const svc=new CreationProjects(store,b);const workspace='canvas-legacy-rows';let {project}=await svc.create(workspace,{});
+  const insert=async(status,upstreamId)=>{const id=crypto.randomUUID();await db.pool.query('INSERT INTO sj_creation_runs(id,workspace_id,project_id,task_id,request_key,input,status,upstream_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8)',[id,workspace,project.id,project.tasks[0].id,crypto.randomUUID(),{kind:'image',task:project.tasks[0]},status,upstreamId]);return id;};
+  const unknownNoId=await insert('unknown',null),unknownWithId=await insert('unknown','upstream-fixed'),cancellingNoId=await insert('cancelling',null);
+  await svc.normalizeLegacy();
+  const rows=Object.fromEntries((await svc.detail(workspace,project.id)).runs.map(r=>[r.id,r]));
+  assert.equal(rows[unknownNoId].status,'failed');assert.equal(rows[unknownNoId].error.code,'SUBMIT_UNCONFIRMED');
+  assert.equal(rows[unknownWithId].status,'running');assert.equal(rows[unknownWithId].error,null);
+  assert.equal(rows[cancellingNoId].status,'cancelled');
+  assert.equal(b.requests.length,0,'normalisation never calls the provider');
  }finally{await b.stop();}
 });
 test('downstream pauses after upstream success, then uses a chosen immutable run and successful ancestors are reused',async()=>{
@@ -209,7 +248,7 @@ test('a successful upstream result survives media outage and recovers collection
   const svc=new CreationProjects(store,b);let {project}=await svc.create('canvas-storage-recovery',{});
   ({project}=await svc.update('canvas-storage-recovery',project.id,{revision:1,tasks:[{...project.tasks[0],prompt:'恢复存储背景'}]}));
   const p=await svc.preview('canvas-storage-recovery',project.id,{taskIds:[project.tasks[0].id]});await svc.start('canvas-storage-recovery',project.id,{...p.selection,revision:p.revision,previewToken:p.previewToken,requestKey:crypto.randomUUID()});
-  await svc.tick();const incomplete=await svc.detail('canvas-storage-recovery',project.id);assert.equal(incomplete.runs[0].status,'unknown');
+  await svc.tick();const incomplete=await svc.detail('canvas-storage-recovery',project.id);assert.equal(incomplete.runs[0].status,'running');assert.equal(incomplete.runs[0].error,null);
   await new CreationProjects(store,b).recover('canvas-storage-recovery',project.id,{runIds:[incomplete.runs[0].id]});
   const done=await svc.detail('canvas-storage-recovery',project.id);assert.equal(done.runs[0].status,'succeeded');
   assert.equal(b.requests.filter(r=>r.url==='/generate').length,1);

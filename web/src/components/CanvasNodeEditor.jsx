@@ -10,7 +10,7 @@ import { normalizeVideoParameters } from '../../../shared/creation-video-paramet
 const fileUrl = id => `/api/creation/assets/${id}/file`;
 const EXECUTABLE = new Set(['generate', 'edit', 'composite', 'video']);
 const ACTIVE = new Set(['queued', 'submitting', 'running', 'unknown', 'cancelling']);
-const STATUS = { queued: '排队中', submitting: '提交中', running: '运行中', unknown: '待核实', cancelling: '取消中', cancelled: '已取消', failed: '失败', succeeded: '成功' };
+const STATUS = { queued: '排队中', submitting: '提交中', running: '运行中', unknown: '运行中', cancelling: '取消中', cancelled: '已取消', failed: '失败', succeeded: '成功' };
 
 export default function CanvasNodeEditor({ data }) {
  const { task, run, asset, writable, versions, displayRun, onDisplayRun, editor } = data;

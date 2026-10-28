@@ -172,7 +172,7 @@ test('reuse ignores layout and unrelated edges, retains history pins, and invali
  assert.equal(app.calls.filter(c=>c.path.includes('/images/')).length,before);
 });
 
-test('lost submission response stays unknown across restart, explicit start and recovery without another POST',async()=>{
+test('lost submission response fails as SUBMIT_UNCONFIRMED without blocking, logs a sanitized line, and retry creates a new run',async()=>{
  const workspace='runtime-lost-response';const project=await editable(workspace,{kind:'video',params:{duration:5}});
  const hub=new ModelHub(app.store,app.hub.channels,{transport:async(url,options)=>{
   const response=await app.hub.transport(url,options);
@@ -183,14 +183,83 @@ test('lost submission response stays unknown across restart, explicit start and 
  const p=await service.preview(workspace,project.id,{taskIds:[project.tasks[0].id]});
  const body={...p.selection,revision:p.revision,previewToken:p.previewToken,requestKey:randomUUID()};
  const started=await service.start(workspace,project.id,body),before=submissions().length;
- await service.drive(started.runs[0].id);
- let detail=await service.detail(workspace,project.id);assert.equal(detail.runs[0].status,'unknown');assert.equal(detail.runs[0].upstreamId,null);
+ const logs=[],originalWarn=console.warn;console.warn=(...args)=>logs.push(args.join(' '));
+ try{await service.drive(started.runs[0].id);}finally{console.warn=originalWarn;}
+ let detail=await service.detail(workspace,project.id);assert.equal(detail.runs[0].status,'failed');assert.equal(detail.runs[0].upstreamId,null);
+ assert.equal(detail.runs[0].error.code,'SUBMIT_UNCONFIRMED');assert.match(detail.runs[0].error.message,/提交未确认/);
+ const line=logs.find(l=>l.startsWith('video-submit-error'));assert.ok(line,'a video-submit-error line is logged');
+ assert.match(line,new RegExp(`run=${started.runs[0].id}`));assert.match(line,/code=PROVIDER_TRANSPORT_UNKNOWN/);
+ assert.ok(!/Bearer|apiKey|api-key|data:|Studio background/i.test(logs.join('\n')),'logs contain no keys, data URLs or prompts');
  const restarted=new CreationProjects(app.store,{hub:app.hub,media:app.media});
- await restarted.recover(workspace,project.id);await restarted.tick();await restarted.start(workspace,project.id,body);
- const recover=await restarted.preview(workspace,project.id,{taskIds:[project.tasks[0].id]});assert.equal(recover.scope[0].action,'recover');
- await assert.rejects(restarted.update(workspace,project.id,{revision:detail.project.revision,tasks:[{...detail.project.tasks[0],params:{duration:4}}]}),{code:'TASK_RUNNING'});
- detail=await restarted.detail(workspace,project.id);assert.equal(detail.runs.length,1);assert.equal(detail.runs[0].status,'unknown');assert.deepEqual(detail.runs[0].input,started.runs[0].input);
- assert.equal(submissions().length,before+1);
+ await restarted.tick();
+ // 失败不再占用节点：可直接编辑，预览要求一次明确的重试确认，确认后创建新请求。
+ const afterFail=await restarted.preview(workspace,project.id,{taskIds:[project.tasks[0].id]});assert.equal(afterFail.scope[0].action,'retry-confirm');
+ const retry=await restarted.preview(workspace,project.id,{taskIds:[project.tasks[0].id],retryTaskIds:[project.tasks[0].id]});assert.equal(retry.scope[0].action,'generate');
+ const second=await restarted.start(workspace,project.id,{...retry.selection,revision:retry.revision,previewToken:retry.previewToken,requestKey:randomUUID()});
+ assert.equal(second.runs.length,2);assert.notEqual(second.runs[1].id,second.runs[0].id);
+ await restarted.drive(second.runs[1].id);
+ detail=await restarted.detail(workspace,project.id);assert.equal(detail.runs[0].status,'failed');assert.equal(detail.runs[1].status,'running');assert.ok(detail.runs[1].upstreamId);
+ assert.equal(submissions().length,before+2,'exactly one explicit retry POST');
+});
+test('submit timeout (AbortError) is failed SUBMIT_UNCONFIRMED, not active, and carries a cause name in the log',async()=>{
+ const workspace='runtime-submit-timeout';const project=await editable(workspace,{kind:'video',params:{duration:5}});
+ const hub=new ModelHub(app.store,app.hub.channels,{transport:async(url,options)=>{
+  if(options.method==='POST'&&url.includes('video_generation'))throw Object.assign(new Error('The operation was aborted due to timeout'),{name:'TimeoutError'});
+  return app.hub.transport(url,options);
+ }});
+ const service=new CreationProjects(app.store,{hub,media:app.media});
+ const started=await begin(service,workspace,project);
+ const logs=[],originalWarn=console.warn;console.warn=(...args)=>logs.push(args.join(' '));
+ try{await service.drive(started.runs[0].id);}finally{console.warn=originalWarn;}
+ const detail=await service.detail(workspace,project.id);
+ assert.equal(detail.runs[0].status,'failed');assert.equal(detail.runs[0].error.code,'SUBMIT_UNCONFIRMED');
+ assert.match(logs.find(l=>l.startsWith('video-submit-error')),/cause=TimeoutError/);
+ assert.equal((await service.preview(workspace,project.id,{taskIds:[project.tasks[0].id],retryTaskIds:[project.tasks[0].id]})).scope[0].action,'generate');
+});
+test('HTTP 5xx on submit records the upstream status in the log and fails as SUBMIT_UNCONFIRMED',async()=>{
+ const workspace='runtime-submit-5xx';const project=await editable(workspace,{kind:'video',params:{duration:5}});
+ const hub=new ModelHub(app.store,app.hub.channels,{transport:async(url,options)=>{
+  if(options.method==='POST'&&url.includes('video_generation'))return new Response('{"secret":"must-not-be-logged"}',{status:503});
+  return app.hub.transport(url,options);
+ }});
+ const service=new CreationProjects(app.store,{hub,media:app.media});
+ const started=await begin(service,workspace,project);
+ const logs=[],originalWarn=console.warn;console.warn=(...args)=>logs.push(args.join(' '));
+ try{await service.drive(started.runs[0].id);}finally{console.warn=originalWarn;}
+ const detail=await service.detail(workspace,project.id);
+ assert.equal(detail.runs[0].status,'failed');assert.equal(detail.runs[0].error.code,'SUBMIT_UNCONFIRMED');
+ assert.match(logs.find(l=>l.startsWith('video-submit-error')),/upstreamStatus=503/);
+ assert.ok(!logs.join('\n').includes('must-not-be-logged'));
+});
+test('poll errors with an upstream id keep the run running and log poll-error; a stuck run with no upstream id is failed, a stuck cancelling run is cancelled',async()=>{
+ const workspace='runtime-poll-errors';const project=await editable(workspace,{kind:'video',params:{duration:5}});
+ let breakPoll=false;
+ const hub=new ModelHub(app.store,app.hub.channels,{transport:async(url,options)=>{
+  if(breakPoll&&options.method==='GET'&&url.includes('query/video_generation'))throw Object.assign(new Error('socket hang up'),{name:'TypeError'});
+  return app.hub.transport(url,options);
+ }});
+ const service=new CreationProjects(app.store,{hub,media:app.media});
+ const started=await begin(service,workspace,project);
+ await service.drive(started.runs[0].id);
+ let run=(await service.detail(workspace,project.id)).runs[0];assert.equal(run.status,'running');assert.ok(run.upstreamId);
+ breakPoll=true;
+ const logs=[],originalWarn=console.warn;console.warn=(...args)=>logs.push(args.join(' '));
+ try{await service.drive(run.id);}finally{console.warn=originalWarn;}
+ run=(await service.detail(workspace,project.id)).runs[0];assert.equal(run.status,'running');assert.equal(run.error,null);
+ assert.ok(logs.some(l=>l.startsWith('poll-error')&&l.includes(`run=${run.id}`)));
+ // 30 分钟内持续失败后才标记 POLL_FAILED。
+ await app.db.pool.query(`UPDATE sj_creation_runs SET output=jsonb_set(COALESCE(output,'{}'::jsonb),'{_pollFailSince}',to_jsonb($2::text)) WHERE id=$1`,[run.id,new Date(Date.now()-31*60*1000).toISOString()]);
+ console.warn=()=>{};try{await service.drive(run.id);}finally{console.warn=originalWarn;}
+ run=(await service.detail(workspace,project.id)).runs[0];assert.equal(run.status,'failed');assert.equal(run.error.code,'POLL_FAILED');
+ // 无上游编号的 submitting 残留（提交中崩溃）→ 失败，不查询、不重新提交。
+ const before=submissions().length;
+ const stuckId=randomUUID(),cancellingId=randomUUID();
+ for(const [id,status] of [[stuckId,'submitting'],[cancellingId,'cancelling']])await app.db.pool.query('INSERT INTO sj_creation_runs(id,workspace_id,project_id,task_id,request_key,input,status) SELECT $1,workspace_id,project_id,task_id,gen_random_uuid(),input,$3 FROM sj_creation_runs WHERE id=$2',[id,run.id,status]);
+ await service.tick();
+ const rows=Object.fromEntries((await service.detail(workspace,project.id)).runs.map(r=>[r.id,r]));
+ assert.equal(rows[stuckId].status,'failed');assert.equal(rows[stuckId].error.code,'SUBMIT_UNCONFIRMED');
+ assert.equal(rows[cancellingId].status,'cancelled');
+ assert.equal(submissions().length,before,'no resubmission');
 });
 test('queued invalid video parameters and invalid source bytes fail before submission and allow manual correction',async()=>{
  for(const [name,patch,expected] of [

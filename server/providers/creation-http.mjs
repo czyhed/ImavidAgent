@@ -24,14 +24,27 @@ export async function boundedBytes(response, maximum) {
   if (response.body) for await (const chunk of response.body) { size+=chunk.length; if (size>maximum) { throw new AppError('PROVIDER_RESULT_TOO_LARGE','供应商响应超过体积限制。',502); } chunks.push(Buffer.from(chunk)); }
   return Buffer.concat(chunks);
 }
-export async function requestJson(transport, channel, path, {method='GET', body, headers={}} = {}) {
+export const DEFAULT_REQUEST_TIMEOUT_MS = 120000;
+// 视频提交会携带最大 72 MiB 的 base64 素材，上传耗时更长。
+export const VIDEO_SUBMIT_TIMEOUT_MS = 300000;
+export async function requestJson(transport, channel, path, {method='GET', body, headers={}, timeoutMs=DEFAULT_REQUEST_TIMEOUT_MS} = {}) {
   const url = validateUrl(channel.baseUrl.replace(/\/$/,'') + path,{local:true});
   const anthropic = channel.adapter === 'anthropic';
   const auth = anthropic ? {'x-api-key':channel.apiKey,'anthropic-version':'2023-06-01'} : {Authorization:'Bearer '+channel.apiKey};
   let response;
-  try { response=await transport(url.href, {method,headers:{...auth,Accept:'application/json',...(body===undefined || body instanceof FormData ? {} : {'Content-Type':'application/json'}),...headers},body:body===undefined?undefined:body instanceof FormData?body:JSON.stringify(body),redirect:'manual',signal:AbortSignal.timeout(120000),providerLocal:true}); }
-  catch { throw new AppError('PROVIDER_TRANSPORT_UNKNOWN','供应商响应未确认；请恢复原任务，不会自动重新提交。',502); }
-  if (!response.ok) { await response.body?.cancel(); throw new AppError(response.status>=500?'PROVIDER_TRANSPORT_UNKNOWN':'PROVIDER_REJECTED','供应商请求未成功，请检查渠道或原任务状态。',502); }
+  try { response=await transport(url.href, {method,headers:{...auth,Accept:'application/json',...(body===undefined || body instanceof FormData ? {} : {'Content-Type':'application/json'}),...headers},body:body===undefined?undefined:body instanceof FormData?body:JSON.stringify(body),redirect:'manual',signal:AbortSignal.timeout(timeoutMs),providerLocal:true}); }
+  catch(error) {
+    // 只保留错误名称便于排查（AbortError / TimeoutError / TypeError 及其 cause.code），不带消息、地址或请求内容。
+    const failure=new AppError('PROVIDER_TRANSPORT_UNKNOWN','供应商响应未确认（网络超时或连接中断）。',502);
+    failure.causeName=[error?.name,error?.cause?.name,error?.cause?.code].filter(value=>typeof value==='string'&&/^[\w.-]{1,60}$/.test(value)).join('/')||'UnknownError';
+    throw failure;
+  }
+  if (!response.ok) {
+    await response.body?.cancel();
+    const failure=new AppError(response.status>=500?'PROVIDER_TRANSPORT_UNKNOWN':'PROVIDER_REJECTED','供应商请求未成功，请检查渠道或供应商状态。',502);
+    failure.upstreamStatus=response.status;
+    throw failure;
+  }
   try { return JSON.parse((await boundedBytes(response,32*1024*1024)).toString('utf8')); } catch(error) { if(error instanceof AppError) throw error; throw new AppError('PROVIDER_RESPONSE_INVALID','供应商响应无效。',502); }
 }
 export async function discoverModels(transport, channel) {

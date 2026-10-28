@@ -277,6 +277,38 @@ test('失败时依赖它的分镜 held 其余继续；显式重试恢复被 held
  assert.equal(runs.filter(r => r.taskId === shots[0].nodeId).length, 2);
 });
 
+test('提交未确认（超时）的分镜直接 failed，只有依赖其尾帧的分镜 held，其余继续；重试走普通重试路径', async () => {
+ const w = 'vb-submit-unconfirmed';
+ const { project, shots } = await shotsProject(w, [{ title: '甲' }, { title: '乙', mode: 'frames', tail: true }, { title: '丙' }]);
+ const shotIds = shots.map(s => s.id);
+ let timeouts = 1;
+ const hub = Object.create(app.hub);
+ hub.submitGeneration = async (snapshot, client) => {
+  if (timeouts-- > 0) throw Object.assign(new Error('timeout'), { name: 'TimeoutError' });
+  return app.hub.submitGeneration(snapshot, client);
+ };
+ const flaky = new CreationProjects(app.store, { hub, media: app.media, frameExtractor: { extract: async () => ({ bytes: app.png, mime: 'image/png' }) }, mediaPrep: createMediaPrep({ runner: async input => ({ bytes: input.bytes, mime: input.mime }) }) });
+ const preview = await flaky.batchPreview(w, project.id, { shotIds });
+ await flaky.batchStart(w, project.id, { shotIds, previewToken: preview.previewToken, revision: preview.revision, requestKey: randomUUID() });
+ const originalWarn = console.warn; console.warn = () => {};
+ try { for (let index = 0; index < 40 && (await flaky.detail(w, project.id)).project.storyboard.batch.state !== 'done'; index += 1) await flaky.tick(); }
+ finally { console.warn = originalWarn; }
+ let batch = await batchOf(w, project.id);
+ assert.equal(batch.state, 'done');
+ assert.equal(batch.items[shots[0].id].status, 'failed');
+ assert.match(batch.items[shots[0].id].reason, /提交未确认/);
+ assert.equal(batch.items[shots[1].id].status, 'held');
+ assert.equal(batch.items[shots[2].id].status, 'succeeded', '无依赖的分镜不受影响');
+ const failedRun = (await runsOf(w, project.id)).find(r => r.id === batch.items[shots[0].id].runId);
+ assert.equal(failedRun.status, 'failed'); assert.equal(failedRun.error.code, 'SUBMIT_UNCONFIRMED');
+ assert.equal(activeCount(await runsOf(w, project.id)), 0, '没有任何运行占用节点');
+ // 一键重试：该分镜与被 held 的依赖镜头回到 pending，继续生成直至完成。
+ await flaky.batchRetry(w, project.id, { shotId: shots[0].id, requestKey: randomUUID() });
+ for (let index = 0; index < 40 && (await flaky.detail(w, project.id)).project.storyboard.batch.state !== 'done'; index += 1) await flaky.tick();
+ batch = await batchOf(w, project.id);
+ assert.ok(Object.values(batch.items).every(item => item.status === 'succeeded'));
+});
+
 test('余额已知且不足时批次暂停并写中文原因，补足后继续；余额未知不阻止', async () => {
  const w = 'vb-balance';
  const { project, shots } = await shotsProject(w, [{ title: '甲' }, { title: '乙' }, { title: '丙' }]);

@@ -1,6 +1,6 @@
 import { AppError } from '../errors.mjs';
 import { normalizeVideoParameters, VIDEO_RESOLUTIONS, VIDEO_RATIOS, MEDIA_BYTE_LIMITS } from '../../shared/creation-video-parameters.mjs';
-import { requestJson, usageRecord, sourceData, downloadMedia } from './creation-http.mjs';
+import { requestJson, usageRecord, sourceData, downloadMedia, VIDEO_SUBMIT_TIMEOUT_MS } from './creation-http.mjs';
 function videoChannel(channel,model) {
   if(model.adapter!=='minimax-h3'&&model.executorConfig?.video!=='minimax-h3')throw new AppError('MODEL_INCOMPATIBLE','视频模型没有兼容的执行器。',422);
   return {...channel,adapter:'minimax-h3',baseUrl:model.executorConfig?.videoBaseUrl||channel.baseUrl};
@@ -10,7 +10,7 @@ const STATUS_MAP={queued:'queued',running:'running',scheduled:'running',moderati
 async function videoResult(transport,response,upstreamId) {
   const task=response.task||response;
   const id=task.id||task.task_id||upstreamId;
-  if(!id)throw new AppError('PROVIDER_TRANSPORT_UNKNOWN','供应商未返回任务编号，请核实原请求。',502);
+  if(!id)throw new AppError('PROVIDER_TRANSPORT_UNKNOWN','供应商未返回任务编号。',502);
   const status=STATUS_MAP[task.status]||'unknown';
   const result={status,upstreamId:id,usage:usageRecord(task.usage),estimatedRemainingSeconds:Number.isFinite(task.estimated_remaining_seconds)?task.estimated_remaining_seconds:null};
   if(status==='succeeded'){
@@ -97,7 +97,7 @@ export async function submitVideo(transport,channel,snapshot) {
     content.push({type:element,[element]:{url:mediaDataUrl(item)},role:item.role});
   }
   const body={model:model.modelId,content,...Object.fromEntries(Object.entries(params).filter(([k])=>['duration','resolution','ratio','mute_audio','aigc_watermark','use_context_ir','skill_id'].includes(k)))};
-  const response=await requestJson(transport,videoChannel(channel,model),'/minimax/v2/video_generation',{method:'POST',body,headers:{'Idempotency-Key':snapshot.requestKey}});
+  const response=await requestJson(transport,videoChannel(channel,model),'/minimax/v2/video_generation',{method:'POST',body,headers:{'Idempotency-Key':snapshot.requestKey},timeoutMs:VIDEO_SUBMIT_TIMEOUT_MS});
   // The documented create response contains only task_id; this confirms acceptance.
   if(response.task_id&&!response.status&&!response.task)response.status='queued';
   return videoResult(transport,response);

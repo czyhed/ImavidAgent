@@ -52,8 +52,9 @@ H3 接口为 POST /minimax/v2/video_generation、GET /minimax/v2/query/video_gen
 ## 状态、恢复与成本
 
 - 执行前冻结任务 / 参数、商品资料、具体来源版本、模型 / 协议配置与图修订；同请求编号和选择幂等，不同参数返回冲突。AI 安排不执行，用户先预览范围再开始。
-- 后台仅查询原上游任务；unknown 不重新提交、不换模型。明确失败须用户确认新请求；取消保持 cancelling / unknown 直到终态，不能据此宣称已取消计费。
-- 同步图片返回丢失且无上游编号时不能安全重提；转存中断保留原任务待核实，不因本地重启重新生成。供应商支持查询的已知编号才继续原查询。
+- 2026-10-28 起创作运行不再有 unknown / 待核实（[ADR-0010](../adr/0010-unconfirmed-submit-fails-fast-and-retries.md)）。有上游编号的运行后台持续查询原任务，查询出错保持 running，连续失败超 30 分钟标 failed（POLL_FAILED）；不重提、不换模型。
+- 无上游编号的提交（超时、连接中断、5xx、缺任务编号、同步图片响应丢失）直接 failed（SUBMIT_UNCONFIRMED），用户一键重试；供应商若已受理可能多计一次费用，不自动重提。取消无编号立即 cancelled，取消接口出错也本地标记 cancelled，不能据此宣称已取消计费。
+- 转存中断保留已取回结果，状态保持 running 并由后台重试收集，同样受 30 分钟上限约束，不重新生成。视频提交超时 300 秒，其余请求 120 秒；日志仅记 `video-submit-error` / `poll-error` 一行（运行编号、错误码、上游 HTTP 状态、原因名称）。
 - 同任务保留多次生成；上游成功后下游待用户选择具体成功版本，随后再次点击开始。成功前置复用，已有结果 / 输入不受商品或模板更新影响。
 - 仅记实际用量 / 可确认成本，不做内部报价、充值或余额门槛。token、积分、时长仅为用量；只有供应商明确返回有效 costMicros 与 currency 才为已知货币成本，其余 null /「未统计」，不用零代替。保留最小成本和删除审计，不记 Key。
 
@@ -109,7 +110,7 @@ Node.js 24+、npm ci、npm run build 后运行 npm run dev，本机回环 127.0.
 #### 当前可用
 
 - `omyai-openai`（官方 OpenAI 标准，默认渠道）：`https://omyai.vip/v1`，读取 `OMYAI_API_KEY`。模型目录已发现 `gpt-image-2`、`gpt-image-2.5-flare`、`gpt-image-2.5-sunburst`，三者均可执行生成与改图；`gpt-image-2.5-flare` 为默认模型。生成走 `POST /images/generations`，改图走 `POST /images/edits`。
-- `omyai`（MCP 异步，历史渠道）：已设为 `enabled: false`，不再发布模型或接收新任务；历史任务仍保留供应商编号，可用于查询、下载和待核实恢复。
+- `omyai`（MCP 异步，历史渠道）：已设为 `enabled: false`，不再发布模型或接收新任务；历史任务仍保留供应商编号，可用于查询与下载。
 - 系统页可新增 OpenAI 兼容渠道：填写名称、Base URL、API Key，保存前请求 `<Base URL>/models` 测试连接并自动发现图像/视频模型。图像模型通过 `<Base URL>/images/generations` 执行同步单张生图；默认改图协议为官方 multipart `/images/edits`；视频模型只同步目录，执行器尚未接入。
 - 生图页为应用内右侧的三栏工作台：生成记录、提示词/模型/质量/尺寸/分辨率/宽高比、生成结果，保留全局导航和页面头部。选择历史记录会回填参数；结果可下载、复制提示词或基于该图修改。参考图支持已生成版本，以及商品页已上传、服务端登记的商品原图（选择时先调用 preflight 门禁，提交只带 sourceAssetId）；批量多张和画布尚未接入；一次任务生成一张图片。
 - 文生图与改图入口。MCP 渠道改图调用 `edit_image` 并携带真实 `source_job_id`；官方渠道改图由服务端从私有 MinIO 读取源图或商品原图后上传，不接受浏览器 URL 或对象键。源图关系与每一版图片分别保留。

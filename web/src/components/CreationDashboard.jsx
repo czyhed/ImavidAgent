@@ -2,10 +2,10 @@ import {useCallback,useEffect,useRef,useState} from 'react';
 import {Btn,Pager} from './ui.jsx';
 import {usePage} from '../lib/use-paged.js';
 import '../styles/creation-dashboard-v3.css';
-const STATUS={queued:'排队中',submitting:'提交中',running:'生成中',storing:'保存中',succeeded:'已成功',failed:'已失败',unknown:'待核实',cancelled:'已取消',waiting:'待选择输入'};
+const STATUS={queued:'排队中',submitting:'提交中',running:'生成中',storing:'保存中',succeeded:'已成功',failed:'已失败',unknown:'生成中',cancelled:'已取消',waiting:'待选择输入'};
 // 运行中面板只收排队 / 提交 / 生成三态；storing 仍是未完成，但不再显示秒级计时。
 const LIVE=['queued','submitting','running'];
-const PENDING=['unknown','failed'];
+const PENDING=['failed'];
 const TONE={queued:'run',submitting:'run',running:'run',storing:'run',succeeded:'ok',failed:'bad',unknown:'warn',cancelling:'warn',cancelled:'idle'};
 const LIVE_LIMIT=8,PENDING_LIMIT=6;
 export function useOverview(backend,{pollMs=0}={}){
@@ -56,9 +56,9 @@ function cost(r){if(r.costMicros==null)return'未统计';const amount=(r.costMic
 function nameOf(r){return r.projectName||'未命名项目';}
 function stateClass(status){return TONE[status]||'idle';}
 function statusLabel(status){return STATUS[status]||status||'未知';}
-function pendingReason(status){return status==='unknown'?'上游未返回明确结果，只能查询原请求，不能直接重试。':'任务执行失败，可打开项目查看原因后重新发起。';}
+function pendingReason(status){return '任务执行失败，可打开项目查看原因后直接重试。';}
 function Summary({metrics,loading}){
- return <span className="dash-chips" data-dash-summary>{[['running','运行中','run'],['succeeded','成功','ok'],['failed','失败','bad'],['unknown','待核实','warn']].map(([key,label,tone])=><span className="dash-chip" data-tone={tone} key={key}><i className="dash-chip-dot" aria-hidden="true"/><span className="dash-chip-label">{label}</span><strong data-dash-metric={key}>{metrics?.[key]??(loading?'—':'未统计')}</strong></span>)}
+ return <span className="dash-chips" data-dash-summary>{[['running','运行中','run'],['succeeded','成功','ok'],['failed','失败','bad']].map(([key,label,tone])=><span className="dash-chip" data-tone={tone} key={key}><i className="dash-chip-dot" aria-hidden="true"/><span className="dash-chip-label">{label}</span><strong data-dash-metric={key}>{metrics?.[key]??(loading?'—':'未统计')}</strong></span>)}
  </span>;
 }
 function LivePanel({runs,loading,now,onOpenProject,onNav}){
@@ -80,7 +80,7 @@ function PendingPanel({runs,loading,onOpenProject}){
  return <section className="dash-panel" aria-labelledby="dash-pending-title">
   <div className="dash-panel-head"><h2 id="dash-pending-title">待处理</h2><span className={`dash-count ${runs.length?'is-warn':''}`}>{loading&&!shown.length?'读取中':runs.length}</span></div>
   {!shown.length
-   ? <div className="dash-empty"><strong>{loading?'正在读取任务…':'没有待处理任务'}</strong>{!loading&&<p>失败或待核实的任务会集中在这里。</p>}</div>
+   ? <div className="dash-empty"><strong>{loading?'正在读取任务…':'没有待处理任务'}</strong>{!loading&&<p>失败的任务会集中在这里，可打开项目直接重试。</p>}</div>
    : <ul className="dash-list">{shown.map(r=><li key={r.id}><div className="dash-row dash-row-pending">
      <span className={`dash-dot is-${stateClass(r.status)}`} aria-hidden="true"/>
      <div className="dash-row-main"><b>{nameOf(r)}</b><p className="dash-reason">{pendingReason(r.status)}</p><small className="dash-row-meta"><span className={`dash-badge is-${stateClass(r.status)}`}>{statusLabel(r.status)}</span><time>{shortDate(r.createdAt)}</time></small></div>

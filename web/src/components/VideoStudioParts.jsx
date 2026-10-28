@@ -6,7 +6,7 @@ import { MEDIA_BYTE_LIMITS } from '../../../shared/creation-video-parameters.mjs
 import { SLOT_LABEL, succeededRuns, clock } from '../lib/video-studio.js';
 
 const fileUrl = id => `/api/creation/assets/${id}/file`;
-const statusLabels = { queued: '排队中', submitting: '提交中', running: '生成中', unknown: '待核实', cancelling: '取消中', cancelled: '已取消', failed: '失败', succeeded: '成功', idle: '未生成' };
+const statusLabels = { queued: '排队中', submitting: '提交中', running: '生成中', unknown: '生成中', cancelling: '取消中', cancelled: '已取消', failed: '失败', succeeded: '成功', idle: '未生成' };
 const KIND = { image: { label: '图片', prefix: 'image/', accept: 'image/png,image/jpeg,image/webp' }, video: { label: '视频', prefix: 'video/', accept: MEDIA_RULES.footage.accept }, audio: { label: '音频', prefix: 'audio/', accept: MEDIA_RULES.audio.accept } };
 
 // 可折叠分区（手机端各分区折叠）：open 由父级控制，原生 <details> 的展开 / 收起通过 onToggle 回写。

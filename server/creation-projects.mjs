@@ -15,7 +15,22 @@ import { SHOT_PLANNING_SYSTEM, MAX_PLAN_MATERIALS, materialsForModel, sanitizeSh
 const fail=(code,message,status=400)=>{throw new AppError(code,message,status);};
 const clone=value=>JSON.parse(JSON.stringify(value));
 const snapshot=product=>({id:product.id,revision:product.revision,name:product.name,facts:product.facts||{}});
+// 'unknown' 仅为历史数据保留：tick / drive 会立即把它规整为 running 或 failed，界面不再展示。
 const active=new Set(['queued','submitting','running','unknown','cancelling']);
+// 用户决定（2026-10-28）：没有明确上游编号时不再“待核实”，直接按失败处理并允许重试；有编号则持续轮询，超时才失败。
+export const POLL_FAIL_LIMIT_MS=30*60*1000;
+const SUBMIT_UNCONFIRMED_ERROR={code:'SUBMIT_UNCONFIRMED',message:'提交未确认（网络超时或供应商出错），可直接重试；若供应商实际已受理，可能多计一次费用。'};
+const POLL_FAILED_ERROR={code:'POLL_FAILED',message:'多次查询原任务失败，可直接重试。'};
+// 诊断日志只含运行编号、错误码、上游 HTTP 状态与原因名称；不含响应体、素材、提示词或密钥。
+const logDiagnostic=(tag,id,error)=>{
+ const code=typeof error?.code==='string'?error.code.replace(/[^\w.-]/g,'').slice(0,60):'UNKNOWN';
+ const parts=[tag,`run=${id}`,`code=${code}`];
+ if(Number.isInteger(error?.upstreamStatus))parts.push(`upstreamStatus=${error.upstreamStatus}`);
+ if(typeof error?.causeName==='string')parts.push(`cause=${error.causeName.replace(/[^\w./-]/g,'').slice(0,80)}`);
+ else if(error instanceof AppError&&typeof error.message==='string')parts.push(`message=${JSON.stringify(error.message.slice(0,80))}`);
+ else if(error?.name)parts.push(`cause=${String(error.name).replace(/[^\w.-]/g,'').slice(0,60)}`);
+ console.warn(parts.join(' '));
+};
 const VIDEO_PLANNING_PARAMETERS='视频 params 使用 duration（4—30整数秒）、resolution（480P、768P、1080P、2K、4K）、ratio（16:9、9:16、1:1、4:3、3:4、21:9，或有首帧时 adaptive）。不要用像素尺寸或 aspectRatio 字段。视频节点另有 videoMode（text 文生视频、frames 首尾帧、reference 参考素材）：frames 只能连接首帧 first 与尾帧 last 图片，不能混用参考素材；reference 的参考图 refImage 最多 9 张、参考视频 refVideo 最多 3 个、参考音频 refAudio 最多 3 个，合计最多 12 个，参考音频不能单独使用，且不能连接首帧或尾帧；text 不连接任何素材。只有明确要求口型同步时才安排台词 dialogue。';
 const editableKeys=['kind','title','prompt','params','model','productSnapshot','sourceAssetId','sourceRunId','sourceRunIds','maskAssetId','subject','templateSnapshot','videoMode','dialogue','dubMode','tailFrame'];
 // 批量生成：同时处于活跃状态的视频运行最多 3 个。
@@ -144,7 +159,7 @@ const fingerprintValue=(task,k)=>Array.isArray(task?.[k])&&!task[k].length?null:
 const fingerprint=task=>hash(Object.fromEntries(editableKeys.map(k=>[k,fingerprintValue(task,k)])));
 // Only incoming node identities affect the selected input; edge IDs and layout do not.
 const inputFingerprint=(task,edges=[])=>hash({task:fingerprint(task),sources:edges.filter(e=>e.target===task.id).map(e=>e.source).sort()});
-const runView=r=>({id:r.id,projectId:r.project_id,taskId:r.task_id,requestKey:r.request_key,input:r.input,status:r.status,upstreamId:r.upstream_id,output:r.output?Object.fromEntries(Object.entries(r.output).filter(([key])=>key!=='_pendingResult')):null,error:r.error,usage:r.usage,createdAt:r.created_at,updatedAt:r.updated_at});
+const runView=r=>({id:r.id,projectId:r.project_id,taskId:r.task_id,requestKey:r.request_key,input:r.input,status:r.status,upstreamId:r.upstream_id,output:r.output?Object.fromEntries(Object.entries(r.output).filter(([key])=>!['_pendingResult','_pollFailSince'].includes(key))):null,error:r.error,usage:r.usage,createdAt:r.created_at,updatedAt:r.updated_at});
 const succeededHistory=(taskId,runs)=>runs.filter(r=>r.taskId===taskId&&r.status==='succeeded');
 const latestSuccess=(taskId,runs)=>succeededHistory(taskId,runs).at(-1)||null;
 // 复用判断：旧运行没有 media，仅有首帧 sourceAssetId，等价于单张 first_frame。
@@ -324,7 +339,7 @@ export class CreationProjects {
     }
    }
    let action='generate',reason='',model=null,reuseRunId=null;
-   if(last&&active.has(last.status)){action='recover';reason='原请求尚未结束，只查询原请求。';}
+   if(last&&active.has(last.status)){action='recover';reason='原请求仍在生成，继续查询原任务。';}
    else if(kind==='composite'){
     action=resolved.images.length?'composite':'blocked';
     reason=resolved.images.length?'在浏览器中按模板拼合上游图片，不调用模型。':'请先连接至少一张成功的图片。';
@@ -461,6 +476,7 @@ export class CreationProjects {
   return this.detail(workspace,id);
  }
  async tick() {
+  await this.normalizeLegacy().catch(()=>{});
   const batchResult=await this.advanceBatches().catch(()=>({batches:0,errors:1}));
   await this.mixPending().catch(()=>{});
   const rows=(await this.pool.query("SELECT id FROM sj_creation_runs WHERE status IN ('queued','submitting','running','unknown','cancelling') ORDER BY updated_at LIMIT 20")).rows;
@@ -468,7 +484,15 @@ export class CreationProjects {
   for(const row of rows) {try{outcomes.push({status:'fulfilled',value:await this.drive(row.id)});}catch{outcomes.push({status:'rejected'});}}
   return {processed:outcomes.filter(r=>r.status==='fulfilled'&&r.value).length,errors:outcomes.filter(r=>r.status==='rejected').length+batchResult.errors};
  }
+ // 历史数据规整（幂等，非破坏性）：unknown 无上游编号且无待保存结果 → failed；unknown 有编号或有待保存结果 → running；无上游编号的 cancelling → cancelled。
+ async normalizeLegacy(runId=null) {
+  const scope=runId?' AND id=$1':'',params=runId?[runId]:[];
+  await this.pool.query(`UPDATE sj_creation_runs SET status='failed',error=$${params.length+1},updated_at=now() WHERE status='unknown' AND upstream_id IS NULL AND NOT (COALESCE(output,'{}'::jsonb) ? '_pendingResult')${scope}`,[...params,SUBMIT_UNCONFIRMED_ERROR]);
+  await this.pool.query(`UPDATE sj_creation_runs SET status='running',error=NULL,updated_at=now() WHERE status='unknown'${scope}`,params);
+  await this.pool.query(`UPDATE sj_creation_runs SET status='cancelled',error=NULL,updated_at=now() WHERE status='cancelling' AND upstream_id IS NULL${scope}`,params);
+ }
  async recoverPending() {return this.tick();}
+ // 兼容旧入口：不再有“核实”流程，仅触发一次轮询（没有进行中的运行时为空操作）。
  async recover(workspace,id,body={}) {
   const detail=await this.detail(workspace,id);
   const ids=body.runIds||detail.runs.filter(r=>active.has(r.status)).map(r=>r.id);
@@ -493,7 +517,15 @@ export class CreationProjects {
    if(!locked)return false;
    let run=(await client.query('SELECT * FROM sj_creation_runs WHERE id=$1',[id])).rows[0];
    if(!run||!active.has(run.status))return false;
+   if(run.status==='unknown') {
+    // 历史数据：不再有“待核实”，规整为 running / failed 后继续。
+    await this.normalizeLegacy(id);
+    run=(await client.query('SELECT * FROM sj_creation_runs WHERE id=$1',[id])).rows[0];
+    if(!run||!active.has(run.status))return true;
+   }
    if(cancel&&run.status==='queued') {await client.query("UPDATE sj_creation_runs SET status='cancelled',updated_at=now() WHERE id=$1",[id]);return true;}
+   // 没有上游编号就没有可取消的远端任务：直接本地取消。
+   if((cancel||run.status==='cancelling')&&!run.upstream_id&&!run.output?._pendingResult) {await client.query("UPDATE sj_creation_runs SET status='cancelled',error=NULL,updated_at=now() WHERE id=$1",[id]);return true;}
    const generation=clone(run.input);
    generation.prompt=generationPrompt(generation);
    const newVideo=run.input.kind==='video'&&Array.isArray(run.input.media);
@@ -538,13 +570,16 @@ export class CreationProjects {
      return fail('MEDIA_PREP_FAILED','素材预处理失败，请更换素材后手动重试。');
     }
    }
-   let result,mixAfter=false;
+   let result,mixAfter=false,forcedError=null,transient=false,cancelAttempt=false;
    if(run.output?._pendingResult) {
     const pending=run.output._pendingResult;
     result={status:'succeeded',bytes:Buffer.from(pending.base64,'base64'),mime:pending.mime,upstreamId:run.upstream_id,usage:run.usage};
    } else if(cancel||run.status==='cancelling') {
+    cancelAttempt=true;
     await client.query("UPDATE sj_creation_runs SET status='cancelling',updated_at=now() WHERE id=$1",[id]);
-    try {result=await this.hub.cancelGeneration(generation,run.upstream_id,client);}catch {result={status:'unknown'};}
+    // 取消接口出错时也在本地标记已取消；上游若仍完成，其结果被忽略。
+    try {result=await this.hub.cancelGeneration(generation,run.upstream_id,client);}
+    catch(e) {logDiagnostic('poll-error',id,e);result={status:'cancelled'};}
    } else if(run.status==='queued') {
     // Deterministic local validation is still editable; no request has been sent.
     try {await this.hub.validateGeneration?.(generation,client);}
@@ -556,29 +591,61 @@ export class CreationProjects {
     // Persist before the network call. A crash at this boundary can only poll, never resubmit.
     const claimed=await client.query("UPDATE sj_creation_runs SET status='submitting',updated_at=now() WHERE id=$1 AND status='queued' RETURNING id",[id]);
     if(!claimed.rowCount)return false;
-    try {result=await this.hub.submitGeneration(generation,client);}catch(e) {result={status:e.code==='PROVIDER_REJECTED'?'failed':'unknown'};}
+    try {result=await this.hub.submitGeneration(generation,client);}
+    catch(e) {
+     logDiagnostic(run.input.kind==='video'?'video-submit-error':'image-submit-error',id,e);
+     result={status:'failed'};
+     // 供应商明确拒绝，或本地可确定的拒绝（4xx 类 AppError）：明确失败。其余（超时、连接中断、5xx、响应无效）没有上游编号：提交未确认，同样按失败处理、允许直接重试。
+     if(e instanceof AppError&&e.code!=='PROVIDER_REJECTED'&&e.status<500)forcedError={code:e.code,message:e.message};
+     else if(e instanceof AppError&&e.code==='PROVIDER_REJECTED')forcedError=null;
+     else forcedError=SUBMIT_UNCONFIRMED_ERROR;
+    }
    } else {
-    try {result=await this.hub.pollGeneration(generation,run.upstream_id,client);}catch {result={status:'unknown'};}
+    if(!run.upstream_id) {
+     // 崩溃发生在提交过程中：没有上游编号，无法查询，不会自动重新提交。
+     result={status:'failed'};forcedError=SUBMIT_UNCONFIRMED_ERROR;
+    }else {
+     try {result=await this.hub.pollGeneration(generation,run.upstream_id,client);}
+     catch(e) {logDiagnostic('poll-error',id,e);result={status:'running'};transient=true;}
+    }
    }
-   let status=['queued','submitting','running','unknown','succeeded','failed','cancelled'].includes(result?.status)?result.status:'unknown';
+   let status=['queued','submitting','running','succeeded','failed','cancelled'].includes(result?.status)?result.status:'running';
+   // 供应商返回无法识别的状态：视作仍在处理，继续轮询（受 30 分钟上限约束）。
+   if(!['queued','submitting','running','succeeded','failed','cancelled'].includes(result?.status))transient=true;
    // queued/submitting returned by the provider are accepted upstream work, not local queue entries.
    if(['queued','submitting'].includes(status))status='running';
+   // 提交类请求返回运行中却没有上游编号，等同提交未确认。
+   if(status==='running'&&!transient&&!cancelAttempt&&!result?.upstreamId&&!run.upstream_id&&!run.output?._pendingResult) {status='failed';forcedError=SUBMIT_UNCONFIRMED_ERROR;}
    let output=run.output||null;
    if(status==='succeeded'&&result.bytes&&result.mime&&!run.output?._pendingResult) {
     output={_pendingResult:{base64:Buffer.from(result.bytes).toString('base64'),mime:result.mime}};
-    await client.query("UPDATE sj_creation_runs SET status='unknown',upstream_id=COALESCE($2,upstream_id),output=$3,usage=COALESCE($4,usage),updated_at=now() WHERE id=$1",[id,result.upstreamId||null,output,result.usage||null]);
+    await client.query("UPDATE sj_creation_runs SET status='running',upstream_id=COALESCE($2,upstream_id),output=$3,usage=COALESCE($4,usage),updated_at=now() WHERE id=$1",[id,result.upstreamId||null,output,result.usage||null]);
    }
    if(status==='succeeded') {
     mixAfter=run.input.kind==='video'&&run.input.dubMode==='post'&&Boolean(run.input.dialogueAudio?.assetId);
     let asset=(await client.query("SELECT id FROM sj_creation_records WHERE workspace_id=$1 AND kind='asset' AND body->>'runId'=$2 ORDER BY created_at LIMIT 1",[run.workspace_id,id])).rows[0];
     if(!asset&&result.bytes&&result.mime) {
-     try {asset=await this.media.put(run.workspace_id,{bytes:Buffer.from(result.bytes),mime:result.mime,name:`${run.input.task.title}-${id.slice(0,8)}.${result.mime==='video/mp4'?'mp4':result.mime==='image/jpeg'?'jpg':result.mime==='image/webp'?'webp':'png'}`,productId:run.input.productId,projectId:run.project_id,taskId:run.task_id,runId:id,role:'result'},client);}catch {status='unknown';}
+     try {asset=await this.media.put(run.workspace_id,{bytes:Buffer.from(result.bytes),mime:result.mime,name:`${run.input.task.title}-${id.slice(0,8)}.${result.mime==='video/mp4'?'mp4':result.mime==='image/jpeg'?'jpg':result.mime==='image/webp'?'webp':'png'}`,productId:run.input.productId,projectId:run.project_id,taskId:run.task_id,runId:id,role:'result'},client);}catch(e) {logDiagnostic('poll-error',id,e);}
     }
     if(asset) output={assetId:asset.id,mime:result.mime||run.output?.mime,fileUrl:`/api/creation/assets/${asset.id}/file`};
-    else status='unknown';
+    else if(cancelAttempt)status='cancelled';
+    else {status='running';transient=true;}
    }else if(result?.progress!==undefined)output={...output,progress:result.progress};
-   if(['running','unknown'].includes(status)) {const pending=(await client.query('SELECT status FROM sj_creation_runs WHERE id=$1',[id])).rows[0];if(pending?.status==='cancelling')status='cancelling';}
-   const error=status==='failed'?{code:typeof result.error?.code==='string'?result.error.code.slice(0,80):'GENERATION_FAILED',message:result.error?.code==='CONTENT_BLOCKED'&&typeof result.error.message==='string'?result.error.message.slice(0,400):'供应商已确认失败，请查看输入后手动重试。'}:status==='unknown'?{code:'UPSTREAM_UNKNOWN',message:'原请求状态待核实，不会重新生成或切换模型。'}:null;
+   // 取消流程一次到位：上游仍在运行 / 状态不明也在本地标记已取消，忽略其后续结果。
+   if(cancelAttempt&&!['succeeded','failed','cancelled'].includes(status))status='cancelled';
+   // 持续查询失败：自首次失败起超过 30 分钟则标记失败，期间保持 running 继续轮询。
+   const failSince=Date.parse(run.output?._pollFailSince);
+   if(status==='running'&&transient) {
+    const since=Number.isFinite(failSince)?failSince:Date.now();
+    if(Date.now()-since>POLL_FAIL_LIMIT_MS){status='failed';forcedError=POLL_FAILED_ERROR;}
+    else output={...(output||{}),_pollFailSince:new Date(since).toISOString()};
+   }
+   if(status!=='running'||!transient) {
+    if(output&&'_pollFailSince' in output){output={...output};delete output._pollFailSince;}
+   }
+   if(status==='failed'&&forcedError&&output?._pendingResult){output={...output};delete output._pendingResult;}
+   if(status==='running') {const pending=(await client.query('SELECT status FROM sj_creation_runs WHERE id=$1',[id])).rows[0];if(pending?.status==='cancelling')status='cancelling';}
+   const error=status==='failed'?(forcedError?{...forcedError}:{code:typeof result.error?.code==='string'?result.error.code.slice(0,80):'GENERATION_FAILED',message:result.error?.code==='CONTENT_BLOCKED'&&typeof result.error.message==='string'?result.error.message.slice(0,400):'供应商已确认失败，请查看输入后手动重试。'}):null;
    await client.query('UPDATE sj_creation_runs SET status=$2,upstream_id=COALESCE($3,upstream_id),output=$4,error=$5,usage=COALESCE($6,usage),updated_at=now() WHERE id=$1',[id,status,result?.upstreamId||null,output,error,result?.usage||null]);
    // 后期配音：视频成功后混音为派生视频；混音失败不影响原视频的成功状态。
    if(mixAfter&&status==='succeeded')await this.mixRun(run.workspace_id,id).catch(()=>{});

@@ -12,7 +12,7 @@
 
 - 活动前端为 web/src 的 Creation 五菜单，React 19.3.1 + Vite 8.3.5（JS/JSX）、@xyflow/react 12.12.0；Node 静态白名单提供 web/dist 与分包。活动 API 为 /api/creation/*、/api/model-hub；旧业务入口返回 410 LEGACY_RETIRED。旧 prototype / 六步组件 / sj:prototype:* 演示键和旧浏览器脚本仅历史参考。
 - PostgreSQL 持久保存聊天 / 事实 / 建议、项目任务 / 图修订、冻结输入与多次生成；evidence 图只识别，creative 独立上传或显式转入才用于生成。商品更新由用户同步至未开始任务；来源固定具体成功版本，不自动取最新。
-- AI 只建议；用户预览范围再点击开始。同编号与参数幂等，unknown 只查原任务，不自动重生 / 换模型 / 付费重试；明确失败须确认新请求。同步图片丢失响应且无上游编号可能无法恢复。
+- AI 只建议；用户预览范围再点击开始。同编号与参数幂等；2026-10-28 起不再有「待核实 / unknown」（ADR-0010 覆盖旧规则）：无上游编号的提交超时 / 出错 / 5xx / 响应丢失直接 failed（SUBMIT_UNCONFIRMED），用户一键重试，可能多计一次费用；有上游编号则持续轮询，连续失败超 30 分钟才 failed（POLL_FAILED）；取消立即落为 cancelled。仍不自动重提 / 换模型 / 付费重试。
 - OMYAI / OpenAI 兼容图片、OpenAI / Anthropic 文本与读图、MiniMax H3 视频执行器已实现；H3 仅协议 fixture 验证，未做真实付费调用。截图识别需配置 text + vision 渠道，DeepSeek 启动默认仅 text。新 creation-http 安全传输只直连，不支持 MODEL_HTTPS_PROXY。
 - 模型目录与执行能力分开：新发现禁用，人工能力及执行器分别校验，失败保留配置，消失标不可用，不自动换默认。回收站保留已有项目引用；永久删除仅管理员先预览，含回收站项目引用也阻止；无自动清理。
 - 保留 session 优先、登录 / 本机首次初始化 / 强制改密、HttpOnly 会话 / 退出、成员和三角色逐接口鉴权。SJ_AUTH=off 默认本机单用户，on 启用登录；管理员全权，运营业务写 / 模板 / 移入恢复，查看者只读；模型配置 / 永久删除仅管理员。密码 / 会话令牌不入 localStorage / URL / 日志，前端隐藏不替代鉴权。

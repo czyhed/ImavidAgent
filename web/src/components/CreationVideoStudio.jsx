@@ -11,7 +11,7 @@ import { SETTING_DEFAULTS, SETTING_RATIOS } from '../../../shared/creation-video
 import { SLOT_BY_MODE, shownSettings, shotDuration, shotCustomKeys, followProjectParams, shotIssues, shownRun, succeededRuns, dubAssetFor, buildPlaylist, studioSummary, moveItem, clock } from '../lib/video-studio.js';
 
 const uid = () => crypto.randomUUID();
-const statusLabels = { queued: '排队中', submitting: '正在提交', running: '生成中', unknown: '待核实', cancelling: '正在取消', cancelled: '已取消', failed: '失败', succeeded: '成功' };
+const statusLabels = { queued: '排队中', submitting: '正在提交', running: '生成中', unknown: '生成中', cancelling: '正在取消', cancelled: '已取消', failed: '失败', succeeded: '成功' };
 const isActive = status => ['queued', 'submitting', 'running', 'unknown', 'cancelling'].includes(status);
 // 批量生成：分镜状态与批次状态的中文名称。
 const batchItemLabels = { pending: '待派发', running: '生成中', succeeded: '已完成', failed: '失败', held: '等待上一镜（已暂停）' };
@@ -20,7 +20,7 @@ const batchStateLabels = { running: '进行中', paused: '已暂停', done: '已
 const modeLabels = { text: '文生视频', frames: '首尾帧', reference: '参考素材' };
 const slotLabels = { first: '首帧', last: '尾帧', refImage: '参考图', refVideo: '参考视频', refAudio: '参考音频' };
 const kindLabels = { image: '图片', video: '视频', audio: '音频' };
-const planActionLabels = { generate: '新生成', 'wait-prev': '等待上一镜', reuse: '复用成功版本', recover: '核实原请求', blocked: '需要处理' };
+const planActionLabels = { generate: '新生成', 'wait-prev': '等待上一镜', reuse: '复用成功版本', recover: '继续查询原任务', blocked: '需要处理' };
 // 单镜编辑区各分区的默认展开状态：素材、提示词、预览展开，台词与参数折叠（W4）。
 const SECTION_DEFAULT = { materials: true, prompt: true, dialogue: false, params: false, preview: true };
 
@@ -263,11 +263,10 @@ export default function CreationVideoStudio({ backend, notify, projectId, detail
       {versions.length > 1 && <label className="v3-field"><span>版本</span><select aria-label="查看版本" value={editor.displayRuns?.[node.id] || 'latest'} onChange={e => editor.setDisplayRun(node.id, e.target.value === 'latest' ? null : e.target.value)}><option value="latest">最新成功版本</option>{versions.map((r, i) => <option key={r.id} value={r.id}>版本 {i + 1}</option>)}</select></label>}
       {state.asset ? (dubAsset ? <DubbedVideo className="vs-shot-preview" original={state.asset} dub={dubAsset} truncated={dub?.dub?.truncated} muted /> : <video className="vs-shot-preview" src={fileUrl(state.asset)} muted controls preload="metadata" />) : <div className="vs-shot-preview empty">{isActive(state.status) ? '生成中…' : '尚无视频'}</div>}
       <div className="vs-shot-foot">
-       <button className="v3-btn small primary" disabled={!writable || busy || saving || isActive(state.status)} onClick={() => runShot(shot)}>{state.status === 'failed' ? '确认重试本镜' : state.status === 'unknown' ? '核实本镜' : '生成本镜'}</button>
-       {versions.length > 0 && state.status !== 'unknown' && <button className="v3-btn small" disabled={!writable || busy || saving || isActive(state.status)} onClick={() => runShot(shot, { regenerate: true })}>再生成一版</button>}
+       <button className="v3-btn small primary" disabled={!writable || busy || saving || isActive(state.status)} onClick={() => runShot(shot)}>{state.status === 'failed' ? '重试本镜' : '生成本镜'}</button>
+       {versions.length > 0 && <button className="v3-btn small" disabled={!writable || busy || saving || isActive(state.status)} onClick={() => runShot(shot, { regenerate: true })}>再生成一版</button>}
       </div>
       {state.status === 'failed' && <p className="v3-note" title={state.run?.error?.message || ''}>上次失败：{state.run?.error?.message || '请查看错误后重试'}</p>}
-      {state.status === 'unknown' && <p className="v3-note">原请求待核实，不会重新生成。</p>}
      </Section>
     </div>
    </div>
